@@ -1,0 +1,14 @@
+name: amf_env
+channels:
+  - defaults
+  - rmg
+dependencies:
+  - numpy
+  - quantities
+  - scipy
+  - rdkit >=2015.09.2
+  - lpsolve55
+  - pydas >=1.0.1
+  - matplotlib
+  - cantera
+  - xlwt
