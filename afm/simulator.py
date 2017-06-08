@@ -54,5 +54,46 @@ class MonteCarloSimulator(Simulator):
 			if frag in input_fragment_count_dict:
 				self.fragment_count_dict[frag] = input_fragment_count_dict[frag]
 
-	
+	######################
+	# Simulation section #
+	######################
+	def calculate_unimolucular_rate(self, reaction):
+
+		k_u = reaction.kinetics.getRateCoefficient(self.temperature)
+		frag_label = reaction.reactants[0].label
+		frag_count = self.fragment_count_dict[frag_label]
+		rate_u = k_u * frag_count # unit: 1/s
+
+		return rate_u
+
+	def calculate_bimolucular_rate(self, reaction):
+
+		Na = rmgpy.constants.Na
+		k_b = reaction.kinetics.getRateCoefficient(self.temperature)/Na # unit: m^3/s
+		frag_label1 = reaction.reactants[0].label
+		frag_label2 = reaction.reactants[1].label
+
+		frag_count1 = self.fragment_count_dict[frag_label1]
+		frag_count2 = self.fragment_count_dict[frag_label2]
+		rate_b = k_b * frag_count1 * frag_count2 / self.volume # unit: 1/s
+
+		return rate_b
+
+	def time_step(self):
+
+		total_rate = 0.0
+		for frag_rxn in self.fragment_reaction_list:
+
+			# unimolecular reactions
+			if len(frag_rxn.reactants) == 1:
+				total_rate += self.calculate_unimolucular_rate(frag_rxn)
+
+			# bimolecular reactions
+			elif len(frag_rxn.reactants) == 2:
+				total_rate += self.calculate_bimolucular_rate(frag_rxn)
+
+		return 1.0/total_rate # unit: s
+
+
+
 
