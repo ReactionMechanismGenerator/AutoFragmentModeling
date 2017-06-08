@@ -3,6 +3,15 @@
 # consists of the following steps
 # s1: decide the time step to choose,
 # need k, count of the related fragments
+# s2: cast random number to decide which
+# reaction rule to fire, need to create a
+# dict which has <reaction, rate> pairs
+# s3: realize the reaction rule on fragment level
+# update fragment_count_dict
+# s4: realize the reaction rule on molecule level
+# need dict which has <fragment, [mol1, mol2, ...]> pairs
+# update molecule list: some molecules to remove,
+# some molecules to append.
 import rmgpy.constants
 
 import afm.loader
