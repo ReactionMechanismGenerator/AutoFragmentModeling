@@ -76,6 +76,7 @@ class TestMonteCarloSimulator(unittest.TestCase):
 
     def test_time_step(self):
 
+        self.mcs.update_reaction_fluxes()
         time_step = self.mcs.time_step()
 
         expected_time_step = 633.0

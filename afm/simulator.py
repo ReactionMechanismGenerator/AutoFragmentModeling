@@ -12,6 +12,8 @@
 # need dict which has <fragment, [mol1, mol2, ...]> pairs
 # update molecule list: some molecules to remove,
 # some molecules to append.
+import numpy as np
+
 import rmgpy.constants
 
 import afm.loader
@@ -52,6 +54,7 @@ class MonteCarloSimulator(Simulator):
 		self.molecule_list = molecule_list
 		self.volume = volume # unit: m^3
 		self.temperature = temperature
+		self.reaction_flux_array = np.zeros(len(self.fragment_reaction_list))
 
 	def initialize_fragment_counts(self, input_fragment_count_dict):
 
@@ -90,19 +93,20 @@ class MonteCarloSimulator(Simulator):
 
 	def time_step(self):
 
-		total_rate = 0.0
-		for frag_rxn in self.fragment_reaction_list:
-
-			# unimolecular reactions
-			if len(frag_rxn.reactants) == 1:
-				total_rate += self.calculate_unimolucular_rate(frag_rxn)
-
-			# bimolecular reactions
-			elif len(frag_rxn.reactants) == 2:
-				total_rate += self.calculate_bimolucular_rate(frag_rxn)
+		total_rate = np.sum(self.reaction_flux_array)
 
 		return 1.0/total_rate # unit: s
 
+	def update_reaction_fluxes(self):
 
+		for idx, frag_rxn in enumerate(self.fragment_reaction_list):
+			# unimolecular reactions
+			if len(frag_rxn.reactants) == 1:
+				rate = self.calculate_unimolucular_rate(frag_rxn)
 
+			# bimolecular reactions
+			elif len(frag_rxn.reactants) == 2:
+				rate = self.calculate_bimolucular_rate(frag_rxn)
+
+			self.reaction_flux_array[idx] = rate
 
