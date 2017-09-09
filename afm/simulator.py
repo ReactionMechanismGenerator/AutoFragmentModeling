@@ -91,12 +91,6 @@ class MonteCarloSimulator(Simulator):
 
 		return rate_b
 
-	def time_step(self):
-
-		total_rate = np.sum(self.reaction_flux_array)
-
-		return 1.0/total_rate # unit: s
-
 	def update_reaction_fluxes(self):
 
 		for idx, frag_rxn in enumerate(self.fragment_reaction_list):
@@ -109,4 +103,10 @@ class MonteCarloSimulator(Simulator):
 				rate = self.calculate_bimolucular_rate(frag_rxn)
 
 			self.reaction_flux_array[idx] = rate
+
+	def time_step(self):
+
+		total_rate = np.sum(self.reaction_flux_array)
+
+		return 1.0/total_rate # unit: s
 
