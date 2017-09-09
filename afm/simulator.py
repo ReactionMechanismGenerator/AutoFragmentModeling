@@ -128,3 +128,12 @@ class MonteCarloSimulator(Simulator):
 			if current_fluxsum >= rand_num:
 				return idx
 
+	def update_fragment_counts(self, reaction_idx):
+
+		reaction = self.fragment_reaction_list[reaction_idx]
+		for reactant in reaction.reactants:
+			self.fragment_count_dict[reactant.label] -= 1
+
+		for product in reaction.products:
+			self.fragment_count_dict[product.label] += 1
+

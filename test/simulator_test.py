@@ -90,3 +90,12 @@ class TestMonteCarloSimulator(unittest.TestCase):
 
         expected_idx = 3
         self.assertEqual(expected_idx, random_reaction_idx)
+
+    def test_update_fragment_counts(self):
+
+        reaction_idx = 3
+        self.mcs.update_fragment_counts(reaction_idx)
+        self.assertEqual(self.mcs.fragment_count_dict['ArCCCCR'], 999)
+        self.assertEqual(self.mcs.fragment_count_dict['ArC__C'], 9)
+        self.assertEqual(self.mcs.fragment_count_dict['ArC*CCCR'], 1)
+        self.assertEqual(self.mcs.fragment_count_dict['ArC*C'], 1)
