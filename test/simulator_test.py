@@ -83,3 +83,10 @@ class TestMonteCarloSimulator(unittest.TestCase):
         expected_time_step = 633.0
 
         self.assertAlmostEqual(time_step, expected_time_step, 1)
+
+    def test_random_reaction_selection(self):
+
+        random_reaction_idx = self.mcs.random_reaction_selection(seed=4)
+
+        expected_idx = 3
+        self.assertEqual(expected_idx, random_reaction_idx)

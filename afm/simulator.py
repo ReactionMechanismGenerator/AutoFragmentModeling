@@ -12,6 +12,7 @@
 # need dict which has <fragment, [mol1, mol2, ...]> pairs
 # update molecule list: some molecules to remove,
 # some molecules to append.
+import random
 import numpy as np
 
 import rmgpy.constants
@@ -109,4 +110,21 @@ class MonteCarloSimulator(Simulator):
 		total_rate = np.sum(self.reaction_flux_array)
 
 		return 1.0/total_rate # unit: s
+
+
+	def random_reaction_selection(self, seed=None):
+
+		# cast a random number
+		random.seed(seed)
+		rand_num = random.uniform(0, np.sum(self.reaction_flux_array))
+
+		# pick the one fragment reaction
+		# indicated by the random number
+		current_fluxsum = 0
+		for idx, flux in enumerate(self.reaction_flux_array):
+
+			current_fluxsum += flux
+			print current_fluxsum
+			if current_fluxsum >= rand_num:
+				return idx
 
