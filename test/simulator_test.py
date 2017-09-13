@@ -2,6 +2,7 @@ import os
 import unittest
 
 import afm.simulator
+import afm.molecule
 
 class TestSimulator(unittest.TestCase):
 
@@ -43,9 +44,12 @@ class TestMonteCarloSimulator(unittest.TestCase):
                                     'simulator_data',
                                     'species_dictionary.txt')
 
-        mol1 = {'ArCCCCR': 500, 'ArC__C': 1}
-        mol2 = {'ArCCCCR': 300, 'ArC__C': 9}
-        mol3 = {'ArCCCCR': 200}
+        composition1 = {'ArCCCCR': 500, 'ArC__C': 1}
+        composition2 = {'ArCCCCR': 300, 'ArC__C': 9}
+        composition3 = {'ArCCCCR': 200}
+        mol1 = afm.molecule.FragmentMolecule(composition1)
+        mol2 = afm.molecule.FragmentMolecule(composition2)
+        mol3 = afm.molecule.FragmentMolecule(composition3)
         initial_molecules = [mol1, mol2, mol3]
 
         volume = 4.8e-25 # unit: m^3

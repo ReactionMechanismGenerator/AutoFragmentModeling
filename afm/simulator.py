@@ -64,8 +64,8 @@ class MonteCarloSimulator(Simulator):
 											[0]*len(self.fragment_dict)))
 
 		for mol in initial_molecules:
-			for frag in mol:
-				self.fragment_count_dict[frag] += mol[frag]
+			for frag in mol.composition:
+				self.fragment_count_dict[frag] += mol.composition[frag]
 
 	def initialize_molecule_fragment_df(self, initial_molecules):
 
@@ -74,8 +74,8 @@ class MonteCarloSimulator(Simulator):
 		for mol in initial_molecules:
 			insert_row = {}
 			for fragment_label  in self.fragment_count_dict:
-				if fragment_label in mol:
-					insert_row[fragment_label] = mol[fragment_label]
+				if fragment_label in mol.composition:
+					insert_row[fragment_label] = mol.composition[fragment_label]
 				else:
 					insert_row[fragment_label] = 0
 
