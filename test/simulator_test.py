@@ -42,10 +42,6 @@ class TestMonteCarloSimulator(unittest.TestCase):
                                     'data', 
                                     'simulator_data',
                                     'species_dictionary.txt')
-        input_fragment_count_dict = {
-          "ArCCCCR": 1000,
-          "ArC__C":10
-        }
 
         mol1 = {'ArCCCCR': 500, 'ArC__C': 1}
         mol2 = {'ArCCCCR': 300, 'ArC__C': 9}
@@ -56,7 +52,6 @@ class TestMonteCarloSimulator(unittest.TestCase):
         temperature = 700 # unit: K
         self.mcs = afm.simulator.MonteCarloSimulator(chemkin_path, 
                                                      dictionary_path,
-                                                     input_fragment_count_dict,
                                                      initial_molecules,
                                                      volume, 
                                                      temperature)

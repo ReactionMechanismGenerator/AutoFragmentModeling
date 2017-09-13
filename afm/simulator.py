@@ -44,29 +44,28 @@ class MonteCarloSimulator(Simulator):
 	def __init__(self, 
 				chemkin_path, 
 				dictionary_path,
-				input_fragment_count_dict,
 				initial_molecules,
 				volume, 
 				temperature):
 		super(MonteCarloSimulator, self).__init__(chemkin_path, 
 												dictionary_path)
 
-		self.initialize_fragment_counts(input_fragment_count_dict)
+		self.initialize_fragment_counts(initial_molecules)
 
 		self.initialize_molecule_fragment_df(initial_molecules)
 		self.volume = volume # unit: m^3
 		self.temperature = temperature
 		self.reaction_flux_array = np.zeros(len(self.fragment_reaction_list))
 
-	def initialize_fragment_counts(self, input_fragment_count_dict):
+	def initialize_fragment_counts(self, initial_molecules):
 
 		# initialize the fragment_count
 		self.fragment_count_dict = dict(zip(self.fragment_dict.keys(), 
 											[0]*len(self.fragment_dict)))
 
-		for frag in self.fragment_count_dict:
-			if frag in input_fragment_count_dict:
-				self.fragment_count_dict[frag] = input_fragment_count_dict[frag]
+		for mol in initial_molecules:
+			for frag in mol:
+				self.fragment_count_dict[frag] += mol[frag]
 
 	def initialize_molecule_fragment_df(self, initial_molecules):
 
