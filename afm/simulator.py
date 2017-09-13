@@ -14,6 +14,7 @@
 # some molecules to append.
 import random
 import numpy as np
+import pandas as pd
 
 import rmgpy.constants
 
@@ -44,7 +45,7 @@ class MonteCarloSimulator(Simulator):
 				chemkin_path, 
 				dictionary_path,
 				input_fragment_count_dict,
-				molecule_list,
+				initial_molecules,
 				volume, 
 				temperature):
 		super(MonteCarloSimulator, self).__init__(chemkin_path, 
@@ -52,7 +53,7 @@ class MonteCarloSimulator(Simulator):
 
 		self.initialize_fragment_counts(input_fragment_count_dict)
 
-		self.molecule_list = molecule_list
+		self.initialize_molecule_fragment_df(initial_molecules)
 		self.volume = volume # unit: m^3
 		self.temperature = temperature
 		self.reaction_flux_array = np.zeros(len(self.fragment_reaction_list))
@@ -66,6 +67,25 @@ class MonteCarloSimulator(Simulator):
 		for frag in self.fragment_count_dict:
 			if frag in input_fragment_count_dict:
 				self.fragment_count_dict[frag] = input_fragment_count_dict[frag]
+
+	def initialize_molecule_fragment_df(self, initial_molecules):
+
+		self.molecule_fragment_df = pd.DataFrame(columns=self.fragment_count_dict.keys())
+
+		for mol in initial_molecules:
+			insert_row = {}
+			for fragment_label  in self.fragment_count_dict:
+				if fragment_label in mol:
+					insert_row[fragment_label] = mol[fragment_label]
+				else:
+					insert_row[fragment_label] = 0
+
+			if not self.molecule_fragment_df.index.empty:
+				insert_index = 1 + max(self.molecule_fragment_df.index)
+			else:
+				insert_index = 0
+			self.molecule_fragment_df.loc[insert_index] = insert_row
+
 
 	######################
 	# Simulation section #

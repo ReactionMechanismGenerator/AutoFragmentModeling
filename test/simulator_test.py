@@ -47,16 +47,37 @@ class TestMonteCarloSimulator(unittest.TestCase):
           "ArC__C":10
         }
 
+        mol1 = {'ArCCCCR': 500, 'ArC__C': 1}
+        mol2 = {'ArCCCCR': 300, 'ArC__C': 9}
+        mol3 = {'ArCCCCR': 200}
+        initial_molecules = [mol1, mol2, mol3]
+
         volume = 4.8e-25 # unit: m^3
         temperature = 700 # unit: K
         self.mcs = afm.simulator.MonteCarloSimulator(chemkin_path, 
                                                      dictionary_path,
                                                      input_fragment_count_dict,
-                                                     [],
+                                                     initial_molecules,
                                                      volume, 
                                                      temperature)
 
         self.mcs.update_reaction_fluxes()
+
+    def test_initialize_molecule_fragment_df(self):
+
+        # test all thre fragment labels are in the dataframe
+        # columns
+        for fragment_label in self.mcs.fragment_dict:
+            self.assertIn(fragment_label, self.mcs.molecule_fragment_df.columns.values)
+
+        # check ArCCCCR column, order follows the order of molecules
+        # in the initial_molecules list
+        self.assertEqual(500, self.mcs.molecule_fragment_df["ArCCCCR"].values[0])
+        self.assertEqual(300, self.mcs.molecule_fragment_df["ArCCCCR"].values[1])
+        self.assertEqual(200, self.mcs.molecule_fragment_df["ArCCCCR"].values[2])
+        # check ArC__C column
+        self.assertEqual(1, self.mcs.molecule_fragment_df["ArC__C"].values[0])
+        self.assertEqual(9, self.mcs.molecule_fragment_df["ArC__C"].values[1])
 
     def test_calculate_unimolucular_rate(self):
 
