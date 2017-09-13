@@ -63,6 +63,18 @@ class TestMonteCarloSimulator(unittest.TestCase):
 
         self.mcs.update_reaction_fluxes()
 
+    def test_initialize_fragment_counts(self):
+
+        # test all thre fragment labels are in the 
+        # fragment_count_dict
+        for fragment_label in self.mcs.fragment_dict:
+            self.assertIn(fragment_label, self.mcs.fragment_count_dict)
+
+        # check ArCCCCR column, order follows the order of molecules
+        # in the initial_molecules list
+        self.assertEqual(1000, self.mcs.fragment_count_dict["ArCCCCR"])
+        self.assertEqual(10, self.mcs.fragment_count_dict["ArC__C"])
+
     def test_initialize_molecule_fragment_df(self):
 
         # test all thre fragment labels are in the dataframe
