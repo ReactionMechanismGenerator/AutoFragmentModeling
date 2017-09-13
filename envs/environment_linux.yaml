@@ -13,3 +13,4 @@ dependencies:
   - cantera
   - xlwt
   - nose
+  - pandas
