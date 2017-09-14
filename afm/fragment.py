@@ -1,12 +1,16 @@
 
-class Fragment(object):
+from rmgpy.molecule.graph import Graph
+
+class Fragment(Graph):
 
 	def __init__(self,
 				label,
-				species_repr):
+				species_repr,
+				atoms=None):
 		self.index = -1
 		self.label = label
 		self.species_repr = species_repr
+		Graph.__init__(self, atoms)
 
 	def __str__(self):
 		"""
