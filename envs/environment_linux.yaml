@@ -3,6 +3,7 @@ channels:
   - defaults
   - rmg
 dependencies:
+  - rmg
   - numpy
   - quantities
   - scipy
