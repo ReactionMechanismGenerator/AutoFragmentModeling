@@ -1,0 +1,31 @@
+language: python
+sudo: false
+python:
+  - "2.7"
+virtualenv:
+    system_site_packages: true
+
+addons:
+  apt:
+    packages:
+    - git
+
+before_install:
+  # Set up anaconda
+  - wget http://repo.continuum.io/miniconda/Miniconda2-4.0.5-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p $HOME/miniconda
+  - export PATH=$HOME/miniconda/bin:$PATH
+  - export PYTHONPATH=$TRAVIS_BUILD_DIR/AutoFragmentModeling:$PYTHONPATH
+  # Update conda itself
+  - conda update --yes conda
+  - cd ..
+  - cd AutoFragmentModeling
+
+install:
+  - conda env create -f envs/environment_linux.yaml
+  - source activate afm_env
+
+script: 
+  - make unittests
+
