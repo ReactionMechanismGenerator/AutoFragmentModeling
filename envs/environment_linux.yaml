@@ -1,4 +1,4 @@
-name: amf_env
+name: afm_env
 channels:
   - defaults
   - rmg
