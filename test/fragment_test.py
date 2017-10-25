@@ -40,7 +40,7 @@ class TestFragment(unittest.TestCase):
         for vertex in vertices: self.fragment1.addVertex(vertex)
         for bond in bonds: self.fragment1.addEdge(bond)
 
-        # construct the first fragment
+        # construct the second fragment
         atom_C2 = Atom(element=getElement('C'), 
                     radicalElectrons=0, 
                     charge=0, 
