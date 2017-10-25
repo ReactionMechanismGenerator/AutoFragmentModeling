@@ -1,5 +1,6 @@
 
 from rmgpy.molecule.graph import Graph, Vertex
+from rmgpy.molecule.molecule import Bond, Molecule
 
 class CuttingLabel(Vertex):
 
@@ -61,3 +62,29 @@ class Fragment(Graph):
 			return self.species_repr.molecule[0]._repr_png_()
 		else:
 			return None
+
+	def from_SMILES_like_string(self, SMILES_like_string):
+
+		smiles =  SMILES_like_string.replace('R', 'Cl')
+
+		mol = Molecule().fromSMILES(smiles)
+		# convert mol to fragment object
+		final_vertices = []
+		for atom in mol.atoms:
+			if atom.element.symbol == 'Cl':
+				
+				R = CuttingLabel('R')
+				for bondedAtom, bond in atom.edges.iteritems():
+					new_bond = Bond(bondedAtom, R, order=bond.order)
+					
+					bondedAtom.edges[R] = new_bond
+					del bondedAtom.edges[atom]
+
+					R.edges[bondedAtom] = new_bond
+				final_vertices.append(R)
+			
+			else:
+				final_vertices.append(atom)
+
+		self.vertices = final_vertices
+		return self
