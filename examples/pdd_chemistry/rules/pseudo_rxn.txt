@@ -1,0 +1,12 @@
+
+# Pseudo-reactions
+
+# RC*C__C + RCCCCR == RCCCCC__CC*
+
+# RC* + RCCCCR == RCCCCC*
+
+# RCC* + RCCCCR == RCCCCCC*
+
+# RCC == RC + 0.25 RCCCCR
+
+# RCCC == RC + 0.5 RCCCCR

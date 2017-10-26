@@ -1,0 +1,80 @@
+
+ArC: c1ccccc1C
+
+ArCC: c1ccccc1CC
+
+ArC__C: c1ccccc1C=C
+
+ArCCC: c1ccccc1CCC
+
+ArCC__C: c1ccccc1CC=C
+
+ArCCCCR: c1ccccc1CCCCR
+
+ArC(CCCR)CCCR: c1ccccc1C(CCCR)CCCR
+
+RArArR: c1ccccc1C(CCCR)C(c2ccccc2)CCCR
+
+H2: [H][H]
+
+C__C: C=C
+
+C__CC__CC: C=CC=CC
+
+RC: RC
+
+RCC: RCC
+
+RC__C: RC=C
+
+RCCC: RCCC
+
+RCC__C: RCC=C
+
+RCCCCC__CC: RCCCCC=CC
+
+RCCCCR: RCCCCR
+
+ArC*: c1ccccc1[CH2]
+
+ArCC*: c1ccccc1C[CH2]
+
+ArC*C: c1ccccc1[CH]C
+
+ArCCC*: c1ccccc1CC[CH2]
+
+ArC*CCCR: c1ccccc1[CH]CCCR
+
+ArCC*CCR: c1ccccc1C[CH]CCR
+
+ArCCC*CR: c1ccccc1CC[CH]CR
+
+ArCCCC*R: c1ccccc1CCC[CH]R
+
+ArC(CC*CR)CCCR: c1ccccc1C(C[CH]CR)CCCR
+
+ArC*(CCCR)CCCR: c1ccccc1[C](CCCR)CCCR
+
+H*: [H]
+
+RC*: R[CH2]
+
+RCC*: RC[CH2]
+
+RCCC*: RCC[CH2]
+
+RC*C__C: R[CH]C=C
+
+RCCCC*: RCCC[CH2]
+
+RCCCCC*: RCCCC[CH2]
+
+RCCCCCC*: RCCCCC[CH2]
+
+RCCCCC__CC*: RCCCCC=C[CH2]
+
+RCCCC*C__CC: RCCC[CH]C=CC
+
+RCC*CCR: RC[CH]CCR
+
+C__CC__CC*: C=CC=C[CH2]
