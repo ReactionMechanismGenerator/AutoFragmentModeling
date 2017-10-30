@@ -1,6 +1,7 @@
 import os
 import unittest
 
+from rmgpy.species import Species
 from rmgpy.molecule.molecule import Atom, Bond
 from rmgpy.molecule.element import getElement
 from rmgpy.molecule.atomtype import atomTypes
@@ -178,4 +179,15 @@ class TestFragment(unittest.TestCase):
         for bond in bonds: expected_fragment.addEdge(bond)
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
+
+    def test_assign_representative_species(self):
+
+        smiles_like = 'RCR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.assign_representative_species()
+
+        expected_repr_spec = Species().fromSMILES('CCCCC')
+
+        self.assertTrue(expected_repr_spec.isIsomorphic(fragment.species_repr))
         
