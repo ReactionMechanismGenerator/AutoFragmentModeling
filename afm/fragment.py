@@ -38,6 +38,18 @@ class CuttingLabel(Vertex):
 		else:
 			return False
 
+	def copy(self):
+		"""
+		Generate a deep copy of the current CuttingLabel. Modifying the
+		attributes of the copy will not affect the original.
+		"""
+
+		c = CuttingLabel.__new__(CuttingLabel)
+		c.edges = {}
+		c.resetConnectivityValues()
+		c.label = self.label
+		return c
+
 class Fragment(Graph):
 
 	def __init__(self,
