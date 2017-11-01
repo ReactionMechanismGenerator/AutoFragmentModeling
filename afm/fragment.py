@@ -79,23 +79,38 @@ class Fragment(Graph):
 
 	def from_SMILES_like_string(self, SMILES_like_string):
 
-		smiles =  SMILES_like_string.replace('R', 'Cl')
+		smiles_replace_dict = {
+						'R': 'Cl', 
+						'L': '[Si]'
+		}
+
+		atom_replace_dict = {
+						'Cl': 'R', 
+						'Si': 'L'
+		}
+		
+		smiles =  SMILES_like_string
+		for label_str, element in smiles_replace_dict.iteritems():
+			smiles = smiles.replace(label_str, element)
 
 		mol = Molecule().fromSMILES(smiles)
 		# convert mol to fragment object
 		final_vertices = []
 		for atom in mol.atoms:
-			if atom.element.symbol == 'Cl':
+			element_symbol = atom.element.symbol
+			if element_symbol in atom_replace_dict:
 				
-				R = CuttingLabel('R')
+				label = atom_replace_dict[element_symbol]
+
+				cutting_label = CuttingLabel(label=label)
 				for bondedAtom, bond in atom.edges.iteritems():
-					new_bond = Bond(bondedAtom, R, order=bond.order)
+					new_bond = Bond(bondedAtom, cutting_label, order=bond.order)
 					
-					bondedAtom.edges[R] = new_bond
+					bondedAtom.edges[cutting_label] = new_bond
 					del bondedAtom.edges[atom]
 
-					R.edges[bondedAtom] = new_bond
-				final_vertices.append(R)
+					cutting_label.edges[bondedAtom] = new_bond
+				final_vertices.append(cutting_label)
 			
 			else:
 				final_vertices.append(atom)

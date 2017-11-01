@@ -180,6 +180,57 @@ class TestFragment(unittest.TestCase):
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
 
+    def test_from_SMILES_like_string3(self):
+
+        # generate fragment from SMILES like string
+        # the atom type is also calculated
+        smiles_like = 'RCL'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        atom_C = Atom(element=getElement('C'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        atom_H1 = Atom(element=getElement('H'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        atom_H2 = Atom(element=getElement('H'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        # construct fragment manually
+        atom_C.atomType=atomTypes['Cs']
+        atom_H1.atomType=atomTypes['H']
+        atom_H2.atomType=atomTypes['H']
+
+        cutting_label_R = afm.fragment.CuttingLabel('R')
+        cutting_label_L = afm.fragment.CuttingLabel('L')
+        
+        vertices = [
+            atom_C,
+            cutting_label_R,
+            cutting_label_L,
+            atom_H1,
+            atom_H2
+        ]
+
+        bonds = [
+            Bond(atom_C, cutting_label_R, 1),
+            Bond(atom_C, cutting_label_L, 1),
+            Bond(atom_C, atom_H1, 1),
+            Bond(atom_C, atom_H2, 1)
+        ]
+        
+        expected_fragment = afm.fragment.Fragment()
+        for vertex in vertices: expected_fragment.addVertex(vertex)
+        for bond in bonds: expected_fragment.addEdge(bond)
+
+        self.assertTrue(expected_fragment.isIsomorphic(fragment))
+
     def test_assign_representative_species(self):
 
         smiles_like = 'RCR'
