@@ -8,7 +8,8 @@ class FragmentReaction(object):
 				kinetics=None,
 				reversible=False,
 				pairs=None,
-				family=None
+				family=None,
+				reaction_repr=None
 				):
 
 		
@@ -19,6 +20,7 @@ class FragmentReaction(object):
 		self.reversible = reversible
 		self.pairs = pairs
 		self.family = family
+		self.reaction_repr = reaction_repr
 	
 	def __str__(self):
 		"""
