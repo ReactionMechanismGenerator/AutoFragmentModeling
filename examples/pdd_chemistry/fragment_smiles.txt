@@ -31,7 +31,7 @@ RCCC: RCCC
 LCCC: LCCC
 RCCCCC__CC: RCCCCC=CC
 LCCCCC__CC: LCCCCC=CC
-
+# below starts the radicals
 RCCC*: RCC[CH2]
 ArC*: c1ccccc1[CH2]
 RCC*: RC[CH2]
