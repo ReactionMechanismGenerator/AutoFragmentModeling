@@ -24,10 +24,10 @@ class TestUtils(unittest.TestCase):
 		"""
 		Test match_sequences() can tolerate slight
 		sum difference between two sequences, default tolerance
-		is 10e-6.
+		is 1e-6.
 		"""
 
-		seq1 = [1, 3, 1-10e-6]
+		seq1 = [1, 3, 1-1e-6]
 		seq2 = [2, 1, 2]
 
 		matches = afm.utils.match_sequences(seq1, seq2)
