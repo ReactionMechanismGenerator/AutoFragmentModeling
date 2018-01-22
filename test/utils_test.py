@@ -40,3 +40,22 @@ class TestUtils(unittest.TestCase):
 
 		self.assertEqual(matches, expected_matches)
 
+	def test_match_concentrations(self):
+
+		conc1 = [('a', 1),
+				('b', 3),
+				('c', 1)]
+
+		conc2 = [('x', 2),
+				('y', 1),
+				('z', 2)]
+
+		matches = afm.utils.match_concentrations(conc1, conc2)
+
+		expected_matches = [[('a','x'),1], 
+							 [('b','x'),1], 
+							 [('b','y'),1],
+							 [('b','z'),1],
+							 [('c','z'),1]]
+
+		self.assertEqual(matches, expected_matches)

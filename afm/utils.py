@@ -1,4 +1,48 @@
 
+def match_concentrations(conc1, conc2, diff_tol=1e-6):
+	"""
+	Given two lists with each item to be a tuple
+	(species label, concentration)
+	conc1 and conc2 with same total concentrations, 
+	the method returns matched species labels and 
+	concentrations.
+
+	Example:
+
+	conc1 = [('a', 1),
+			('b', 3),
+			('c', 1)]
+	conc2 = [('x', 2),
+			('y', 1),
+			('z', 2)]
+
+	return: [[('a','x'),1], 
+			 [('b','x'),1], 
+			 [('b','y'),1],
+			 [('b','z'),1],
+			 [('c','z'),1]]
+	"""
+
+	labels1 = [tup[0] for tup in conc1]
+	labels2 = [tup[0] for tup in conc2]
+
+	seq1 = [tup[1] for tup in conc1]
+	seq2 = [tup[1] for tup in conc2]
+
+	matches_seq = match_sequences(seq1, seq2, diff_tol)
+
+	matches_conc = []
+	for match_seq in matches_seq:
+		matched_label_index1 = match_seq[0][0]
+		matched_label_index2 = match_seq[0][1]
+		matched_value = match_seq[1]
+
+		matched_label1 = labels1[matched_label_index1]
+		matched_label2 = labels2[matched_label_index2]
+		match_conc = [(matched_label1, matched_label2), matched_value]
+		matches_conc.append(match_conc)
+
+	return matches_conc
 
 def match_sequences(seq1, seq2, diff_tol=1e-6):
 
