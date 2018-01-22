@@ -1,11 +1,11 @@
 
 
-def match_sequences(seq1, seq2):
+def match_sequences(seq1, seq2, diff_tol=1e-6):
 
 	"""
-	Given two sequences (each item is int or float) 
-	with same sum, the method returns matched 
-	indices and values.
+	Given two lists (each item is int or float):
+	seq1 and seq2 with same sum, the method returns 
+	matched indices and values.
 
 	Example:
 
@@ -21,7 +21,7 @@ def match_sequences(seq1, seq2):
 
 	# check if sums are close to same
 	sum_diff = sum(seq2)-sum(seq1)
-	assert abs(sum_diff/1.0/sum(seq1)) <= 10e-6, 'seq1 has different sum than seq2.'
+	assert abs(sum_diff/1.0/sum(seq1)) <= diff_tol, 'seq1 has different sum (diff={0}) than seq2.'.format(sum_diff)
 	
 	# force the sum to be same if the difference
 	# is small enough
