@@ -1,4 +1,5 @@
 import os
+import shutil
 import unittest
 
 import afm.simulator
@@ -28,6 +29,64 @@ class TestSimulator(unittest.TestCase):
         fragment_reaction_list = self.simulator.fragment_reaction_list
         self.assertEqual(40, len(fragment_dict))
         self.assertEqual(5, len(fragment_reaction_list))
+
+class TestOdeSimulator(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(self):
+        """A function that is run ONCE before all unit tests in this class."""
+        chemkin_path = os.path.join(os.path.dirname(__file__), 
+                                    'data', 
+                                    'ode_simulator_data',
+                                    'chem.inp')
+
+        dictionary_path = os.path.join(os.path.dirname(__file__), 
+                                    'data', 
+                                    'ode_simulator_data',
+                                    'species_dictionary.txt')
+
+        temperature = 673.15 # unit: K
+        pressure = 350*3.75 # unit: bar
+        self.outputDirectory = 'temp'
+        self.odes = afm.simulator.OdeSimulator(chemkin_path,
+                                              dictionary_path,
+                                              temperature,
+                                              pressure,
+                                              self.outputDirectory)
+    @classmethod
+    def tearDownClass(self):
+
+        shutil.rmtree(self.outputDirectory)
+
+
+    def test_simulate(self):
+
+        initial_mol_fraction = {
+                                "ArCCCCR":1.0,
+                                "LCCCCR":1.75,
+                                "LC":1.0
+                                }
+
+        termination_time = 3600*14 # unit: sec
+        all_data = self.odes.simulate(initial_mol_fraction, termination_time)
+
+        # only one condition
+        self.assertEqual(len(all_data), 1)
+
+        # there's three parts of data
+        self.assertEqual(len(all_data[0]), 3)
+
+        time, dataList, reactionSensitivityData = all_data[0]
+        TData = dataList[0]
+        PData = dataList[1]
+        VData = dataList[2]
+        total_moles = PData.data*VData.data/8.314/TData.data
+        
+        arccccr_mf = dataList[3].data
+        arccccr_moles = arccccr_mf*total_moles
+        arccccr_conv = (arccccr_moles[0]-arccccr_moles[-1])/arccccr_moles[0]
+        self.assertAlmostEqual(arccccr_conv, 0.82, 2)
+
 
 class TestMonteCarloSimulator(unittest.TestCase):
 
