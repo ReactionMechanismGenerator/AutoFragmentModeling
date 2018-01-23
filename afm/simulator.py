@@ -47,7 +47,8 @@ class OdeSimulator(Simulator):
 				chemkin_path, 
 				dictionary_path,
 				temperature,
-				pressure):
+				pressure,
+				outputDirectory='temp'):
 		super(OdeSimulator, self).__init__(chemkin_path, dictionary_path)
 
 		speciesList, reactionList = loadChemkinFile(chemkin_path, dictionary_path)
@@ -55,12 +56,13 @@ class OdeSimulator(Simulator):
 		self.reactionList = reactionList
 		self.temperature = temperature # unit: K
 		self.pressure = pressure # unit: bar
+		self.outputDirectory = outputDirectory
 
 	def simulate(self, initial_mol_fraction, termination_time):
 
 		cantera_job = Cantera(speciesList=self.speciesList, 
 							  reactionList=self.reactionList, 
-							  outputDirectory='temp')
+							  outputDirectory=self.outputDirectory)
 
 		cantera_job.loadModel()
 
