@@ -17,6 +17,8 @@ import numpy as np
 import pandas as pd
 
 import rmgpy.constants
+from rmgpy.chemkin import loadChemkinFile
+from rmgpy.tools.canteraModel import Cantera, CanteraCondition
 
 import afm.loader
 
@@ -35,6 +37,61 @@ class Simulator(object):
 
 		self.fragment_reaction_list = fragment_rxns + pseudo_fragrxns
 		self.fragment_dict = fragment_dict
+
+class OdeSimulator(Simulator):
+
+	########################
+	# Construction section #
+	########################
+	def __init__(self, 
+				chemkin_path, 
+				dictionary_path,
+				temperature,
+				pressure):
+		super(OdeSimulator, self).__init__(chemkin_path, dictionary_path)
+
+		speciesList, reactionList = loadChemkinFile(chemkin_path, dictionary_path)
+		self.speciesList = speciesList
+		self.reactionList = reactionList
+		self.temperature = temperature # unit: K
+		self.pressure = pressure # unit: bar
+
+	def simulate(self, initial_mol_fraction, termination_time):
+
+		cantera_job = Cantera(speciesList=self.speciesList, 
+							  reactionList=self.reactionList, 
+							  outputDirectory='temp')
+
+		cantera_job.loadModel()
+
+		# Generate the conditions
+		reactorTypeList = ['IdealGasConstPressureTemperatureReactor']
+
+		speciesDict = {}
+		for spe in self.speciesList:
+			speciesDict[spe.label] = spe
+
+		# prepare mole fraction for simulation condition
+		molFracDict = {}
+		total_mol_frac = 0
+		for spe_label, init_mol_frac in initial_mol_fraction.iteritems():
+			spe = speciesDict[spe_label]
+			molFracDict[spe] = init_mol_frac
+			total_mol_frac += init_mol_frac
+
+		# normalize initial mole fractions
+		for spe in molFracDict:
+			molFracDict[spe] = molFracDict[spe]/total_mol_frac
+
+		Tlist = ([self.temperature],'K')
+		Plist = ([self.pressure],'bar')
+		reactionTimeList = ([termination_time], 's')
+		cantera_job.generateConditions(reactorTypeList, reactionTimeList, [molFracDict], Tlist, Plist)
+		
+		# Simulate
+		alldata = cantera_job.simulate()
+
+		return alldata
 
 class MonteCarloSimulator(Simulator):
 
