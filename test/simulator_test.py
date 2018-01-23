@@ -12,12 +12,12 @@ class TestSimulator(unittest.TestCase):
         """A function that is run ONCE before all unit tests in this class."""
         chemkin_path = os.path.join(os.path.dirname(__file__), 
                                     'data', 
-                                    'simulator_data',
+                                    'mc_simulator_data',
                                     'chem.inp')
 
         dictionary_path = os.path.join(os.path.dirname(__file__), 
                                     'data', 
-                                    'simulator_data',
+                                    'mc_simulator_data',
                                     'species_dictionary.txt')
 
         self.simulator = afm.simulator.Simulator(chemkin_path, 
@@ -95,12 +95,12 @@ class TestMonteCarloSimulator(unittest.TestCase):
         """A function that is run ONCE before all unit tests in this class."""
         chemkin_path = os.path.join(os.path.dirname(__file__), 
                                     'data', 
-                                    'simulator_data',
+                                    'mc_simulator_data',
                                     'chem.inp')
 
         dictionary_path = os.path.join(os.path.dirname(__file__), 
                                     'data', 
-                                    'simulator_data',
+                                    'mc_simulator_data',
                                     'species_dictionary.txt')
 
         composition1 = {'ArCCCCR': 500, 'ArC__C': 1}
