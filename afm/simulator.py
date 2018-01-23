@@ -18,7 +18,7 @@ import pandas as pd
 
 import rmgpy.constants
 from rmgpy.chemkin import loadChemkinFile
-from rmgpy.tools.canteraModel import Cantera, CanteraCondition
+from afm.canteraModel import Cantera, CanteraCondition
 
 import afm.loader
 
