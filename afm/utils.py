@@ -48,7 +48,7 @@ def grind(conc, size):
 
 	return grinded_conc
 
-def match_concentrations(conc1, conc2, diff_tol=1e-6):
+def match_concentrations_with_same_sums(conc1, conc2, diff_tol=1e-6):
 	"""
 	Given two lists with each item to be a tuple
 	(species label, concentration)
