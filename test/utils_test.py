@@ -60,6 +60,112 @@ class TestUtils(unittest.TestCase):
 
 		self.assertEqual(matches, expected_matches)
 
+	def test_match_concentrations_with_different_sums1(self):
+
+		conc1 = [('a', 1),
+				('b', 3),
+				('c', 1)]
+		conc2 = [('x', 2),
+				('y', 1),
+				('z', 10)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [(((('a', 'x'), 'z'), 'z'), 1), 
+							(((('b', 'x'), 'z'), 'z'), 1), 
+							(((('b', 'y'), 'z'), 'z'), 1),
+							((('b','z'), 'z'), 1),
+							((('c','z'), 'z'), 1)]
+		
+		self.assertEqual(matches, expected_matches)
+
+	def test_match_concentrations_with_different_sums2(self):
+
+		conc1 = [(('LY', 'XR'), 10),
+			   	 (('XR', 'LWL', 'XR'), 2),
+			   	 (('LY', 'TR'), 3)]
+		conc2 = [(('LWL', 'RUR'), 3),
+				 ('LQR', 3)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [((('LY', 'XR'), ('LWL', 'RUR')), 3),
+							((('LY', 'XR'), 'LQR'), 3),
+							(('LY', 'XR'), 4),
+							(('XR', 'LWL', 'XR'), 2),
+							(('LY', 'TR'), 3)]
+		
+		self.assertEqual(matches, expected_matches)
+
+	def test_match_concentrations_with_different_sums3(self):
+
+		conc1 = [(('LY', 'XR'), 10),
+			   	 (('XR', 'LWL', 'XR'), 2),
+			   	 (('LY', 'TR'), 3)]
+		conc2 = [(('LWL', 'RUR'), 3),
+				 ('LQR', 7)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [((('LY', 'XR'), ('LWL', 'RUR')), 3),
+							((('LY', 'XR'), 'LQR'), 7),
+							(('XR', 'LWL', 'XR'), 2),
+							(('LY', 'TR'), 3)]
+		
+		self.assertEqual(matches, expected_matches)
+
+	def test_match_concentrations_with_different_sums4(self):
+
+		conc1 = [(('LY', 'XR'), 10),
+			   	 (('XR', 'LWL', 'XR'), 2),
+			   	 (('LY', 'TR'), 3)]
+		conc2 = [(('LWL', 'RUR'), 3),
+				 ('LQR', 10)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [((('LY', 'XR'), ('LWL', 'RUR')), 3),
+							((('LY', 'XR'), 'LQR'), 7),
+							((('XR', 'LWL', 'XR'), 'LQR'), 2),
+							((('LY', 'TR'), 'LQR'), 1),
+							(('LY', 'TR'), 2)]
+		
+		self.assertEqual(matches, expected_matches)
+
+	def test_match_concentrations_with_different_sums5(self):
+
+		conc1 = [(('LY', 'XR'), 10),
+			   	 (('XR', 'LWL', 'XR'), 2),
+			   	 (('LY', 'TR'), 3)]
+		conc2 = [(('LWL', 'RUR'), 3),
+				 ('LQR', 12)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [((('LY', 'XR'), ('LWL', 'RUR')), 3),
+							((('LY', 'XR'), 'LQR'), 7),
+							((('XR', 'LWL', 'XR'), 'LQR'), 2),
+							((('LY', 'TR'), 'LQR'), 3)]
+		
+		self.assertEqual(matches, expected_matches)
+
+	def test_match_concentrations_with_different_sums6(self):
+
+		conc1 = [(('LY', 'XR'), 10),
+			   	 (('XR', 'LWL', 'XR'), 2),
+			   	 (('LY', 'TR'), 3)]
+		conc2 = [(('LWL', 'RUR'), 3),
+				 ('LQR', 30)]
+
+		matches = afm.utils.match_concentrations_with_different_sums(conc1, conc2)
+
+		expected_matches = [((((('LY', 'XR'), ('LWL', 'RUR')), 'LQR'), 'LQR'), 3),
+							(((('LY', 'XR'), 'LQR'), 'LQR'), 7),
+							(((('XR', 'LWL', 'XR'), 'LQR'), 'LQR'), 2),
+							(((('LY', 'TR'), 'LQR'), 'LQR'), 3)]
+		
+		self.assertEqual(matches, expected_matches)
+
 	def test_grind(self):
 
 		conc = [('a', 1),
