@@ -65,11 +65,11 @@ def match_concentrations(conc1, conc2, diff_tol=1e-6):
 			('y', 1),
 			('z', 2)]
 
-	return: [[('a','x'),1], 
-			 [('b','x'),1], 
-			 [('b','y'),1],
-			 [('b','z'),1],
-			 [('c','z'),1]]
+	return: [(('a','x'),1), 
+			 (('b','x'),1), 
+			 (('b','y'),1),
+			 (('b','z'),1),
+			 (('c','z'),1)]
 	"""
 
 	labels1 = [tup[0] for tup in conc1]
@@ -88,7 +88,7 @@ def match_concentrations(conc1, conc2, diff_tol=1e-6):
 
 		matched_label1 = labels1[matched_label_index1]
 		matched_label2 = labels2[matched_label_index2]
-		match_conc = [(matched_label1, matched_label2), matched_value]
+		match_conc = ((matched_label1, matched_label2), matched_value)
 		matches_conc.append(match_conc)
 
 	return matches_conc

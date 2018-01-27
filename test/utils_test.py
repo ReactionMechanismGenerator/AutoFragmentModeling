@@ -52,11 +52,11 @@ class TestUtils(unittest.TestCase):
 
 		matches = afm.utils.match_concentrations(conc1, conc2)
 
-		expected_matches = [[('a','x'),1], 
-							 [('b','x'),1], 
-							 [('b','y'),1],
-							 [('b','z'),1],
-							 [('c','z'),1]]
+		expected_matches = [(('a','x'),1), 
+							 (('b','x'),1), 
+							 (('b','y'),1),
+							 (('b','z'),1),
+							 (('c','z'),1)]
 
 		self.assertEqual(matches, expected_matches)
 
