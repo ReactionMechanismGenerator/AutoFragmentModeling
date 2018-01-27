@@ -1,3 +1,14 @@
+import numpy as np
+
+def shuffle(conc, seed=None):
+
+	idx_arr = np.arange(len(conc))
+
+	if seed is not None:
+		np.random.seed(seed)
+	np.random.shuffle(idx_arr)
+
+	return [conc[idx] for idx in idx_arr]
 
 def grind(conc, size):
 

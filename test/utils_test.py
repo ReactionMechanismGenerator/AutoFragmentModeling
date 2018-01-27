@@ -79,4 +79,20 @@ class TestUtils(unittest.TestCase):
 								 ('c', 0.4)]
 		self.assertEqual(grinded_conc, expected_grinded_conc)
 
+	def test_shuffle(self):
+
+		conc = [('a', 1),
+				('b', 3),
+				('c', 1),
+				('d', 2)]
+		
+		seed = 0
+		shuffled_conc = afm.utils.shuffle(conc, seed)
+
+		expected_conc = [('c', 1),
+						 ('d', 2),
+						 ('b', 3),
+						 ('a', 1)]		 
+
+		self.assertEqual(shuffled_conc, expected_conc)
 
