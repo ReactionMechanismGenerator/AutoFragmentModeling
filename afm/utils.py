@@ -1,5 +1,31 @@
 import numpy as np
 
+def matches_resolve(matches, rr_ll_list):
+
+	new_matches = []
+	new_r_l_moles = []
+	for match in matches:
+		pair = match[0]
+		value = match[1]
+		l_frag, r_frag = pair
+
+		if l_frag not in rr_ll_list:
+			if r_frag not in rr_ll_list:
+				# cases like (L-Y, X-R)
+				new_matches.append((pair, value))
+			else:
+				# cases like (L-Y, R-U1-R)
+				new_matches.append(((l_frag, r_frag, l_frag), value/2.0))
+		else:
+			if r_frag not in rr_ll_list:
+				# cases like (L-W1-L, X-R)
+				new_matches.append(((r_frag, l_frag, r_frag), value/2.0))
+			else:
+				# cases like (L-W1-L, R-U1-R)
+				new_r_l_moles.append((pair, value/2.0))
+
+	return new_matches, new_r_l_moles
+
 def shuffle(conc, seed=None):
 
 	idx_arr = np.arange(len(conc))

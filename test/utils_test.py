@@ -96,3 +96,21 @@ class TestUtils(unittest.TestCase):
 
 		self.assertEqual(shuffled_conc, expected_conc)
 
+	def test_matches_resolve(self):
+
+		matches = [(('LY', 'XR'), 10),
+				   (('LWL', 'XR'), 4),
+				   (('LWL', 'RUR'), 6),
+				   (('LY', 'TR'), 3)]
+		rr_ll_list = ['LWL', 'RUR']
+
+		new_matches, new_r_l_moles = afm.utils.matches_resolve(matches, rr_ll_list)
+
+		expected_new_matches = [(('LY', 'XR'), 10),
+							    (('XR', 'LWL', 'XR'), 2),
+							    (('LY', 'TR'), 3)]
+		expected_new_r_l_moles = [(('LWL', 'RUR'), 3)]
+
+		self.assertEqual(new_matches, expected_new_matches)
+		self.assertEqual(new_r_l_moles, expected_new_r_l_moles)
+
