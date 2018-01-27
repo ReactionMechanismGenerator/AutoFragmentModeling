@@ -1,4 +1,16 @@
 
+def grind(conc, size):
+
+	grinded_conc = []
+	for label, c in conc:
+		times = int(c/size)
+		grinded_conc.extend([(label, size)]*times)
+		
+		if c-size*times > 0:
+			grinded_conc.append((label, c-size*times))
+
+	return grinded_conc
+
 def match_concentrations(conc1, conc2, diff_tol=1e-6):
 	"""
 	Given two lists with each item to be a tuple

@@ -59,3 +59,24 @@ class TestUtils(unittest.TestCase):
 							 [('c','z'),1]]
 
 		self.assertEqual(matches, expected_matches)
+
+	def test_grind(self):
+
+		conc = [('a', 1),
+				('b', 3),
+				('c', 1)]
+		size = 0.6
+
+		grinded_conc = afm.utils.grind(conc, size)
+		expected_grinded_conc = [('a', 0.6),
+								 ('a', 0.4),
+								 ('b', 0.6),
+								 ('b', 0.6),
+								 ('b', 0.6),
+								 ('b', 0.6),
+								 ('b', 0.6),
+								 ('c', 0.6),
+								 ('c', 0.4)]
+		self.assertEqual(grinded_conc, expected_grinded_conc)
+
+
