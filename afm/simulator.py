@@ -18,9 +18,10 @@ import pandas as pd
 
 import rmgpy.constants
 from rmgpy.chemkin import loadChemkinFile
-from afm.canteraModel import Cantera, CanteraCondition
 
 import afm.loader
+import afm.utils
+from afm.canteraModel import Cantera, CanteraCondition
 
 class Simulator(object):
 
@@ -94,6 +95,83 @@ class OdeSimulator(Simulator):
 		alldata = cantera_job.simulate()
 
 		return alldata
+
+	def reattach_fragments(self, 
+						   r_moles, 
+						   l_moles, 
+						   r_l_moles, 
+						   rr_ll_list, 
+						   grind_size=10, 
+						   shuffle_seed=0):
+
+		"""
+		Given simulation data, alldata, which contains concentrations
+		of all the fragments, return a list of merged molecules 
+		after re-attachment with their concentrations.
+		"""
+		# cut large moles into smaller pieces
+		grinded_r_moles = afm.utils.grind(r_moles, grind_size)
+		grinded_l_moles = afm.utils.grind(l_moles, grind_size)
+
+		# random shuffle
+		r_moles_shuffle = afm.utils.shuffle(grinded_r_moles, shuffle_seed)
+		l_moles_shuffle = afm.utils.shuffle(grinded_l_moles, shuffle_seed)
+
+		# match concentrations for single-labeled fragments
+		# including RCCCCR
+		matches0 = afm.utils.match_concentrations_with_same_sums(l_moles_shuffle, 
+													   			 r_moles_shuffle, 
+													   			 diff_tol=1e-3)
+
+		matches1, new_r_l_moles = afm.utils.matches_resolve(matches0, rr_ll_list)
+
+		r_l_moles.extend(new_r_l_moles)
+		# insert double-labeled fragments into matches
+		# e.g., LCCCCR
+		matches = afm.utils.match_concentrations_with_different_sums(matches1, r_l_moles)
+
+		return matches
+
+def categorize_fragments(moles_dict):
+
+	r_moles = []
+	l_moles = []
+	r_l_moles = []
+	rr_ll_list = []
+	remain_moles = []
+	for spe_label in moles_dict:
+		if '*' in spe_label:
+			remain_moles.append((spe_label, moles_dict[spe_label]))
+			continue
+		if abs(moles_dict[spe_label]) <= 1e-6:
+			remain_moles.append((spe_label, moles_dict[spe_label]))
+			continue
+		
+		r_count = spe_label.count('R')
+		l_count = spe_label.count('L')
+		label_count = r_count + l_count
+		
+		if label_count == 0:
+			remain_moles.append((spe_label, moles_dict[spe_label]))
+			continue
+
+		if label_count == 1:
+			if r_count == 1:
+				r_moles.append((spe_label, moles_dict[spe_label]))
+			elif l_count == 1:
+				l_moles.append((spe_label, moles_dict[spe_label]))
+		elif label_count == 2 and l_count == r_count:
+			r_l_moles.append((spe_label, moles_dict[spe_label]))
+		elif label_count == 2 and l_count != r_count:
+			rr_ll_list.append(spe_label)
+			if r_count == 2:
+				r_moles.append((spe_label, 2*moles_dict[spe_label]))
+			elif l_count == 2:
+				l_moles.append((spe_label, 2*moles_dict[spe_label]))
+		else:
+			print "{0} has more than two cutting labels, which is not supported.".format(spe_label)
+
+	return r_moles, l_moles, r_l_moles, remain_moles, rr_ll_list
 
 class MonteCarloSimulator(Simulator):
 

@@ -87,6 +87,67 @@ class TestOdeSimulator(unittest.TestCase):
         arccccr_conv = (arccccr_moles[0]-arccccr_moles[-1])/arccccr_moles[0]
         self.assertAlmostEqual(arccccr_conv, 0.82, 2)
 
+    def test_reattach_fragments(self):
+
+        initial_mol_fraction = {
+                                "ArCCCCR":1.0,
+                                "LCCCCR":1.75,
+                                "LC":1.0
+                                }
+
+        termination_time = 3600*14 # unit: sec
+        all_data = self.odes.simulate(initial_mol_fraction, termination_time)
+
+        _, dataList, _ = all_data[0]
+        TData = dataList[0]
+        PData = dataList[1]
+        VData = dataList[2]
+        total_moles = PData.data*VData.data/8.314/TData.data
+        moles_dict = {}
+        for data in dataList[3:]:
+            spe_label = data.label
+            if '*' in spe_label:
+                continue
+            r_count = spe_label.count('R')
+            l_count = spe_label.count('L')
+            label_count = r_count + l_count
+
+            if label_count == 0:
+                continue
+            if abs(data.data[-1]*total_moles[-1]) <= 1e-6:
+                continue
+            moles_dict[spe_label] = max(data.data[-1]*total_moles[-1],0)
+
+        r_moles, l_moles, r_l_moles, _, rr_ll_list = afm.simulator.categorize_fragments(moles_dict)
+        matches = self.odes.reattach_fragments(r_moles, 
+                                               l_moles, 
+                                               r_l_moles,
+                                               rr_ll_list)
+
+        moles_dict_after_match = {}
+        for match in matches:
+            combo, val = match
+            frags = flatten(combo)
+            for frag in frags:
+                if frag not in moles_dict_after_match:
+                    moles_dict_after_match[frag] = val
+                else:
+                    moles_dict_after_match[frag] += val
+
+        for frag, val in moles_dict.iteritems():
+            val_after_match = moles_dict_after_match[frag]
+            diff_pct = abs(val - val_after_match)/moles_dict[frag]
+            self.assertAlmostEqual(diff_pct, 0.0, 6)
+
+def flatten(combo):
+    return_list = []
+    for i in combo:
+        if isinstance(i, tuple):
+            return_list.extend(flatten(i))
+        else:
+            return_list.append(i)
+    return return_list
+
 
 class TestMonteCarloSimulator(unittest.TestCase):
 
