@@ -2,6 +2,7 @@ import os
 import shutil
 import unittest
 
+import afm.utils
 import afm.simulator
 import afm.molecule
 
@@ -127,7 +128,7 @@ class TestOdeSimulator(unittest.TestCase):
         moles_dict_after_match = {}
         for match in matches:
             combo, val = match
-            frags = flatten(combo)
+            frags = afm.utils.flatten(combo)
             for frag in frags:
                 if frag not in moles_dict_after_match:
                     moles_dict_after_match[frag] = val
@@ -138,16 +139,6 @@ class TestOdeSimulator(unittest.TestCase):
             val_after_match = moles_dict_after_match[frag]
             diff_pct = abs(val - val_after_match)/moles_dict[frag]
             self.assertAlmostEqual(diff_pct, 0.0, 6)
-
-def flatten(combo):
-    return_list = []
-    for i in combo:
-        if isinstance(i, tuple):
-            return_list.extend(flatten(i))
-        else:
-            return_list.append(i)
-    return return_list
-
 
 class TestMonteCarloSimulator(unittest.TestCase):
 

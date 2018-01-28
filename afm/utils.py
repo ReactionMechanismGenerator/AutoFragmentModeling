@@ -246,3 +246,19 @@ def match_sequences(seq1, seq2, diff_tol=1e-6):
 		matches.append([matched_index_tup, matched_cum_value - previous_cum_value])
 
 	return matches
+
+def flatten(combo):
+	"""
+	Given a combo nested `tuple`, e.g., 
+	((('LY', 'XR'), ('LWL', 'RUR'))
+	return a list of labels contained in 
+	the combo ['LY', 'XR', 'LWL', 'RUR']
+	"""
+	
+	return_list = []
+	for i in combo:
+		if isinstance(i, tuple):
+			return_list.extend(flatten(i))
+		else:
+			return_list.append(i)
+	return return_list
