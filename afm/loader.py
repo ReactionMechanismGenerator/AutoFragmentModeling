@@ -7,28 +7,36 @@ from afm.fragment import Fragment
 from afm.reaction import FragmentReaction
 
 def load_fragment_reactions_from_chemkin(chemkin_path,
-                                        dictionary_path):
+                                        dictionary_path, 
+                                        fragment_smiles_path):
     """
     This method loads chemkin mechanism and 
     generate fragment reactions in irreversible
     format.
     """
     speciesList, reactionList = loadChemkinFile(chemkin_path, dictionary_path)
-
-    species_dict = {}
-    for spe in speciesList:
-        label = spe.label
-        if label not in species_dict:
-            species_dict[label] = spe
-        else:
-            raise Exception('Duplicate species found with label {0}.'.format(label))
     
+    # load fragment from smiles-like string
+    fragments = []
+    with open(fragment_smiles_path) as f_in:
+        for line in f_in:
+            if line.strip() and not line.startswith('#') and ':' in line:
+                label, smiles = [token.strip() for token in line.split(":")]
+                frag = Fragment(label=label).from_SMILES_like_string(smiles)
+                frag.assign_representative_species()
+                frag.species_repr.label = label
+                for prev_frag in fragments:
+                    if frag.isIsomorphic(prev_frag):
+                        raise Exception('Isomorphic duplicate found: {0} and {1}'.format(label, prev_frag.label))
+                fragments.append(frag)
 
-
+    # construct label-key fragment dictionary
     fragments_dict = {}
-
-    for label, spec in species_dict.iteritems():
-        fragments_dict[label] = Fragment(label=label,species_repr=spec)
+    for frag0 in fragments:
+        if frag0.label not in fragments_dict:
+            fragments_dict[frag0.label] = frag0
+        else:
+            raise Exception('Fragment with duplicated labels found: {0}'.format(frag0.label))
 
     orig_fragrxns = []
     for rxn0 in reactionList:

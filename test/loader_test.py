@@ -17,8 +17,14 @@ class TestLoader(unittest.TestCase):
 									'loader_data',
 									'species_dictionary.txt')
 
+		fragment_smiles_path = os.path.join(os.path.dirname(__file__), 
+									'data', 
+									'loader_data',
+									'fragment_smiles.txt')
+
 		fragments_dict, fragment_rxns = afm.loader.load_fragment_reactions_from_chemkin(chemkin_path,
-                                        												dictionary_path)
+                                        												dictionary_path,
+                                        												fragment_smiles_path)
 
 		self.assertEqual(40, len(fragments_dict))
 		self.assertEqual(312, len(fragment_rxns))
@@ -35,8 +41,14 @@ class TestLoader(unittest.TestCase):
 									'loader_data',
 									'species_dictionary.txt')
 
+		fragment_smiles_path = os.path.join(os.path.dirname(__file__), 
+									'data', 
+									'loader_data',
+									'fragment_smiles.txt')
+
 		fragments_dict, _ = afm.loader.load_fragment_reactions_from_chemkin(chemkin_path,
-                                        									dictionary_path)
+                                        									dictionary_path,
+                                        									fragment_smiles_path)
 
 		pseudo_fragrxns = afm.loader.load_pseudo_fragment_reactions(fragments_dict)
 
