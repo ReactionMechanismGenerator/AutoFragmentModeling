@@ -21,8 +21,14 @@ class TestSimulator(unittest.TestCase):
                                     'mc_simulator_data',
                                     'species_dictionary.txt')
 
+        fragment_smiles_path = os.path.join(os.path.dirname(__file__), 
+                                    'data', 
+                                    'mc_simulator_data',
+                                    'fragment_smiles.txt')
+
         self.simulator = afm.simulator.Simulator(chemkin_path, 
-                                                dictionary_path)
+                                                dictionary_path,
+                                                fragment_smiles_path)
 
     def test_fragment_chemistry(self):
 
@@ -46,11 +52,17 @@ class TestOdeSimulator(unittest.TestCase):
                                     'ode_simulator_data',
                                     'species_dictionary.txt')
 
+        fragment_smiles_path = os.path.join(os.path.dirname(__file__), 
+                                    'data', 
+                                    'ode_simulator_data',
+                                    'fragment_smiles.txt')
+
         temperature = 673.15 # unit: K
         pressure = 350*3.75 # unit: bar
         self.outputDirectory = 'temp'
         self.odes = afm.simulator.OdeSimulator(chemkin_path,
                                               dictionary_path,
+                                              fragment_smiles_path,
                                               temperature,
                                               pressure,
                                               self.outputDirectory)
@@ -155,6 +167,11 @@ class TestMonteCarloSimulator(unittest.TestCase):
                                     'mc_simulator_data',
                                     'species_dictionary.txt')
 
+        fragment_smiles_path = os.path.join(os.path.dirname(__file__), 
+                                    'data', 
+                                    'mc_simulator_data',
+                                    'fragment_smiles.txt')
+
         composition1 = {'ArCCCCR': 500, 'ArC__C': 1}
         composition2 = {'ArCCCCR': 300, 'ArC__C': 9}
         composition3 = {'ArCCCCR': 200}
@@ -167,6 +184,7 @@ class TestMonteCarloSimulator(unittest.TestCase):
         temperature = 700 # unit: K
         self.mcs = afm.simulator.MonteCarloSimulator(chemkin_path, 
                                                      dictionary_path,
+                                                     fragment_smiles_path,
                                                      initial_molecules,
                                                      volume, 
                                                      temperature)

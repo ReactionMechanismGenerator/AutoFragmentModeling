@@ -25,14 +25,15 @@ from afm.canteraModel import Cantera, CanteraCondition
 
 class Simulator(object):
 
-	def __init__(self, chemkin_path, dictionary_path):
+	def __init__(self, chemkin_path, dictionary_path, fragment_smiles_path):
 
-		self.load_fragment_chemistry(chemkin_path, dictionary_path)
+		self.load_fragment_chemistry(chemkin_path, dictionary_path, fragment_smiles_path)
 
-	def load_fragment_chemistry(self, chemkin_path, dictionary_path):
+	def load_fragment_chemistry(self, chemkin_path, dictionary_path, fragment_smiles_path):
 
 		fragment_dict, fragment_rxns = afm.loader.load_fragment_reactions_from_chemkin(chemkin_path,
-                                        												dictionary_path)
+                                        											   dictionary_path,
+                                        											   fragment_smiles_path)
 
 		pseudo_fragrxns = afm.loader.load_pseudo_fragment_reactions(fragment_dict)
 
@@ -47,10 +48,13 @@ class OdeSimulator(Simulator):
 	def __init__(self, 
 				chemkin_path, 
 				dictionary_path,
+				fragment_smiles_path,
 				temperature,
 				pressure,
 				outputDirectory='temp'):
-		super(OdeSimulator, self).__init__(chemkin_path, dictionary_path)
+		super(OdeSimulator, self).__init__(chemkin_path, 
+										   dictionary_path,
+										   fragment_smiles_path)
 
 		speciesList, reactionList = loadChemkinFile(chemkin_path, dictionary_path)
 		self.speciesList = speciesList
@@ -219,11 +223,13 @@ class MonteCarloSimulator(Simulator):
 	def __init__(self, 
 				chemkin_path, 
 				dictionary_path,
+				fragment_smiles_path,
 				initial_molecules,
 				volume, 
 				temperature):
 		super(MonteCarloSimulator, self).__init__(chemkin_path, 
-												dictionary_path)
+												  dictionary_path,
+												  fragment_smiles_path)
 
 		self.initialize_fragment_counts(initial_molecules)
 
