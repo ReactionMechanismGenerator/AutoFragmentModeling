@@ -132,6 +132,44 @@ class OdeSimulator(Simulator):
 
 		return matches
 
+	def get_molecular_weight_distribution(self, 
+										  alldata, 
+										  grind_size=10, 
+										  shuffle_seed=0):
+
+		# prepare moles data
+		_, dataList, _ = alldata[0]
+		TData = dataList[0]
+		PData = dataList[1]
+		VData = dataList[2]
+		total_moles = PData.data*VData.data/8.314/TData.data
+
+		moles_dict = {}
+		for data in dataList[3:]:
+			spe_label = data.label
+			moles_dict[spe_label] = max(data.data[-1]*total_moles[-1],0)
+
+		# prepare moles data for re-attachment
+		r_moles, l_moles, r_l_moles, remain_moles, rr_ll_list = categorize_fragments(moles_dict)
+
+		matches = self.reattach_fragments(r_moles, 
+										  l_moles, 
+										  r_l_moles, 
+										  rr_ll_list, 
+										  grind_size, 
+										  shuffle_seed)
+
+		flattened_matches = [(tuple(afm.utils.flatten(m[0])), m[1]) for m in matches]
+		
+		final_frags_moles = []
+		for remain in remain_moles:
+			label, val = remain
+			final_frags_moles.append(((label, ), val))
+
+		final_frags_moles.extend(flattened_matches)
+
+		# calculate molecular weight distribution
+
 def categorize_fragments(moles_dict):
 
 	r_moles = []
