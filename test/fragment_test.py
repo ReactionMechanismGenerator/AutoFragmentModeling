@@ -241,4 +241,15 @@ class TestFragment(unittest.TestCase):
         expected_repr_spec = Species().fromSMILES('CCCCC')
 
         self.assertTrue(expected_repr_spec.isIsomorphic(fragment.species_repr))
-        
+
+    def test_get_fragmental_weight1(self):
+
+        fragmental_weight = self.fragment1.get_fragmental_weight()
+        self.assertAlmostEqual(fragmental_weight*1000, 12.01, 2)
+
+    def test_get_fragmental_weight2(self):
+
+        smiles_like = 'RCR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+        fragmental_weight = fragment.get_fragmental_weight()
+        self.assertAlmostEqual(fragmental_weight*1000, 14.03, 2)

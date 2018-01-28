@@ -204,3 +204,13 @@ class Fragment(Graph):
 
 		# create a species object from molecule
 		self.species_repr = Species(molecule=[mol_repr])
+
+	def get_fragmental_weight(self):
+		"""
+        Return the fragmental weight of the fragment in kg/mol.
+        """
+		mass = 0
+		for vertex in self.vertices:
+			if isinstance(vertex, Atom):
+				mass += vertex.element.mass
+		return mass
