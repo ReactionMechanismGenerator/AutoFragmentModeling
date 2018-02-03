@@ -172,7 +172,18 @@ class OdeSimulator(Simulator):
 
 		final_frags_moles.extend(flattened_matches)
 
-		# calculate molecular weight distribution
+		# calculate fragmental weight distribution
+		fragmental_weight_distri = []
+		for final_frag_mole in final_frags_moles:
+			sub_frag_labels, mole = final_frag_mole
+			total_frag_weight = 0
+			for sub_frag_label in sub_frag_labels:
+				sub_frag = self.fragment_dict[sub_frag_label]
+				total_frag_weight += sub_frag.get_fragmental_weight()
+			
+			fragmental_weight_distri.append((total_frag_weight, mole))
+
+		return fragmental_weight_distri
 
 def categorize_fragments(moles_dict):
 
