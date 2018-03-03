@@ -139,15 +139,15 @@ ArCCCCL                 H  13C  10          G   100.000  5000.000 1064.52      1
 ! group(Cs-CsHHH) + group(Cs-CsHHH)
 LCCCCR                  H   8C   4          G   100.000  5000.000 1950.40      1
  2.30700009E+01 4.49237655E-02-1.71567204E-05 2.91725393E-09-1.86477525E-13    2
--3.79534032E+04-9.60967746E+01-8.85253257E-01 9.40525117E-02-5.49401910E-05    3
- 1.58319888E-08-1.84186784E-12-2.86089075E+04 3.54764923E+01                   4
+-3.79534032E+04-9.54036274E+01-8.85253257E-01 9.40525117E-02-5.49401910E-05    3
+ 1.58319888E-08-1.84186784E-12-2.86089075E+04 3.61696395E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) +
 ! group(Cs-CsHHH) + group(Cs-CsHHH)
 LCCCCL                  H   8C   4          G   100.000  5000.000 1950.40      1
  2.30700009E+01 4.49237655E-02-1.71567204E-05 2.91725393E-09-1.86477525E-13    2
--3.79534032E+04-9.60967746E+01-8.85253257E-01 9.40525117E-02-5.49401910E-05    3
- 1.58319888E-08-1.84186784E-12-2.86089075E+04 3.54764923E+01                   4
+-3.79534032E+04-9.54036274E+01-8.85253257E-01 9.40525117E-02-5.49401910E-05    3
+ 1.58319888E-08-1.84186784E-12-2.86089075E+04 3.61696395E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsHHH) + group(Cs-CsHHH)
 LC                      H   3C   1          G   100.000  5000.000  986.57      1
@@ -190,8 +190,8 @@ ArCC__C                 H  10C   9          G   100.000  5000.000  979.10      1
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-(Cds-Cds)CsHH) + group(Cs-CsHHH) + group(Cds-CdsCsH) + group(Cds-CdsHH)
 RCC__C                  H   5C   3          G   100.000  5000.000 1027.62      1
  9.28071958E+00 3.04040964E-02-1.19375012E-05 2.20662502E-09-1.55065921E-13    2
--7.48744460E+03-2.11284685E+01 1.90148451E+00 3.62537692E-02 1.29127357E-05    3
--3.55760612E-08 1.43064978E-11-4.76309634E+03 2.05495310E+01                   4
+-7.48744460E+03-2.18216157E+01 1.90148451E+00 3.62537692E-02 1.29127357E-05    3
+-3.55760612E-08 1.43064978E-11-4.76309634E+03 1.98563839E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-(Cds-Cds)CsHH) + group(Cs-CsHHH) + group(Cds-CdsCsH) + group(Cds-CdsHH)
 RC__C                   H   3C   2          G   100.000  5000.000  991.79      1
@@ -343,8 +343,8 @@ ArC*                    H   7C   7          G   100.000  5000.000  938.04      1
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsHHH) + group(Cs-CsHHH) + radical(RCCJ)
 RCC*                    H   4C   2          G   100.000  5000.000 1048.10      1
  7.21567547E+00 2.70037733E-02-1.06547813E-05 1.95473412E-09-1.35978995E-13    2
- 5.47165554E+03-1.00061706E+01 2.34849424E+00 2.91322492E-02 9.83700841E-06    3
--2.60513480E-08 1.01154074E-11 7.39526498E+03 1.80132888E+01                   4
+ 5.47165554E+03-1.06993178E+01 2.34849424E+00 2.91322492E-02 9.83700841E-06    3
+-2.60513480E-08 1.01154074E-11 7.39526498E+03 1.73201416E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-CbCsHH) + group(Cs-CsHHH) + group(Cb-Cs) + group(Cb-H) + group(Cb-H) + group(Cb-H) + group(Cb-H) +
 ! group(Cb-H) + ring(Benzene) + radical(RCCJ)
@@ -725,7 +725,7 @@ C__CC__CC+RCC*=RCCCC*C__CC                          2.390e+03 2.410     1.950
 ! Exact match found for rate rule [Cds-HH_Cds-CsH;CsJ-CsHH]
 ! Euclidian distance = 0
 ! family: R_Addition_MultipleBond
-RCC__C+RC*=RCC*CCR                                  1.704e+04 2.410     4.750    
+RCC__C+RC*=RCC*CCR                                  8.520e+03 2.410     4.750    
 
 ! Reaction index: Chemkin #12; RMG #-1
 ! Template reaction: R_Addition_MultipleBond
@@ -825,7 +825,7 @@ C__CC__CC+LCC*=LCCCC*C__CC                          2.390e+03 2.410     1.950
 ! Exact match found for rate rule [Cds-HH_Cds-CsH;CsJ-CsHH]
 ! Euclidian distance = 0
 ! family: R_Addition_MultipleBond
-LCC__C+RC*=LCC*CCR                                  2.130e+03 2.410     4.750    
+LCC__C+RC*=LCC*CCR                                  8.520e+03 2.410     4.750    
 
 ! Reaction index: Chemkin #24; RMG #-1
 ! Template reaction: R_Addition_MultipleBond
@@ -841,7 +841,7 @@ RCC__C+LC*=RCC*CCL                                  2.130e+03 2.410     4.750
 ! Exact match found for rate rule [Cds-HH_Cds-CsH;CsJ-CsHH]
 ! Euclidian distance = 0
 ! family: R_Addition_MultipleBond
-LCC__C+LC*=LCC*CCL                                  2.130e+03 2.410     4.750    
+LCC__C+LC*=LCC*CCL                                  8.520e+03 2.410     4.750    
 
 ! Reaction index: Chemkin #26; RMG #-1
 ! Template reaction: R_Addition_MultipleBond
@@ -1915,7 +1915,7 @@ ArCCCCR+RCC*CCR=RCCCCR+ArC*CCCR                     2.248e-03 4.340     4.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCR=LCCCCR+ArC*CCCR                     5.620e-04 4.340     4.500    
+ArCCCCR+LCC*CCR=LCCCCR+ArC*CCCR                     2.248e-03 4.340     4.500    
 
 ! Reaction index: Chemkin #146; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1924,7 +1924,7 @@ ArCCCCR+LCC*CCR=LCCCCR+ArC*CCCR                     5.620e-04 4.340     4.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCL=LCCCCL+ArC*CCCR                     5.620e-04 4.340     4.500    
+ArCCCCR+LCC*CCL=LCCCCL+ArC*CCCR                     2.248e-03 4.340     4.500    
 
 ! Reaction index: Chemkin #147; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1942,7 +1942,7 @@ ArCCCCL+RCC*CCR=RCCCCR+ArC*CCCL                     2.248e-03 4.340     4.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCR=LCCCCR+ArC*CCCL                     5.620e-04 4.340     4.500    
+ArCCCCL+LCC*CCR=LCCCCR+ArC*CCCL                     2.248e-03 4.340     4.500    
 
 ! Reaction index: Chemkin #149; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1951,7 +1951,7 @@ ArCCCCL+LCC*CCR=LCCCCR+ArC*CCCL                     5.620e-04 4.340     4.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCL=LCCCCL+ArC*CCCL                     5.620e-04 4.340     4.500    
+ArCCCCL+LCC*CCL=LCCCCL+ArC*CCCL                     2.248e-03 4.340     4.500    
 
 ! Reaction index: Chemkin #150; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1969,7 +1969,7 @@ ArCCCCR+RCC*CCR=RCCCCR+ArCC*CCR                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCR=LCCCCR+ArCC*CCR                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCR=LCCCCR+ArCC*CCR                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #152; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1978,7 +1978,7 @@ ArCCCCR+LCC*CCR=LCCCCR+ArCC*CCR                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCL=LCCCCL+ArCC*CCR                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCL=LCCCCL+ArCC*CCR                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #153; RMG #-1
 ! Template reaction: H_Abstraction
@@ -1996,7 +1996,7 @@ ArCCCCL+RCC*CCR=RCCCCR+ArCC*CCL                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCR=LCCCCR+ArCC*CCL                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCR=LCCCCR+ArCC*CCL                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #155; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2005,7 +2005,7 @@ ArCCCCL+LCC*CCR=LCCCCR+ArCC*CCL                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCL=LCCCCL+ArCC*CCL                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCL=LCCCCL+ArCC*CCL                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #156; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2023,7 +2023,7 @@ ArCCCCR+RCC*CCR=RCCCCR+ArCCC*CR                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCR=LCCCCR+ArCCC*CR                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCR=LCCCCR+ArCCC*CR                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #158; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2032,7 +2032,7 @@ ArCCCCR+LCC*CCR=LCCCCR+ArCCC*CR                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCL=LCCCCL+ArCCC*CR                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCL=LCCCCL+ArCCC*CR                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #159; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2050,7 +2050,7 @@ ArCCCCL+RCC*CCR=RCCCCR+ArCCC*CL                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCR=LCCCCR+ArCCC*CL                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCR=LCCCCR+ArCCC*CL                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #161; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2059,7 +2059,7 @@ ArCCCCL+LCC*CCR=LCCCCR+ArCCC*CL                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCL=LCCCCL+ArCCC*CL                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCL=LCCCCL+ArCCC*CL                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #162; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2077,7 +2077,7 @@ ArCCCCR+RCC*CCR=RCCCCR+ArCCCC*R                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCR=LCCCCR+ArCCCC*R                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCR=LCCCCR+ArCCCC*R                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #164; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2086,7 +2086,7 @@ ArCCCCR+LCC*CCR=LCCCCR+ArCCCC*R                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCR+LCC*CCL=LCCCCL+ArCCCC*R                     1.730e-03 4.340     7.500    
+ArCCCCR+LCC*CCL=LCCCCL+ArCCCC*R                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #165; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2104,7 +2104,7 @@ ArCCCCL+RCC*CCR=RCCCCR+ArCCCC*L                     6.920e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCR=LCCCCR+ArCCCC*L                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCR=LCCCCR+ArCCCC*L                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #167; RMG #-1
 ! Template reaction: H_Abstraction
@@ -2113,7 +2113,7 @@ ArCCCCL+LCC*CCR=LCCCCR+ArCCCC*L                     1.730e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: H_Abstraction
-ArCCCCL+LCC*CCL=LCCCCL+ArCCCC*L                     1.730e-03 4.340     7.500    
+ArCCCCL+LCC*CCL=LCCCCL+ArCCCC*L                     6.920e-03 4.340     7.500    
 
 ! Reaction index: Chemkin #168; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3085,7 +3085,7 @@ RCCCCR+ArC*=ArC+RCC*CCR                             2.176e-01 4.340     14.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArC*=ArC+LCC*CCR                             5.440e-02 4.340     14.500   
+LCCCCR+ArC*=ArC+LCC*CCR                             2.176e-01 4.340     14.500   
 
 ! Reaction index: Chemkin #274; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3094,7 +3094,7 @@ LCCCCR+ArC*=ArC+LCC*CCR                             5.440e-02 4.340     14.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArC*=ArC+LCC*CCL                             5.440e-02 4.340     14.500   
+LCCCCL+ArC*=ArC+LCC*CCL                             2.176e-01 4.340     14.500   
 
 ! Reaction index: Chemkin #275; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3112,7 +3112,7 @@ RCCCCR+ArC*C=ArCC+RCC*CCR                           7.456e-02 4.340     15.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArC*C=ArCC+LCC*CCR                           1.864e-02 4.340     15.000   
+LCCCCR+ArC*C=ArCC+LCC*CCR                           7.456e-02 4.340     15.000   
 
 ! Reaction index: Chemkin #277; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3121,7 +3121,7 @@ LCCCCR+ArC*C=ArCC+LCC*CCR                           1.864e-02 4.340     15.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArC*C=ArCC+LCC*CCL                           1.864e-02 4.340     15.000   
+LCCCCL+ArC*C=ArCC+LCC*CCL                           7.456e-02 4.340     15.000   
 
 ! Reaction index: Chemkin #278; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3139,7 +3139,7 @@ RCCCCR+ArCC*=ArCC+RCC*CCR                           1.472e-02 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArCC*=ArCC+LCC*CCR                           3.680e-03 4.340     7.000    
+LCCCCR+ArCC*=ArCC+LCC*CCR                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #280; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3148,7 +3148,7 @@ LCCCCR+ArCC*=ArCC+LCC*CCR                           3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArCC*=ArCC+LCC*CCL                           3.680e-03 4.340     7.000    
+LCCCCL+ArCC*=ArCC+LCC*CCL                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #281; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3166,7 +3166,7 @@ RCCCCR+ArCCC*=ArCCC+RCC*CCR                         1.472e-02 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArCCC*=ArCCC+LCC*CCR                         3.680e-03 4.340     7.000    
+LCCCCR+ArCCC*=ArCCC+LCC*CCR                         1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #283; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3175,7 +3175,7 @@ LCCCCR+ArCCC*=ArCCC+LCC*CCR                         3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArCCC*=ArCCC+LCC*CCL                         3.680e-03 4.340     7.000    
+LCCCCL+ArCCC*=ArCCC+LCC*CCL                         1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #284; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3193,7 +3193,7 @@ RCCCCR+H*=H2+RCC*CCR                                5.424e+00 4.340     3.800
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+H*=H2+LCC*CCR                                1.356e+00 4.340     3.800    
+LCCCCR+H*=H2+LCC*CCR                                5.424e+00 4.340     3.800    
 
 ! Reaction index: Chemkin #286; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3202,7 +3202,7 @@ LCCCCR+H*=H2+LCC*CCR                                1.356e+00 4.340     3.800
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+H*=H2+LCC*CCL                                1.356e+00 4.340     3.800    
+LCCCCL+H*=H2+LCC*CCL                                5.424e+00 4.340     3.800    
 
 ! Reaction index: Chemkin #287; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3229,7 +3229,7 @@ RCCCCR+LC*=LC+RCC*CCR                               1.472e-02 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RC*=RC+LCC*CCR                               3.680e-03 4.340     7.000    
+LCCCCR+RC*=RC+LCC*CCR                               1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #290; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3238,7 +3238,7 @@ LCCCCR+RC*=RC+LCC*CCR                               3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LC*=LC+LCC*CCR                               3.680e-03 4.340     7.000    
+LCCCCR+LC*=LC+LCC*CCR                               1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #291; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3247,7 +3247,7 @@ LCCCCR+LC*=LC+LCC*CCR                               3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RC*=RC+LCC*CCL                               3.680e-03 4.340     7.000    
+LCCCCL+RC*=RC+LCC*CCL                               1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #292; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3256,7 +3256,7 @@ LCCCCL+RC*=RC+LCC*CCL                               3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LC*=LC+LCC*CCL                               3.680e-03 4.340     7.000    
+LCCCCL+LC*=LC+LCC*CCL                               1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #293; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3283,7 +3283,7 @@ RCCCCR+LCC*=LCC+RCC*CCR                             1.472e-02 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RCC*=RCC+LCC*CCR                             3.680e-03 4.340     7.000    
+LCCCCR+RCC*=RCC+LCC*CCR                             1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #296; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3292,7 +3292,7 @@ LCCCCR+RCC*=RCC+LCC*CCR                             3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LCC*=LCC+LCC*CCR                             3.680e-03 4.340     7.000    
+LCCCCR+LCC*=LCC+LCC*CCR                             1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #297; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3301,7 +3301,7 @@ LCCCCR+LCC*=LCC+LCC*CCR                             3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RCC*=RCC+LCC*CCL                             3.680e-03 4.340     7.000    
+LCCCCL+RCC*=RCC+LCC*CCL                             1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #298; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3310,7 +3310,7 @@ LCCCCL+RCC*=RCC+LCC*CCL                             3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LCC*=LCC+LCC*CCL                             3.680e-03 4.340     7.000    
+LCCCCL+LCC*=LCC+LCC*CCL                             1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #299; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3337,7 +3337,7 @@ RCCCCR+LCCC*=LCCC+RCC*CCR                           1.472e-02 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RCCC*=RCCC+LCC*CCR                           3.680e-03 4.340     7.000    
+LCCCCR+RCCC*=RCCC+LCC*CCR                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #302; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3346,7 +3346,7 @@ LCCCCR+RCCC*=RCCC+LCC*CCR                           3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LCCC*=LCCC+LCC*CCR                           3.680e-03 4.340     7.000    
+LCCCCR+LCCC*=LCCC+LCC*CCR                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #303; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3355,7 +3355,7 @@ LCCCCR+LCCC*=LCCC+LCC*CCR                           3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RCCC*=RCCC+LCC*CCL                           3.680e-03 4.340     7.000    
+LCCCCL+RCCC*=RCCC+LCC*CCL                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #304; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3364,7 +3364,7 @@ LCCCCL+RCCC*=RCCC+LCC*CCL                           3.680e-03 4.340     7.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LCCC*=LCCC+LCC*CCL                           3.680e-03 4.340     7.000    
+LCCCCL+LCCC*=LCCC+LCC*CCL                           1.472e-02 4.340     7.000    
 
 ! Reaction index: Chemkin #305; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3382,7 +3382,7 @@ RCC*CCR+C__CC__CC=RCCCCR+C__CC__CC*                 4.032e-03 4.340     4.700
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 3.0
 ! family: H_Abstraction
-LCC*CCR+C__CC__CC=LCCCCR+C__CC__CC*                 1.008e-03 4.340     4.700    
+LCC*CCR+C__CC__CC=LCCCCR+C__CC__CC*                 4.032e-03 4.340     4.700    
 
 ! Reaction index: Chemkin #307; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3391,7 +3391,7 @@ LCC*CCR+C__CC__CC=LCCCCR+C__CC__CC*                 1.008e-03 4.340     4.700
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 3.0
 ! family: H_Abstraction
-LCC*CCL+C__CC__CC=LCCCCL+C__CC__CC*                 1.008e-03 4.340     4.700    
+LCC*CCL+C__CC__CC=LCCCCL+C__CC__CC*                 4.032e-03 4.340     4.700    
 
 ! Reaction index: Chemkin #308; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3418,7 +3418,7 @@ RCCCCR+LC*C__C=LCC__C+RCC*CCR                       1.181e-01 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RC*C__C=RCC__C+LCC*CCR                       2.952e-02 4.340     18.000   
+LCCCCR+RC*C__C=RCC__C+LCC*CCR                       1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #311; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3427,7 +3427,7 @@ LCCCCR+RC*C__C=RCC__C+LCC*CCR                       2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LC*C__C=LCC__C+LCC*CCR                       2.952e-02 4.340     18.000   
+LCCCCR+LC*C__C=LCC__C+LCC*CCR                       1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #312; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3436,7 +3436,7 @@ LCCCCR+LC*C__C=LCC__C+LCC*CCR                       2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RC*C__C=RCC__C+LCC*CCL                       2.952e-02 4.340     18.000   
+LCCCCL+RC*C__C=RCC__C+LCC*CCL                       1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #313; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3445,7 +3445,7 @@ LCCCCL+RC*C__C=RCC__C+LCC*CCL                       2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LC*C__C=LCC__C+LCC*CCL                       2.952e-02 4.340     18.000   
+LCCCCL+LC*C__C=LCC__C+LCC*CCL                       1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #314; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3472,7 +3472,7 @@ RCCCCR+LCCCCC__CC*=LCCCCC__CC+RCC*CCR               2.336e-01 4.340     16.600
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RCCCCC__CC*=RCCCCC__CC+LCC*CCR               5.840e-02 4.340     16.600   
+LCCCCR+RCCCCC__CC*=RCCCCC__CC+LCC*CCR               2.336e-01 4.340     16.600   
 
 ! Reaction index: Chemkin #317; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3481,7 +3481,7 @@ LCCCCR+RCCCCC__CC*=RCCCCC__CC+LCC*CCR               5.840e-02 4.340     16.600
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LCCCCC__CC*=LCCCCC__CC+LCC*CCR               5.840e-02 4.340     16.600   
+LCCCCR+LCCCCC__CC*=LCCCCC__CC+LCC*CCR               2.336e-01 4.340     16.600   
 
 ! Reaction index: Chemkin #318; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3490,7 +3490,7 @@ LCCCCR+LCCCCC__CC*=LCCCCC__CC+LCC*CCR               5.840e-02 4.340     16.600
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RCCCCC__CC*=RCCCCC__CC+LCC*CCL               5.840e-02 4.340     16.600   
+LCCCCL+RCCCCC__CC*=RCCCCC__CC+LCC*CCL               2.336e-01 4.340     16.600   
 
 ! Reaction index: Chemkin #319; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3499,7 +3499,7 @@ LCCCCL+RCCCCC__CC*=RCCCCC__CC+LCC*CCL               5.840e-02 4.340     16.600
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LCCCCC__CC*=LCCCCC__CC+LCC*CCL               5.840e-02 4.340     16.600   
+LCCCCL+LCCCCC__CC*=LCCCCC__CC+LCC*CCL               2.336e-01 4.340     16.600   
 
 ! Reaction index: Chemkin #320; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3526,7 +3526,7 @@ RCCCCR+LCCCC*C__CC=LCCCCC__CC+RCC*CCR               1.181e-01 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+RCCCC*C__CC=RCCCCC__CC+LCC*CCR               2.952e-02 4.340     18.000   
+LCCCCR+RCCCC*C__CC=RCCCCC__CC+LCC*CCR               1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #323; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3535,7 +3535,7 @@ LCCCCR+RCCCC*C__CC=RCCCCC__CC+LCC*CCR               2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+LCCCC*C__CC=LCCCCC__CC+LCC*CCR               2.952e-02 4.340     18.000   
+LCCCCR+LCCCC*C__CC=LCCCCC__CC+LCC*CCR               1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #324; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3544,7 +3544,7 @@ LCCCCR+LCCCC*C__CC=LCCCCC__CC+LCC*CCR               2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+RCCCC*C__CC=RCCCCC__CC+LCC*CCL               2.952e-02 4.340     18.000   
+LCCCCL+RCCCC*C__CC=RCCCCC__CC+LCC*CCL               1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #325; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3553,7 +3553,7 @@ LCCCCL+RCCCC*C__CC=RCCCCC__CC+LCC*CCL               2.952e-02 4.340     18.000
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+LCCCC*C__CC=LCCCCC__CC+LCC*CCL               2.952e-02 4.340     18.000   
+LCCCCL+LCCCC*C__CC=LCCCCC__CC+LCC*CCL               1.181e-01 4.340     18.000   
 
 ! Reaction index: Chemkin #326; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3589,7 +3589,7 @@ RCCCCR+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+RCC*CCR         1.384e-02 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCR         3.460e-03 4.340     7.500    
+LCCCCR+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCR         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #330; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3598,7 +3598,7 @@ LCCCCR+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCR         3.460e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCR         3.460e-03 4.340     7.500    
+LCCCCR+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCR         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #331; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3607,7 +3607,7 @@ LCCCCR+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCR         3.460e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCR+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+LCC*CCR         3.460e-03 4.340     7.500    
+LCCCCR+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+LCC*CCR         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #332; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3616,7 +3616,7 @@ LCCCCR+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+LCC*CCR         3.460e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCL         3.460e-03 4.340     7.500    
+LCCCCL+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCL         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #333; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3625,7 +3625,7 @@ LCCCCL+ArC(CC*CR)CCCR=ArC(CCCR)CCCR+LCC*CCL         3.460e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCL         3.460e-03 4.340     7.500    
+LCCCCL+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCL         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #334; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3634,7 +3634,7 @@ LCCCCL+ArC(CC*CL)CCCR=ArC(CCCL)CCCR+LCC*CCL         3.460e-03 4.340     7.500
 ! Euclidian distance = 0
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
-LCCCCL+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+LCC*CCL         3.460e-03 4.340     7.500    
+LCCCCL+ArC(CC*CL)CCCL=ArC(CCCL)CCCL+LCC*CCL         1.384e-02 4.340     7.500    
 
 ! Reaction index: Chemkin #335; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3674,7 +3674,7 @@ RCCCCR+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+RCC*CCR         2.976e-03 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCR+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCR         7.440e-04 4.340     14.939   
+LCCCCR+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCR         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #339; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3684,7 +3684,7 @@ LCCCCR+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCR         7.440e-04 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCR+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCR         7.440e-04 4.340     14.939   
+LCCCCR+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCR         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #340; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3694,7 +3694,7 @@ LCCCCR+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCR         7.440e-04 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCR+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+LCC*CCR         7.440e-04 4.340     14.939   
+LCCCCR+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+LCC*CCR         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #341; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3704,7 +3704,7 @@ LCCCCR+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+LCC*CCR         7.440e-04 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCL+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCL         7.440e-04 4.340     14.939   
+LCCCCL+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCL         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #342; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3714,7 +3714,7 @@ LCCCCL+ArC*(CCCR)CCCR=ArC(CCCR)CCCR+LCC*CCL         7.440e-04 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCL+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCL         7.440e-04 4.340     14.939   
+LCCCCL+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCL         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #343; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3724,7 +3724,7 @@ LCCCCL+ArC*(CCCL)CCCR=ArC(CCCL)CCCR+LCC*CCL         7.440e-04 4.340     14.939
 ! Multiplied by reaction path degeneracy 4.0
 ! family: H_Abstraction
 ! Ea raised from 61.3 to 62.5 kJ/mol to match endothermicity of reaction.
-LCCCCL+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+LCC*CCL         7.440e-04 4.340     14.939   
+LCCCCL+ArC*(CCCL)CCCL=ArC(CCCL)CCCL+LCC*CCL         2.976e-03 4.340     14.939   
 
 ! Reaction index: Chemkin #344; RMG #-1
 ! Template reaction: H_Abstraction
@@ -3801,22 +3801,22 @@ LC+ArCCC*=ArCCC+LC*                                 5.520e-03 4.340     9.200
 ! Reaction index: Chemkin #352; RMG #-1
 ! Template reaction: H_Abstraction
 ! Flux pairs: RC, RC*; H*, H2; 
-! Average of [C/H3/Cs\H2\Cs|O;Y_rad + C/H3/Cs\H2\Cs;Cd_rad]
+! Average of [C/H3/Cs\H2\Cs|O;Y_rad + C/H3/Cs\H2\Cs;Cd_rad + C/H3/Cs\H2\Cs;N3_rad]
 ! Estimated using template [C/H3/Cs\H2\Cs;Y_rad] for rate rule [C/H3/Cs\H2\Cs;H_rad]
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 6.0
 ! family: H_Abstraction
-RC+H*=H2+RC*                                        1.866e-04 4.870     3.500    
+RC+H*=H2+RC*                                        7.814e+01 3.247     5.667    
 
 ! Reaction index: Chemkin #353; RMG #-1
 ! Template reaction: H_Abstraction
 ! Flux pairs: LC, LC*; H*, H2; 
-! Average of [C/H3/Cs\H2\Cs|O;Y_rad + C/H3/Cs\H2\Cs;Cd_rad]
+! Average of [C/H3/Cs\H2\Cs|O;Y_rad + C/H3/Cs\H2\Cs;Cd_rad + C/H3/Cs\H2\Cs;N3_rad]
 ! Estimated using template [C/H3/Cs\H2\Cs;Y_rad] for rate rule [C/H3/Cs\H2\Cs;H_rad]
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 6.0
 ! family: H_Abstraction
-LC+H*=H2+LC*                                        1.866e-04 4.870     3.500    
+LC+H*=H2+LC*                                        7.814e+01 3.247     5.667    
 
 ! Reaction index: Chemkin #354; RMG #-1
 ! Template reaction: H_Abstraction
@@ -5218,7 +5218,7 @@ RCCC*+LC*=LCCCCR                                    8.730e+14 -0.699    -0.003
 ! Exact match found for rate rule [C_rad/H/NonDeC;H_rad]
 ! Euclidian distance = 0
 ! family: R_Recombination
-LCC*CCR+H*=LCCCCR                                   2.000e+13 0.000     0.000    
+LCC*CCR+H*=LCCCCR                                   8.000e+13 0.000     0.000    
 
 ! Reaction index: Chemkin #511; RMG #-1
 ! Template reaction: R_Recombination
@@ -5234,7 +5234,7 @@ RCC*CCL+H*=LCCCCR                                   2.000e+13 0.000     0.000
 ! Exact match found for rate rule [C_rad/H/NonDeC;H_rad]
 ! Euclidian distance = 0
 ! family: R_Recombination
-LCC*CCL+H*=LCCCCL                                   2.000e+13 0.000     0.000    
+LCC*CCL+H*=LCCCCL                                   8.000e+13 0.000     0.000    
 
 ! Reaction index: Chemkin #513; RMG #-1
 ! Template reaction: R_Recombination
@@ -5389,17 +5389,7 @@ ArC*CCCL+RCCC*=RCC__C+ArCCCCL                       1.526e+12 0.000     -0.550
 ! Euclidian distance = 1.0
 ! Multiplied by reaction path degeneracy 2.0
 ! family: Disproportionation
-ArC*CCCL+LCCC*=LCC__C+ArCCCCL                       1.526e+12 0.000     -0.550  
-
-RC*C__C+LCCCCR=>RCCCCC__CC*                         2.000e+05 0.000     0.000
-
-RC*C__C+LCCCCL=>LCCCCC__CC*                         2.000e+05 0.000     0.000
-
-LC*C__C+LCCCCR=>LCCCCC__CC*                         2.000e+05 0.000     0.000
-
-LC*C__C+RCCCCR=>RCCCCC__CC*                         2.000e+05 0.000     0.000
-
-RC*C__C+RCCCCR=>RCCCCC__CC*                         2.000e+05 0.000     0.000  
+ArC*CCCL+LCCC*=LCC__C+ArCCCCL                       1.526e+12 0.000     -0.550   
 
 END
 
