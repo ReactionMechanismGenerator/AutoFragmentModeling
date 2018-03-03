@@ -1,6 +1,0 @@
-
-# Recombinations: R_Recombination
-
-ArC*CCCR + ArC*CCCL == LArArR
-
-ArC*CCCR + ArC*CCCR == RArArR
