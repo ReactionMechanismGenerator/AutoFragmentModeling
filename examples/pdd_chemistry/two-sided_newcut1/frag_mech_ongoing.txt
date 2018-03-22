@@ -86,10 +86,6 @@ ArC__C + ArC(CCCL)CCCR == ArC*C + ArC*(CCCL)CCCR
 
 ArC__C + ArC(CCCL)CCCL == ArC*C + ArC*(CCCL)CCCL
 
-
-
-
-
 RCC__C + ArCCCCL == RCCC* + ArC*CCCL
 
 LCC__C + ArCCCCL == LCCC* + ArC*CCCL
@@ -100,129 +96,65 @@ ArCCCCR + ArC* == ArC*CCCR + ArC
 
 ArCCCCL + ArC* == ArC*CCCL + ArC
 
-
-
-
-
 ArCCCCR + ArC* == ArCC*CCR + ArC
 
 ArCCCCL + ArC* == ArCC*CCL + ArC
-
-
-
-
 
 ArCCC*CR + ArC == ArCCCCR + ArC*
 
 ArCCC*CL + ArC == ArCCCCL + ArC*
 
-
-
-
-
 ArCCCCR + ArC* == ArCCCC*R + ArC
 
 ArCCCCL + ArC* == ArCCCC*L + ArC
-
-
-
-
 
 ArCCCCR + ArC*C == ArC*CCCR + ArCC
 
 ArCCCCL + ArC*C == ArC*CCCL + ArCC
 
-
-
-
-
 ArCCCCR + ArC*C == ArCC*CCR + ArCC
 
 ArCCCCL + ArC*C == ArCC*CCL + ArCC
-
-
-
-
 
 ArCCCCR + ArC*C == ArCCC*CR + ArCC
 
 ArCCCCL + ArC*C == ArCCC*CL + ArCC
 
-
-
-
-
 ArCCCCR + ArC*C == ArCCCC*R + ArCC
 
 ArCCCCL + ArC*C == ArCCCC*L + ArCC
-
-
-
-
 
 ArCCCCR + ArCC* == ArC*CCCR + ArCC
 
 ArCCCCL + ArCC* == ArC*CCCL + ArCC
 
-
-
-
-
 ArCCCCR + ArCC* == ArCC*CCR + ArCC
 
 ArCCCCL + ArCC* == ArCC*CCL + ArCC
-
-
-
-
 
 ArCCCCR + ArCC* == ArCCC*CR + ArCC
 
 ArCCCCL + ArCC* == ArCCC*CL + ArCC
 
-
-
-
-
 ArCCCCR + ArCC* == ArCCCC*R + ArCC
 
 ArCCCCL + ArCC* == ArCCCC*L + ArCC
-
-
-
-
 
 ArCCCCR + ArCCC* == ArC*CCCR + ArCCC
 
 ArCCCCL + ArCCC* == ArC*CCCL + ArCCC
 
-
-
-
-
 ArCCCCR + ArCCC* == ArCC*CCR + ArCCC
 
 ArCCCCL + ArCCC* == ArCC*CCL + ArCCC
-
-
-
-
 
 ArCCCCR + ArCCC* == ArCCC*CR + ArCCC
 
 ArCCCCL + ArCCC* == ArCCC*CL + ArCCC
 
-
-
-
-
 ArCCCCR + ArCCC* == ArCCCC*R + ArCCC
 
 ArCCCCL + ArCCC* == ArCCCC*L + ArCCC
-
-
-
-
 
 ArCCCCR + ArC*CCCR == ArCC*CCR + ArCCCCR
 
@@ -232,14 +164,6 @@ ArCCCCL + ArC*CCCR == ArCC*CCL + ArCCCCR
 
 ArCCCCL + ArC*CCCL == ArCC*CCL + ArCCCCL
 
-
-
-
-
-
-
-
-
 ArCCC*CR + ArCCCCR == ArCCCCR + ArC*CCCR
 
 ArCCC*CR + ArCCCCL == ArCCCCR + ArC*CCCL
@@ -247,14 +171,6 @@ ArCCC*CR + ArCCCCL == ArCCCCR + ArC*CCCL
 ArCCC*CL + ArCCCCR == ArCCCCL + ArC*CCCR
 
 ArCCC*CL + ArCCCCL == ArCCCCL + ArC*CCCL
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArC*CCCR == ArCCCC*R + ArCCCCR
 
@@ -264,14 +180,6 @@ ArCCCCL + ArC*CCCR == ArCCCC*L + ArCCCCR
 
 ArCCCCL + ArC*CCCL == ArCCCC*L + ArCCCCL
 
-
-
-
-
-
-
-
-
 ArCCCCR + ArCC*CCR == ArCCC*CR + ArCCCCR
 
 ArCCCCR + ArCC*CCL == ArCCC*CR + ArCCCCL
@@ -279,14 +187,6 @@ ArCCCCR + ArCC*CCL == ArCCC*CR + ArCCCCL
 ArCCCCL + ArCC*CCR == ArCCC*CL + ArCCCCR
 
 ArCCCCL + ArCC*CCL == ArCCC*CL + ArCCCCL
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArCC*CCR == ArCCCC*R + ArCCCCR
 
@@ -296,14 +196,6 @@ ArCCCCL + ArCC*CCR == ArCCCC*L + ArCCCCR
 
 ArCCCCL + ArCC*CCL == ArCCCC*L + ArCCCCL
 
-
-
-
-
-
-
-
-
 ArCCCCR + ArCCC*CR == ArCCCC*R + ArCCCCR
 
 ArCCCCR + ArCCC*CL == ArCCCC*R + ArCCCCL
@@ -312,45 +204,21 @@ ArCCCCL + ArCCC*CR == ArCCCC*L + ArCCCCR
 
 ArCCCCL + ArCCC*CL == ArCCCC*L + ArCCCCL
 
-
-
-
-
-
-
-
-
 ArCCCCR + H* == ArC*CCCR + H2
 
 ArCCCCL + H* == ArC*CCCL + H2
-
-
-
-
 
 ArCCCCR + H* == ArCC*CCR + H2
 
 ArCCCCL + H* == ArCC*CCL + H2
 
-
-
-
-
 ArCCCCR + H* == ArCCC*CR + H2
 
 ArCCCCL + H* == ArCCC*CL + H2
 
-
-
-
-
 ArCCCCR + H* == ArCCCC*R + H2
 
 ArCCCCL + H* == ArCCCC*L + H2
-
-
-
-
 
 ArCCCCR + RC* == ArC*CCCR + RC
 
@@ -360,14 +228,6 @@ ArCCCCL + RC* == ArC*CCCL + RC
 
 ArCCCCL + LC* == ArC*CCCL + LC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RC* == ArCC*CCR + RC
 
 ArCCCCR + LC* == ArCC*CCR + LC
@@ -375,14 +235,6 @@ ArCCCCR + LC* == ArCC*CCR + LC
 ArCCCCL + RC* == ArCC*CCL + RC
 
 ArCCCCL + LC* == ArCC*CCL + LC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RC* == ArCCC*CR + RC
 
@@ -392,14 +244,6 @@ ArCCCCL + RC* == ArCCC*CL + RC
 
 ArCCCCL + LC* == ArCCC*CL + LC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RC* == ArCCCC*R + RC
 
 ArCCCCR + LC* == ArCCCC*R + LC
@@ -407,14 +251,6 @@ ArCCCCR + LC* == ArCCCC*R + LC
 ArCCCCL + RC* == ArCCCC*L + RC
 
 ArCCCCL + LC* == ArCCCC*L + LC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCC* == ArC*CCCR + RCC
 
@@ -424,14 +260,6 @@ ArCCCCL + RCC* == ArC*CCCL + RCC
 
 ArCCCCL + LCC* == ArC*CCCL + LCC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCC* == ArCC*CCR + RCC
 
 ArCCCCR + LCC* == ArCC*CCR + LCC
@@ -439,14 +267,6 @@ ArCCCCR + LCC* == ArCC*CCR + LCC
 ArCCCCL + RCC* == ArCC*CCL + RCC
 
 ArCCCCL + LCC* == ArCC*CCL + LCC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCC* == ArCCC*CR + RCC
 
@@ -456,14 +276,6 @@ ArCCCCL + RCC* == ArCCC*CL + RCC
 
 ArCCCCL + LCC* == ArCCC*CL + LCC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCC* == ArCCCC*R + RCC
 
 ArCCCCR + LCC* == ArCCCC*R + LCC
@@ -471,14 +283,6 @@ ArCCCCR + LCC* == ArCCCC*R + LCC
 ArCCCCL + RCC* == ArCCCC*L + RCC
 
 ArCCCCL + LCC* == ArCCCC*L + LCC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCC* == ArC*CCCR + RCCC
 
@@ -488,14 +292,6 @@ ArCCCCL + RCCC* == ArC*CCCL + RCCC
 
 ArCCCCL + LCCC* == ArC*CCCL + LCCC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCC* == ArCC*CCR + RCCC
 
 ArCCCCR + LCCC* == ArCC*CCR + LCCC
@@ -503,14 +299,6 @@ ArCCCCR + LCCC* == ArCC*CCR + LCCC
 ArCCCCL + RCCC* == ArCC*CCL + RCCC
 
 ArCCCCL + LCCC* == ArCC*CCL + LCCC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCC* == ArCCC*CR + RCCC
 
@@ -520,14 +308,6 @@ ArCCCCL + RCCC* == ArCCC*CL + RCCC
 
 ArCCCCL + LCCC* == ArCCC*CL + LCCC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCC* == ArCCCC*R + RCCC
 
 ArCCCCR + LCCC* == ArCCCC*R + LCCC
@@ -535,14 +315,6 @@ ArCCCCR + LCCC* == ArCCCC*R + LCCC
 ArCCCCL + RCCC* == ArCCCC*L + RCCC
 
 ArCCCCL + LCCC* == ArCCCC*L + LCCC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCC*CCR == ArC*CCCR + RCCCCR
 
@@ -556,18 +328,6 @@ ArCCCCL + LCC*CCR == ArC*CCCL + LCCCCR
 
 ArCCCCL + LCC*CCL == ArC*CCCL + LCCCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + RCC*CCR == ArCC*CCR + RCCCCR
 
 ArCCCCR + LCC*CCR == ArCC*CCR + LCCCCR
@@ -579,18 +339,6 @@ ArCCCCL + RCC*CCR == ArCC*CCL + RCCCCR
 ArCCCCL + LCC*CCR == ArCC*CCL + LCCCCR
 
 ArCCCCL + LCC*CCL == ArCC*CCL + LCCCCL
-
-
-
-
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCC*CCR == ArCCC*CR + RCCCCR
 
@@ -604,18 +352,6 @@ ArCCCCL + LCC*CCR == ArCCC*CL + LCCCCR
 
 ArCCCCL + LCC*CCL == ArCCC*CL + LCCCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + RCC*CCR == ArCCCC*R + RCCCCR
 
 ArCCCCR + LCC*CCR == ArCCCC*R + LCCCCR
@@ -628,49 +364,21 @@ ArCCCCL + LCC*CCR == ArCCCC*L + LCCCCR
 
 ArCCCCL + LCC*CCL == ArCCCC*L + LCCCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + C__CC__CC* == ArC*CCCR + C__CC__CC
 
 ArCCCCL + C__CC__CC* == ArC*CCCL + C__CC__CC
-
-
-
-
 
 ArCCCCR + C__CC__CC* == ArCC*CCR + C__CC__CC
 
 ArCCCCL + C__CC__CC* == ArCC*CCL + C__CC__CC
 
-
-
-
-
 ArCCC*CR + C__CC__CC == ArCCCCR + C__CC__CC*
 
 ArCCC*CL + C__CC__CC == ArCCCCL + C__CC__CC*
 
-
-
-
-
 ArCCCCR + C__CC__CC* == ArCCCC*R + C__CC__CC
 
 ArCCCCL + C__CC__CC* == ArCCCC*L + C__CC__CC
-
-
-
-
 
 ArCCCCR + RC*C__C == ArC*CCCR + RCC__C
 
@@ -680,14 +388,6 @@ ArCCCCL + RC*C__C == ArC*CCCL + RCC__C
 
 ArCCCCL + LC*C__C == ArC*CCCL + LCC__C
 
-
-
-
-
-
-
-
-
 ArCCCCR + RC*C__C == ArCC*CCR + RCC__C
 
 ArCCCCR + LC*C__C == ArCC*CCR + LCC__C
@@ -695,14 +395,6 @@ ArCCCCR + LC*C__C == ArCC*CCR + LCC__C
 ArCCCCL + RC*C__C == ArCC*CCL + RCC__C
 
 ArCCCCL + LC*C__C == ArCC*CCL + LCC__C
-
-
-
-
-
-
-
-
 
 ArCCCCR + RC*C__C == ArCCC*CR + RCC__C
 
@@ -712,14 +404,6 @@ ArCCCCL + RC*C__C == ArCCC*CL + RCC__C
 
 ArCCCCL + LC*C__C == ArCCC*CL + LCC__C
 
-
-
-
-
-
-
-
-
 ArCCCCR + RC*C__C == ArCCCC*R + RCC__C
 
 ArCCCCR + LC*C__C == ArCCCC*R + LCC__C
@@ -727,14 +411,6 @@ ArCCCCR + LC*C__C == ArCCCC*R + LCC__C
 ArCCCCL + RC*C__C == ArCCCC*L + RCC__C
 
 ArCCCCL + LC*C__C == ArCCCC*L + LCC__C
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCCCC__CC* == ArC*CCCR + RCCCCC__CC
 
@@ -744,14 +420,6 @@ ArCCCCL + RCCCCC__CC* == ArC*CCCL + RCCCCC__CC
 
 ArCCCCL + LCCCCC__CC* == ArC*CCCL + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCCCC__CC* == ArCC*CCR + RCCCCC__CC
 
 ArCCCCR + LCCCCC__CC* == ArCC*CCR + LCCCCC__CC
@@ -759,14 +427,6 @@ ArCCCCR + LCCCCC__CC* == ArCC*CCR + LCCCCC__CC
 ArCCCCL + RCCCCC__CC* == ArCC*CCL + RCCCCC__CC
 
 ArCCCCL + LCCCCC__CC* == ArCC*CCL + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCCCC__CC* == ArCCC*CR + RCCCCC__CC
 
@@ -776,14 +436,6 @@ ArCCCCL + RCCCCC__CC* == ArCCC*CL + RCCCCC__CC
 
 ArCCCCL + LCCCCC__CC* == ArCCC*CL + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCCCC__CC* == ArCCCC*R + RCCCCC__CC
 
 ArCCCCR + LCCCCC__CC* == ArCCCC*R + LCCCCC__CC
@@ -791,14 +443,6 @@ ArCCCCR + LCCCCC__CC* == ArCCCC*R + LCCCCC__CC
 ArCCCCL + RCCCCC__CC* == ArCCCC*L + RCCCCC__CC
 
 ArCCCCL + LCCCCC__CC* == ArCCCC*L + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCCC*C__CC == ArC*CCCR + RCCCCC__CC
 
@@ -808,14 +452,6 @@ ArCCCCL + RCCCC*C__CC == ArC*CCCL + RCCCCC__CC
 
 ArCCCCL + LCCCC*C__CC == ArC*CCCL + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCCC*C__CC == ArCC*CCR + RCCCCC__CC
 
 ArCCCCR + LCCCC*C__CC == ArCC*CCR + LCCCCC__CC
@@ -823,14 +459,6 @@ ArCCCCR + LCCCC*C__CC == ArCC*CCR + LCCCCC__CC
 ArCCCCL + RCCCC*C__CC == ArCC*CCL + RCCCCC__CC
 
 ArCCCCL + LCCCC*C__CC == ArCC*CCL + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 ArCCCCR + RCCCC*C__CC == ArCCC*CR + RCCCCC__CC
 
@@ -840,14 +468,6 @@ ArCCCCL + RCCCC*C__CC == ArCCC*CL + RCCCCC__CC
 
 ArCCCCL + LCCCC*C__CC == ArCCC*CL + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 ArCCCCR + RCCCC*C__CC == ArCCCC*R + RCCCCC__CC
 
 ArCCCCR + LCCCC*C__CC == ArCCCC*R + LCCCCC__CC
@@ -855,14 +475,6 @@ ArCCCCR + LCCCC*C__CC == ArCCCC*R + LCCCCC__CC
 ArCCCCL + RCCCC*C__CC == ArCCCC*L + RCCCCC__CC
 
 ArCCCCL + LCCCC*C__CC == ArCCCC*L + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArC(CC*CR)CCCR == ArC*CCCR + ArC(CCCR)CCCR
 
@@ -876,18 +488,6 @@ ArCCCCL + ArC(CC*CL)CCCR == ArC*CCCL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC(CC*CL)CCCL == ArC*CCCL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + ArC(CC*CR)CCCR == ArCC*CCR + ArC(CCCR)CCCR
 
 ArCCCCR + ArC(CC*CL)CCCR == ArCC*CCR + ArC(CCCL)CCCR
@@ -899,18 +499,6 @@ ArCCCCL + ArC(CC*CR)CCCR == ArCC*CCL + ArC(CCCR)CCCR
 ArCCCCL + ArC(CC*CL)CCCR == ArCC*CCL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC(CC*CL)CCCL == ArCC*CCL + ArC(CCCL)CCCL
-
-
-
-
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArC(CC*CR)CCCR == ArCCC*CR + ArC(CCCR)CCCR
 
@@ -924,18 +512,6 @@ ArCCCCL + ArC(CC*CL)CCCR == ArCCC*CL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC(CC*CL)CCCL == ArCCC*CL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + ArC(CC*CR)CCCR == ArCCCC*R + ArC(CCCR)CCCR
 
 ArCCCCR + ArC(CC*CL)CCCR == ArCCCC*R + ArC(CCCL)CCCR
@@ -947,18 +523,6 @@ ArCCCCL + ArC(CC*CR)CCCR == ArCCCC*L + ArC(CCCR)CCCR
 ArCCCCL + ArC(CC*CL)CCCR == ArCCCC*L + ArC(CCCL)CCCR
 
 ArCCCCL + ArC(CC*CL)CCCL == ArCCCC*L + ArC(CCCL)CCCL
-
-
-
-
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArC*(CCCR)CCCR == ArC*CCCR + ArC(CCCR)CCCR
 
@@ -972,18 +536,6 @@ ArCCCCL + ArC*(CCCL)CCCR == ArC*CCCL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC*(CCCL)CCCL == ArC*CCCL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + ArC*(CCCR)CCCR == ArCC*CCR + ArC(CCCR)CCCR
 
 ArCCCCR + ArC*(CCCL)CCCR == ArCC*CCR + ArC(CCCL)CCCR
@@ -995,18 +547,6 @@ ArCCCCL + ArC*(CCCR)CCCR == ArCC*CCL + ArC(CCCR)CCCR
 ArCCCCL + ArC*(CCCL)CCCR == ArCC*CCL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC*(CCCL)CCCL == ArCC*CCL + ArC(CCCL)CCCL
-
-
-
-
-
-
-
-
-
-
-
-
 
 ArCCCCR + ArC*(CCCR)CCCR == ArCCC*CR + ArC(CCCR)CCCR
 
@@ -1020,18 +560,6 @@ ArCCCCL + ArC*(CCCL)CCCR == ArCCC*CL + ArC(CCCL)CCCR
 
 ArCCCCL + ArC*(CCCL)CCCL == ArCCC*CL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 ArCCCCR + ArC*(CCCR)CCCR == ArCCCC*R + ArC(CCCR)CCCR
 
 ArCCCCR + ArC*(CCCL)CCCR == ArCCCC*R + ArC(CCCL)CCCR
@@ -1044,29 +572,11 @@ ArCCCCL + ArC*(CCCL)CCCR == ArCCCC*L + ArC(CCCL)CCCR
 
 ArCCCCL + ArC*(CCCL)CCCL == ArCCCC*L + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCR + ArC* == RCC*CCR + ArC
 
 LCCCCR + ArC* == LCC*CCR + ArC
 
 LCCCCL + ArC* == LCC*CCL + ArC
-
-
-
-
-
-
 
 RCCCCR + ArC*C == RCC*CCR + ArCC
 
@@ -1074,23 +584,11 @@ LCCCCR + ArC*C == LCC*CCR + ArCC
 
 LCCCCL + ArC*C == LCC*CCL + ArCC
 
-
-
-
-
-
-
 RCCCCR + ArCC* == RCC*CCR + ArCC
 
 LCCCCR + ArCC* == LCC*CCR + ArCC
 
 LCCCCL + ArCC* == LCC*CCL + ArCC
-
-
-
-
-
-
 
 RCCCCR + ArCCC* == RCC*CCR + ArCCC
 
@@ -1098,23 +596,11 @@ LCCCCR + ArCCC* == LCC*CCR + ArCCC
 
 LCCCCL + ArCCC* == LCC*CCL + ArCCC
 
-
-
-
-
-
-
 RCCCCR + H* == RCC*CCR + H2
 
 LCCCCR + H* == LCC*CCR + H2
 
 LCCCCL + H* == LCC*CCL + H2
-
-
-
-
-
-
 
 RCCCCR + RC* == RCC*CCR + RC
 
@@ -1128,18 +614,6 @@ LCCCCL + RC* == LCC*CCL + RC
 
 LCCCCL + LC* == LCC*CCL + LC
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCR + RCC* == RCC*CCR + RCC
 
 RCCCCR + LCC* == RCC*CCR + LCC
@@ -1151,18 +625,6 @@ LCCCCR + LCC* == LCC*CCR + LCC
 LCCCCL + RCC* == LCC*CCL + RCC
 
 LCCCCL + LCC* == LCC*CCL + LCC
-
-
-
-
-
-
-
-
-
-
-
-
 
 RCCCCR + RCCC* == RCC*CCR + RCCC
 
@@ -1176,29 +638,11 @@ LCCCCL + RCCC* == LCC*CCL + RCCC
 
 LCCCCL + LCCC* == LCC*CCL + LCCC
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCC*CCR + C__CC__CC == RCCCCR + C__CC__CC*
 
 LCC*CCR + C__CC__CC == LCCCCR + C__CC__CC*
 
 LCC*CCL + C__CC__CC == LCCCCL + C__CC__CC*
-
-
-
-
-
-
 
 RCCCCR + RC*C__C == RCC*CCR + RCC__C
 
@@ -1212,18 +656,6 @@ LCCCCL + RC*C__C == LCC*CCL + RCC__C
 
 LCCCCL + LC*C__C == LCC*CCL + LCC__C
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCR + RCCCCC__CC* == RCC*CCR + RCCCCC__CC
 
 RCCCCR + LCCCCC__CC* == RCC*CCR + LCCCCC__CC
@@ -1236,18 +668,6 @@ LCCCCL + RCCCCC__CC* == LCC*CCL + RCCCCC__CC
 
 LCCCCL + LCCCCC__CC* == LCC*CCL + LCCCCC__CC
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCR + RCCCC*C__CC == RCC*CCR + RCCCCC__CC
 
 RCCCCR + LCCCC*C__CC == RCC*CCR + LCCCCC__CC
@@ -1259,18 +679,6 @@ LCCCCR + LCCCC*C__CC == LCC*CCR + LCCCCC__CC
 LCCCCL + RCCCC*C__CC == LCC*CCL + RCCCCC__CC
 
 LCCCCL + LCCCC*C__CC == LCC*CCL + LCCCCC__CC
-
-
-
-
-
-
-
-
-
-
-
-
 
 RCCCCR + ArC(CC*CR)CCCR == RCC*CCR + ArC(CCCR)CCCR
 
@@ -1290,24 +698,6 @@ LCCCCL + ArC(CC*CL)CCCR == LCC*CCL + ArC(CCCL)CCCR
 
 LCCCCL + ArC(CC*CL)CCCL == LCC*CCL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCR + ArC*(CCCR)CCCR == RCC*CCR + ArC(CCCR)CCCR
 
 RCCCCR + ArC*(CCCL)CCCR == RCC*CCR + ArC(CCCL)CCCR
@@ -1326,63 +716,25 @@ LCCCCL + ArC*(CCCL)CCCR == LCC*CCL + ArC(CCCL)CCCR
 
 LCCCCL + ArC*(CCCL)CCCL == LCC*CCL + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 RC + ArC* == RC* + ArC
 
 LC + ArC* == LC* + ArC
-
-
-
-
 
 RC + ArC*C == RC* + ArCC
 
 LC + ArC*C == LC* + ArCC
 
-
-
-
-
 RC + ArCC* == RC* + ArCC
 
 LC + ArCC* == LC* + ArCC
-
-
-
-
 
 RC + ArCCC* == RC* + ArCCC
 
 LC + ArCCC* == LC* + ArCCC
 
-
-
-
-
 RC + H* == RC* + H2
 
 LC + H* == LC* + H2
-
-
-
-
 
 RC + RCC* == RC* + RCC
 
@@ -1392,14 +744,6 @@ LC + RCC* == LC* + RCC
 
 LC + LCC* == LC* + LCC
 
-
-
-
-
-
-
-
-
 RC + RCCC* == RC* + RCCC
 
 RC + LCCC* == RC* + LCCC
@@ -1408,21 +752,9 @@ LC + RCCC* == LC* + RCCC
 
 LC + LCCC* == LC* + LCCC
 
-
-
-
-
-
-
-
-
 RC* + C__CC__CC == RC + C__CC__CC*
 
 LC* + C__CC__CC == LC + C__CC__CC*
-
-
-
-
 
 RC + RCCCCC__CC* == RC* + RCCCCC__CC
 
@@ -1432,14 +764,6 @@ LC + RCCCCC__CC* == LC* + RCCCCC__CC
 
 LC + LCCCCC__CC* == LC* + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 RC + RCCCC*C__CC == RC* + RCCCCC__CC
 
 RC + LCCCC*C__CC == RC* + LCCCCC__CC
@@ -1447,14 +771,6 @@ RC + LCCCC*C__CC == RC* + LCCCCC__CC
 LC + RCCCC*C__CC == LC* + RCCCCC__CC
 
 LC + LCCCC*C__CC == LC* + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 RC + ArC(CC*CR)CCCR == RC* + ArC(CCCR)CCCR
 
@@ -1468,18 +784,6 @@ LC + ArC(CC*CL)CCCR == LC* + ArC(CCCL)CCCR
 
 LC + ArC(CC*CL)CCCL == LC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RC + ArC*(CCCR)CCCR == RC* + ArC(CCCR)CCCR
 
 RC + ArC*(CCCL)CCCR == RC* + ArC(CCCL)CCCR
@@ -1492,57 +796,25 @@ LC + ArC*(CCCL)CCCR == LC* + ArC(CCCL)CCCR
 
 LC + ArC*(CCCL)CCCL == LC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCC__C + ArC* == RC*C__C + ArC
 
 LCC__C + ArC* == LC*C__C + ArC
-
-
-
-
 
 RCC__C + ArC*C == RC*C__C + ArCC
 
 LCC__C + ArC*C == LC*C__C + ArCC
 
-
-
-
-
 RCC__C + ArCC* == RC*C__C + ArCC
 
 LCC__C + ArCC* == LC*C__C + ArCC
-
-
-
-
 
 RCC__C + ArCCC* == RC*C__C + ArCCC
 
 LCC__C + ArCCC* == LC*C__C + ArCCC
 
-
-
-
-
 RCC__C + H* == RC*C__C + H2
 
 LCC__C + H* == LC*C__C + H2
-
-
-
-
 
 RCC__C + RC* == RC*C__C + RC
 
@@ -1552,14 +824,6 @@ LCC__C + RC* == LC*C__C + RC
 
 LCC__C + LC* == LC*C__C + LC
 
-
-
-
-
-
-
-
-
 RCC__C + RCC* == RC*C__C + RCC
 
 RCC__C + LCC* == RC*C__C + LCC
@@ -1567,14 +831,6 @@ RCC__C + LCC* == RC*C__C + LCC
 LCC__C + RCC* == LC*C__C + RCC
 
 LCC__C + LCC* == LC*C__C + LCC
-
-
-
-
-
-
-
-
 
 RCC__C + RCCC* == RC*C__C + RCCC
 
@@ -1584,21 +840,9 @@ LCC__C + RCCC* == LC*C__C + RCCC
 
 LCC__C + LCCC* == LC*C__C + LCCC
 
-
-
-
-
-
-
-
-
 RCC__C + C__CC__CC* == RC*C__C + C__CC__CC
 
 LCC__C + C__CC__CC* == LC*C__C + C__CC__CC
-
-
-
-
 
 RCC__C + RCCCCC__CC* == RC*C__C + RCCCCC__CC
 
@@ -1608,14 +852,6 @@ LCC__C + RCCCCC__CC* == LC*C__C + RCCCCC__CC
 
 LCC__C + LCCCCC__CC* == LC*C__C + LCCCCC__CC
 
-
-
-
-
-
-
-
-
 RCC__C + RCCCC*C__CC == RC*C__C + RCCCCC__CC
 
 RCC__C + LCCCC*C__CC == RC*C__C + LCCCCC__CC
@@ -1623,14 +859,6 @@ RCC__C + LCCCC*C__CC == RC*C__C + LCCCCC__CC
 LCC__C + RCCCC*C__CC == LC*C__C + RCCCCC__CC
 
 LCC__C + LCCCC*C__CC == LC*C__C + LCCCCC__CC
-
-
-
-
-
-
-
-
 
 RCC__C + ArC(CC*CR)CCCR == RC*C__C + ArC(CCCR)CCCR
 
@@ -1644,18 +872,6 @@ LCC__C + ArC(CC*CL)CCCR == LC*C__C + ArC(CCCL)CCCR
 
 LCC__C + ArC(CC*CL)CCCL == LC*C__C + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCC__C + ArC*(CCCR)CCCR == RC*C__C + ArC(CCCR)CCCR
 
 RCC__C + ArC*(CCCL)CCCR == RC*C__C + ArC(CCCL)CCCR
@@ -1668,69 +884,31 @@ LCC__C + ArC*(CCCL)CCCR == LC*C__C + ArC(CCCL)CCCR
 
 LCC__C + ArC*(CCCL)CCCL == LC*C__C + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 C__CC__CC + ArC* == C__CC__CC* + ArC
-
-
 
 C__CC__CC + ArC*C == C__CC__CC* + ArCC
 
-
-
 C__CC__CC + ArCC* == C__CC__CC* + ArCC
-
-
 
 C__CC__CC + ArCCC* == C__CC__CC* + ArCCC
 
-
-
 C__CC__CC + H* == C__CC__CC* + H2
-
-
 
 C__CC__CC + RCC* == C__CC__CC* + RCC
 
 C__CC__CC + LCC* == C__CC__CC* + LCC
 
-
-
-
-
 C__CC__CC + RCCC* == C__CC__CC* + RCCC
 
 C__CC__CC + LCCC* == C__CC__CC* + LCCC
-
-
-
-
 
 C__CC__CC + RCCCCC__CC* == C__CC__CC* + RCCCCC__CC
 
 C__CC__CC + LCCCCC__CC* == C__CC__CC* + LCCCCC__CC
 
-
-
-
-
 C__CC__CC + RCCCC*C__CC == C__CC__CC* + RCCCCC__CC
 
 C__CC__CC + LCCCC*C__CC == C__CC__CC* + LCCCCC__CC
-
-
-
-
 
 C__CC__CC + ArC(CC*CR)CCCR == C__CC__CC* + ArC(CCCR)CCCR
 
@@ -1738,23 +916,11 @@ C__CC__CC + ArC(CC*CL)CCCR == C__CC__CC* + ArC(CCCL)CCCR
 
 C__CC__CC + ArC(CC*CL)CCCL == C__CC__CC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
 C__CC__CC + ArC*(CCCR)CCCR == C__CC__CC* + ArC(CCCR)CCCR
 
 C__CC__CC + ArC*(CCCL)CCCR == C__CC__CC* + ArC(CCCL)CCCR
 
 C__CC__CC + ArC*(CCCL)CCCL == C__CC__CC* + ArC(CCCL)CCCL
-
-
-
-
-
-
 
 ArC + ArC(CC*CR)CCCR == ArC* + ArC(CCCR)CCCR
 
@@ -1762,23 +928,11 @@ ArC + ArC(CC*CL)CCCR == ArC* + ArC(CCCL)CCCR
 
 ArC + ArC(CC*CL)CCCL == ArC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
 ArC + ArC*(CCCR)CCCR == ArC* + ArC(CCCR)CCCR
 
 ArC + ArC*(CCCL)CCCR == ArC* + ArC(CCCL)CCCR
 
 ArC + ArC*(CCCL)CCCL == ArC* + ArC(CCCL)CCCL
-
-
-
-
-
-
 
 ArCC + ArC(CC*CR)CCCR == ArC*C + ArC(CCCR)CCCR
 
@@ -1786,23 +940,11 @@ ArCC + ArC(CC*CL)CCCR == ArC*C + ArC(CCCL)CCCR
 
 ArCC + ArC(CC*CL)CCCL == ArC*C + ArC(CCCL)CCCL
 
-
-
-
-
-
-
 ArCC + ArC(CC*CR)CCCR == ArCC* + ArC(CCCR)CCCR
 
 ArCC + ArC(CC*CL)CCCR == ArCC* + ArC(CCCL)CCCR
 
 ArCC + ArC(CC*CL)CCCL == ArCC* + ArC(CCCL)CCCL
-
-
-
-
-
-
 
 ArCC + ArC*(CCCR)CCCR == ArCC* + ArC(CCCR)CCCR
 
@@ -1810,35 +952,17 @@ ArCC + ArC*(CCCL)CCCR == ArCC* + ArC(CCCL)CCCR
 
 ArCC + ArC*(CCCL)CCCL == ArCC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
 ArCCC + ArC(CC*CR)CCCR == ArCCC* + ArC(CCCR)CCCR
 
 ArCCC + ArC(CC*CL)CCCR == ArCCC* + ArC(CCCL)CCCR
 
 ArCCC + ArC(CC*CL)CCCL == ArCCC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
 ArCCC + ArC*(CCCR)CCCR == ArCCC* + ArC(CCCR)CCCR
 
 ArCCC + ArC*(CCCL)CCCR == ArCCC* + ArC(CCCL)CCCR
 
 ArCCC + ArC*(CCCL)CCCL == ArCCC* + ArC(CCCL)CCCL
-
-
-
-
-
-
 
 RCCCCC__CC + ArC(CC*CR)CCCR == RCCCCC__CC* + ArC(CCCR)CCCR
 
@@ -1852,18 +976,6 @@ LCCCCC__CC + ArC(CC*CL)CCCR == LCCCCC__CC* + ArC(CCCL)CCCR
 
 LCCCCC__CC + ArC(CC*CL)CCCL == LCCCCC__CC* + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCC__CC + ArC(CC*CR)CCCR == RCCCC*C__CC + ArC(CCCR)CCCR
 
 RCCCCC__CC + ArC(CC*CL)CCCR == RCCCC*C__CC + ArC(CCCL)CCCR
@@ -1876,18 +988,6 @@ LCCCCC__CC + ArC(CC*CL)CCCR == LCCCC*C__CC + ArC(CCCL)CCCR
 
 LCCCCC__CC + ArC(CC*CL)CCCL == LCCCC*C__CC + ArC(CCCL)CCCL
 
-
-
-
-
-
-
-
-
-
-
-
-
 RCCCCC__CC + ArC*(CCCR)CCCR == RCCCC*C__CC + ArC(CCCR)CCCR
 
 RCCCCC__CC + ArC*(CCCL)CCCR == RCCCC*C__CC + ArC(CCCL)CCCR
@@ -1899,6 +999,1108 @@ LCCCCC__CC + ArC*(CCCR)CCCR == LCCCC*C__CC + ArC(CCCR)CCCR
 LCCCCC__CC + ArC*(CCCL)CCCR == LCCCC*C__CC + ArC(CCCL)CCCR
 
 LCCCCC__CC + ArC*(CCCL)CCCL == LCCCC*C__CC + ArC(CCCL)CCCL
+
+ArCCCCR + RCCC*C == ArC*CCCR + RCCCC
+
+ArCCCCR + RCCC*C == ArCC*CCR + RCCCC
+
+ArCCCCR + LCCC*C == ArC*CCCR + LCCCC
+
+ArCCCCR + RCC*CC == ArC*CCCR + RCCCC
+
+ArCCCCR + RCC*CC == ArCC*CCR + RCCCC
+
+ArCCCCR + CC* == ArC*CCCR + CC
+
+ArCCCCR + CC* == ArCC*CCR + CC
+
+ArCCCCR + CC* == ArCCC*CR + CC
+
+ArCCCCR + CC* == ArCCCC*R + CC
+
+ArCCCCR + CCC* == ArC*CCCR + CCC
+
+ArCCCCR + CCC* == ArCC*CCR + CCC
+
+ArCCCCR + CCC* == ArCCC*CR + CCC
+
+ArCCCCR + CCC* == ArCCCC*R + CCC
+
+ArCCCCR + C* == ArC*CCCR + C
+
+ArCCCCR + C* == ArCC*CCR + C
+
+ArCCCCR + C* == ArCCC*CR + C
+
+ArCCCCR + C* == ArCCCC*R + C
+
+ArCCCCR + LC*CCC == ArC*CCCR + LCCCC
+
+ArCCCCR + LC*CCC == ArCCCC*R + LCCCC
+
+ArCCCCR + LCC*CC == ArCC*CCR + LCCCC
+
+ArCCCCR + LCC*CC == ArCCCC*R + LCCCC
+
+RCCCCR + RCCC*C == RCC*CCR + RCCCC
+
+RCCCCR + CC* == RCC*CCR + CC
+
+RCCCCR + CCC* == RCC*CCR + CCC
+
+RCCCCR + C* == RCC*CCR + C
+
+RCCCCR + LCC*CC == RCC*CCR + LCCCC 
+
+RC + LCCC*C == RC* + LCCCC
+
+RC + CC* == RC* + CC
+
+RC + CCC* == RC* + CCC
+
+RC + C* == RC* + C
+
+RC + RC*CCC == RC* + RCCCC
+
+ArCCCCL + LCCC*C == ArCC*CCL + LCCCC
+
+ArCCCCL + LCCC*C == ArCCC*CL + LCCCC
+
+ArCCCCL + RCC*CC == ArC*CCCL + RCCCC
+
+ArCCCCL + RCC*CC == ArCC*CCL + RCCCC
+
+ArCCCCL + RCC*CC == ArCCCC*L + RCCCC
+
+ArCCCCL + CC* == ArC*CCCL + CC
+
+ArCCCCL + CC* == ArCC*CCL + CC
+
+ArCCCCL + CC* == ArCCC*CL + CC
+
+ArCCCCL + CC* == ArCCCC*L + CC
+
+ArCCCCL + CCC* == ArC*CCCL + CCC
+
+ArCCCCL + CCC* == ArCC*CCL + CCC
+
+ArCCCCL + CCC* == ArCCC*CL + CCC
+
+ArCCCCL + CCC* == ArCCCC*L + CCC
+
+ArCCCCL + C* == ArC*CCCL + C
+
+ArCCCCL + C* == ArCC*CCL + C
+
+ArCCCCL + C* == ArCCC*CL + C
+
+ArCCCCL + C* == ArCCCC*L + C
+
+ArCCCCL + RC*CCC == ArCCC*CL + RCCCC
+
+ArCCCCL + RC*CCC == ArCCCC*L + RCCCC
+
+ArCCCCL + LC*CCC == ArC*CCCL + LCCCC
+
+ArCCCCL + LC*CCC == ArCC*CCL + LCCCC
+
+ArCCCCL + LC*CCC == ArCCCC*L + LCCCC
+
+ArCCCCL + LCC*CC == ArCCC*CL + LCCCC
+
+ArCCCCL + LCC*CC == ArCCCC*L + LCCCC
+
+LCCCCR + RCC*CC == LCC*CCR + RCCCC
+
+LCCCCR + CC* == LCC*CCR + CC
+
+LCCCCR + CCC* == LCC*CCR + CCC
+
+LCCCCR + C* == LCC*CCR + C
+
+LCCCCR + RC*CCC == LCC*CCR + RCCCC
+
+LCCCCR + LCC*CC == LCC*CCR + LCCCC
+
+LCCCCL + RCCC*C == LCC*CCL + RCCCC
+
+LCCCCL + LCCC*C == LCC*CCL + LCCCC
+
+LCCCCL + CC* == LCC*CCL + CC
+
+LCCCCL + CCC* == LCC*CCL + CCC
+
+LCCCCL + C* == LCC*CCL + C
+
+LCCCCL + RC*CCC == LCC*CCL + RCCCC
+
+LC + LCCC*C == LC* + LCCCC  
+
+LC + CC* == LC* + CC
+
+LC + CCC* == LC* + CCC 
+
+LC + C* == LC* + C
+
+LC + RC*CCC == LC* + RCCCC 
+
+RCC__C + RCCC*C == RC*C__C + RCCCC
+
+RCC__C + RCC*CC == RC*C__C + RCCCC
+
+RCC__C + CC* == RC*C__C + CC
+
+RCC__C + CCC* == RC*C__C + CCC
+
+RCC__C + C* == RC*C__C + C
+
+RCC__C + RC*CCC == RC*C__C + RCCCC
+
+RCC__C + LC*CCC == RC*C__C + LCCCC
+
+C__CC__CC + RCCC*C == C__CC__CC* + RCCCC
+
+C__CC__CC + RCC*CC == C__CC__CC* + RCCCC
+
+C__CC__CC + CC* == C__CC__CC* + CC
+
+C__CC__CC + CCC* == C__CC__CC* + CCC
+
+C__CC__CC + C* == C__CC__CC* + C
+
+LCC__C + CC* == LC*C__C + CC
+
+LCC__C + CCC* == LC*C__C + CCC
+
+LCC__C + C* == LC*C__C + C
+
+LCC__C + LC*CCC == LC*C__C + LCCCC
+
+LCC__C + LCC*CC == LC*C__C + LCCCC
+
+ArC + LCCC*C == ArC* + LCCCC
+
+ArC + RCC*CC == ArC* + RCCCC
+
+ArC + CC* == ArC* + CC
+
+ArC + CCC* == ArC* + CCC
+
+ArC + C* == ArC* + C
+
+ArC(CCCR)CCCR + RCCC*C == ArC*(CCCR)CCCR + RCCCC
+
+ArC(CCCR)CCCR + LCCC*C == ArC*(CCCR)CCCR + LCCCC
+
+ArC(CCCR)CCCR + RCC*CC == ArC*(CCCR)CCCR + RCCCC
+
+ArC(CCCR)CCCR + CC* == ArC*(CCCR)CCCR + CC
+
+ArC(CCCR)CCCR + CCC* == ArC*(CCCR)CCCR + CCC
+
+ArC(CCCR)CCCR + C* == ArC*(CCCR)CCCR + C
+
+ArC(CCCR)CCCR + RC*CCC == ArC*(CCCR)CCCR + RCCCC
+
+ArC(CCCR)CCCR + LCC*CC == ArC*(CCCR)CCCR + LCCCC
+
+ArC(CCCL)CCCR + RCCC*C == ArC*(CCCL)CCCR + RCCCC
+
+ArC(CCCL)CCCR + RCC*CC == ArC*(CCCL)CCCR + RCCCC
+
+ArC(CCCL)CCCR + CC* == ArC*(CCCL)CCCR + CC
+
+ArC(CCCL)CCCR + CCC* == ArC*(CCCL)CCCR + CCC
+
+ArC(CCCL)CCCR + C* == ArC*(CCCL)CCCR + C
+
+ArC(CCCL)CCCR + LCC*CC == ArC*(CCCL)CCCR + LCCCC
+
+ArC(CCCL)CCCL + LCCC*C == ArC*(CCCL)CCCL + LCCCC
+
+ArC(CCCL)CCCL + RCC*CC == ArC*(CCCL)CCCL + RCCCC
+
+ArC(CCCL)CCCL + CC* == ArC*(CCCL)CCCL + CC
+
+ArC(CCCL)CCCL + CCC* == ArC*(CCCL)CCCL + CCC
+
+ArC(CCCL)CCCL + C* == ArC*(CCCL)CCCL + C
+
+ArC(CCCL)CCCL + RC*CCC == ArC*(CCCL)CCCL + RCCCC
+
+ArC(CCCL)CCCL + LC*CCC == ArC*(CCCL)CCCL + LCCCC
+
+ArC(CCCL)CCCL + LCC*CC == ArC*(CCCL)CCCL + LCCCC
+
+ArCC + RCCC*C == ArCC* + RCCCC
+
+ArCC + LCCC*C == ArCC* + LCCCC
+
+ArCC + RCC*CC == ArCC* + RCCCC
+
+ArCC + CC* == ArC*C + CC
+
+ArCC + CC* == ArCC* + CC
+
+ArCC + CCC* == ArC*C + CCC
+
+ArCC + CCC* == ArCC* + CCC
+
+ArCC + C* == ArC*C + C
+
+ArCC + C* == ArCC* + C
+
+ArCC + RC*CCC == ArC*C + RCCCC
+
+ArCC + RC*CCC == ArCC* + RCCCC
+
+ArCC + LC*CCC == ArC*C + LCCCC
+
+ArCC + LCC*CC == ArCC* + LCCCC
+
+ArCCC + RCCC*C == ArC*CC + RCCCC
+
+ArCCC + RCCC*C == ArCC*C + RCCCC
+
+ArCCC + LCCC*C == ArC*CC + LCCCC
+
+ArCCC + LCCC*C == ArCC*C + LCCCC
+
+ArCCC + RCC*CC == ArC*CC + RCCCC
+
+ArCCC + RCC*CC == ArCC*C + RCCCC
+
+ArCCC + RCC*CC == ArCCC* + RCCCC
+
+ArCCC + CC* == ArC*CC + CC
+
+ArCCC + CC* == ArCC*C + CC
+
+ArCCC + CC* == ArCCC* + CC
+
+ArCCC + CCC* == ArC*CC + CCC
+
+ArCCC + CCC* == ArCC*C + CCC
+
+ArCCC + CCC* == ArCCC* + CCC
+
+ArCCC + C* == ArC*CC + C
+
+ArCCC + C* == ArCC*C + C
+
+ArCCC + C* == ArCCC* + C
+
+ArCCC + RC*CCC == ArC*CC + RCCCC
+
+ArCCC + RC*CCC == ArCC*C + RCCCC
+
+ArCCC + RC*CCC == ArCCC* + RCCCC
+
+ArCCC + LC*CCC == ArC*CC + LCCCC
+
+ArCCC + LC*CCC == ArCC*C + LCCCC
+
+ArCCC + LC*CCC == ArCCC* + LCCCC
+
+ArCCC + LCC*CC == ArC*CC + LCCCC
+
+ArCCC + LCC*CC == ArCC*C + LCCCC
+
+ArCCC + LCC*CC == ArCCC* + LCCCC
+
+H2 + RCCC*C == H* + RCCCC
+
+H2 + LCCC*C == H* + LCCCC
+
+H2 + RCC*CC == H* + RCCCC
+
+H2 + CC* == H* + CC
+
+H2 + CCC* == H* + CCC
+
+H2 + C* == H* + C
+
+H2 + LCC*CC == H* + LCCCC
+
+RCC + RCCC*C == RC*C + RCCCC
+
+RCC + LCCC*C == RC*C + LCCCC
+
+RCC + RCC*CC == RC*C + RCCCC
+
+RCC + RCC*CC == RCC* + RCCCC
+
+RCC + CC* == RC*C + CC
+
+RCC + CC* == RCC* + CC
+
+RCC + CCC* == RC*C + CCC
+
+RCC + CCC* == RCC* + CCC
+
+RCC + C* == RC*C + C
+
+RCC + C* == RCC* + C
+
+RCC + RC*CCC == RC*C + RCCCC
+
+RCC + RC*CCC == RCC* + RCCCC
+
+RCC + LC*CCC == RC*C + LCCCC
+
+RCC + LCC*CC == RC*C + LCCCC
+
+LCC + RCCC*C == LC*C + RCCCC
+
+LCC + RCCC*C == LCC* + RCCCC
+
+LCC + LCCC*C == LC*C + LCCCC
+
+LCC + LCCC*C == LCC* + LCCCC
+
+LCC + RCC*CC == LC*C + RCCCC
+
+LCC + CC* == LC*C + CC
+
+LCC + CC* == LCC* + CC
+
+LCC + CCC* == LC*C + CCC
+
+LCC + CCC* == LCC* + CCC
+
+LCC + C* == LC*C + C
+
+LCC + C* == LCC* + C
+
+LCC + RC*CCC == LC*C + RCCCC
+
+LCC + LC*CCC == LC*C + LCCCC
+
+LCC + LC*CCC == LCC* + LCCCC
+
+LCC + LCC*CC == LC*C + LCCCC
+
+RCCC + RCCC*C == RC*CC + RCCCC
+
+RCCC + RCCC*C == RCC*C + RCCCC
+
+RCCC + RCCC*C == RCCC* + RCCCC
+
+RCCC + LCCC*C == RC*CC + LCCCC
+
+RCCC + LCCC*C == RCC*C + LCCCC
+
+RCCC + RCC*CC == RC*CC + RCCCC
+
+RCCC + RCC*CC == RCC*C + RCCCC
+
+RCCC + CC* == RC*CC + CC
+
+RCCC + CC* == RCC*C + CC
+
+RCCC + CC* == RCCC* + CC
+
+RCCC + CCC* == RC*CC + CCC
+
+RCCC + CCC* == RCC*C + CCC
+
+RCCC + CCC* == RCCC* + CCC
+
+RCCC + C* == RC*CC + C
+
+RCCC + C* == RCC*C + C
+
+RCCC + C* == RCCC* + C
+
+RCCC + RC*CCC == RC*CC + RCCCC
+
+RCCC + RC*CCC == RCC*C + RCCCC
+
+RCCC + RC*CCC == RCCC* + RCCCC
+
+RCCC + LC*CCC == RC*CC + LCCCC
+
+RCCC + LC*CCC == RCC*C + LCCCC
+
+RCCC + LCC*CC == RC*CC + LCCCC
+
+RCCC + LCC*CC == RCC*C + LCCCC
+
+RCCC + LCC*CC == RCCC* + LCCCC
+
+LCCC + RCCC*C == LC*CC + RCCCC
+
+LCCC + RCCC*C == LCC*C + RCCCC
+
+LCCC + LCCC*C == LC*CC + LCCCC
+
+LCCC + LCCC*C == LCC*C + LCCCC
+
+LCCC + LCCC*C == LCCC* + LCCCC
+
+LCCC + RCC*CC == LC*CC + RCCCC
+
+LCCC + RCC*CC == LCC*C + RCCCC
+
+LCCC + RCC*CC == LCCC* + RCCCC
+
+LCCC + CC* == LC*CC + CC
+
+LCCC + CC* == LCC*C + CC
+
+LCCC + CC* == LCCC* + CC
+
+LCCC + CCC* == LC*CC + CCC
+
+LCCC + CCC* == LCC*C + CCC
+
+LCCC + CCC* == LCCC* + CCC
+
+LCCC + C* == LC*CC + C
+
+LCCC + C* == LCC*C + C
+
+LCCC + C* == LCCC* + C
+
+LCCC + RC*CCC == LC*CC + RCCCC
+
+LCCC + RC*CCC == LCC*C + RCCCC
+
+LCCC + RC*CCC == LCCC* + RCCCC
+
+LCCC + LC*CCC == LC*CC + LCCCC
+
+LCCC + LC*CCC == LCC*C + LCCCC
+
+LCCC + LCC*CC == LC*CC + LCCCC
+
+LCCC + LCC*CC == LCC*C + LCCCC
+
+RCCCCC__CC + RCCC*C == RCCCC*C__CC + RCCCC 
+
+RCCCCC__CC + LCCC*C == RCCCCC__CC* + LCCCC 
+
+RCCCCC__CC + RCC*CC == RCCCCC__CC* + RCCCC 
+
+RCCCCC__CC + CC* == RCCCC*C__CC + CC 
+
+RCCCCC__CC + CC* == RCCCCC__CC* + CC 
+
+RCCCCC__CC + CCC* == RCCCC*C__CC + CCC
+
+RCCCCC__CC + CCC* == RCCCCC__CC* + CCC
+
+RCCCCC__CC + C* == RCCCC*C__CC + C 
+
+RCCCCC__CC + C* == RCCCCC__CC* + C 
+
+RCCCCC__CC + RC*CCC == RCCCC*C__CC + RCCCC 
+
+RCCCCC__CC + RC*CCC == RCCCCC__CC* + RCCCC 
+
+RCCCCC__CC + LC*CCC == RCCCCC__CC* + LCCCC 
+
+RCCCCC__CC + LCC*CC == RCCCC*C__CC + LCCCC 
+
+LCCCCC__CC + LCCC*C == LCCCC*C__CC + LCCCC 
+
+LCCCCC__CC + RCC*CC == LCCCC*C__CC + RCCCC 
+
+LCCCCC__CC + RCC*CC == LCCCCC__CC* + RCCCC 
+
+LCCCCC__CC + CC* == LCCCC*C__CC + CC 
+
+LCCCCC__CC + CC* == LCCCCC__CC* + CC 
+
+LCCCCC__CC + CCC* == LCCCC*C__CC + CCC
+
+LCCCCC__CC + CCC* == LCCCCC__CC* + CCC
+
+LCCCCC__CC + C* == LCCCC*C__CC + C
+
+LCCCCC__CC + C* == LCCCCC__CC* + C
+
+LCCCCC__CC + RC*CCC == LCCCC*C__CC + RCCCC 
+
+LCCCCC__CC + RC*CCC == LCCCCC__CC* + RCCCC 
+
+RCCCC + RCCC*C == RC*CCC + RCCCC
+
+RCCCC + RCCC*C == RCCCC* + RCCCC
+
+RCCCC + LCCC*C == RCC*CC + LCCCC
+
+RCCCC + LCCC*C == RCCC*C + LCCCC
+
+RCCCC + LCCC*C == RCCCC* + LCCCC
+
+RCCCC + RCC*CC == RCC*CC + RCCCC
+
+RCCCC + RCC*CC == RCCC*C + RCCCC
+
+RCCCC + CC* == RC*CCC + CC
+
+RCCCC + CC* == RCC*CC + CC
+
+RCCCC + CC* == RCCC*C + CC
+
+RCCCC + CC* == RCCCC* + CC
+
+RCCCC + CCC* == RC*CCC + CCC
+
+RCCCC + CCC* == RCC*CC + CCC
+
+RCCCC + CCC* == RCCC*C + CCC
+
+RCCCC + CCC* == RCCCC* + CCC
+
+RCCCC + C* == RC*CCC + C
+
+RCCCC + C* == RCC*CC + C
+
+RCCCC + C* == RCCC*C + C
+
+RCCCC + C* == RCCCC* + C
+
+RCCCC + RC*CCC == RC*CCC + RCCCC
+
+RCCCC + RC*CCC == RCC*CC + RCCCC
+
+RCCCC + LC*CCC == RC*CCC + LCCCC
+
+RCCCC + LC*CCC == RCCC*C + LCCCC
+
+RCCCC + LCC*CC == RCC*CC + LCCCC
+
+RCCCC + LCC*CC == RCCC*C + LCCCC
+
+LCCCC + LCCC*C == LCC*CC + LCCCC
+
+LCCCC + RCC*CC == LC*CCC + RCCCC
+
+LCCCC + CC* == LC*CCC + CC
+
+LCCCC + CC* == LCC*CC + CC
+
+LCCCC + CC* == LCCC*C + CC
+
+LCCCC + CC* == LCCCC* + CC
+
+LCCCC + CCC* == LC*CCC + CCC
+
+LCCCC + CCC* == LCC*CC + CCC
+
+LCCCC + CCC* == LCCC*C + CCC
+
+LCCCC + CCC* == LCCCC* + CCC
+
+LCCCC + C* == LC*CCC + C
+
+LCCCC + C* == LCC*CC + C
+
+LCCCC + C* == LCCC*C + C
+
+LCCCC + C* == LCCCC* + C
+
+LCCCC + RC*CCC == LCC*CC + RCCCC
+
+LCCCC + RC*CCC == LCCC*C + RCCCC
+
+LCCCC + RC*CCC == LCCCC* + RCCCC
+
+LCCCC + LC*CCC == LCC*CC + LCCCC
+
+LCCCC + LC*CCC == LCCC*C + LCCCC
+
+LCCCC + LC*CCC == LCCCC* + LCCCC
+
+RCCCC + RCCC* == RCC*CC + RCCC  
+
+RCCCC + RCCC* == RCCCC* + RCCC  
+
+RCCCC + ArC* == RC*CCC + ArC  
+
+RCCCC + ArC* == RCCC*C + ArC  
+
+RCCCC + ArC* == RCCCC* + ArC  
+
+RCCCC + RCC* == RCCC*C + RCC  
+
+RCCCC + RCC* == RCCCC* + RCC  
+
+RCCCC + ArCC* == RCCCC* + ArCC  
+
+RCCCC + RC* == RCC*CC + RC 
+
+RCCCC + RC* == RCCC*C + RC 
+
+RCCCC + RC* == RCCCC* + RC 
+
+RCCCC + ArCCC* == RCCC*C + ArCCC  
+
+RCCCC + ArCCC* == RCCCC* + ArCCC  
+
+RCCCC + ArC*CCCR == RC*CCC + ArCCCCR  
+
+RCCCC + ArC*CCCR == RCCCC* + ArCCCCR  
+
+RCCCC + H* == RC*CCC + H2  
+
+RCCCC + H* == RCCCC* + H2  
+
+RCCCC + ArCC*CCR == RC*CCC + ArCCCCR  
+
+RCCCC + ArCC*CCR == RCCCC* + ArCCCCR  
+
+RCCCC + ArCCC*CR == RC*CCC + ArCCCCR  
+
+RCCCC + ArCCC*CR == RCC*CC + ArCCCCR  
+
+RCCCC + ArCCC*CR == RCCC*C + ArCCCCR  
+
+RCCCC + ArCCC*CR == RCCCC* + ArCCCCR  
+
+RCCCC + ArCCCC*R == RC*CCC + ArCCCCR  
+
+RCCCC + ArCCCC*R == RCC*CC + ArCCCCR  
+
+RCCCC + ArCCCC*R == RCCC*C + ArCCCCR  
+
+RCCCC + ArCCCC*R == RCCCC* + ArCCCCR  
+
+RCCCC + RCC*CCR == RC*CCC + RCCCCR  
+
+RCCCC + RCC*CCR == RCC*CC + RCCCCR  
+
+RCCCC + RCC*CCR == RCCCC* + RCCCCR  
+
+RCCCC + LCCC* == RCCC*C + LCCC  
+
+RCCCC + LCCC* == RCCCC* + LCCC  
+
+RCCCC + LCC* == RC*CCC + LCC 
+
+RCCCC + LCC* == RCC*CC + LCC 
+
+RCCCC + LCC* == RCCCC* + LCC 
+
+RCCCC + LC* == RCC*CC + LC 
+
+RCCCC + LC* == RCCC*C + LC 
+
+RCCCC + LC* == RCCCC* + LC 
+
+RCCCC + ArC*CCCL == RC*CCC + ArCCCCL  
+
+RCCCC + ArC*CCCL == RCCC*C + ArCCCCL  
+
+RCCCC + ArC*CCCL == RCCCC* + ArCCCCL  
+
+RCCCC + ArCC*CCL == RC*CCC + ArCCCCL  
+
+RCCCC + ArCC*CCL == RCCC*C + ArCCCCL  
+
+RCCCC + ArCC*CCL == RCCCC* + ArCCCCL  
+
+RCCCC + ArCCC*CL == RCC*CC + ArCCCCL  
+
+RCCCC + ArCCC*CL == RCCC*C + ArCCCCL  
+
+RCCCC + ArCCC*CL == RCCCC* + ArCCCCL  
+
+RCCCC + ArCCCC*L == RCCC*C + ArCCCCL  
+
+RCCCC + ArCCCC*L == RCCCC* + ArCCCCL  
+
+RCCCC + LCC*CCR == RCCC*C + LCCCCR  
+
+RCCCC + LCC*CCR == RCCCC* + LCCCCR  
+
+RCCCC + RCC*CCL == RC*CCC + LCCCCR  
+
+RCCCC + RCC*CCL == RCC*CC + LCCCCR  
+
+RCCCC + RCC*CCL == RCCC*C + LCCCCR  
+
+RCCCC + RCC*CCL == RCCCC* + LCCCCR  
+
+RCCCC + LCC*CCL == RCC*CC + LCCCCL  
+
+RCCCC + LCC*CCL == RCCCC* + LCCCCL  
+
+RCCCC + RCCCC* == RC*CCC + RCCCC 
+
+RCCCC + RCCCC* == RCC*CC + RCCCC 
+
+RCCCC + RCCCC* == RCCCC* + RCCCC 
+
+RCCCC + RCCCCC* == RC*CCC + RCCCCC 
+
+RCCCC + RCCCCC* == RCC*CC + RCCCCC 
+
+RCCCC + RCCCCC* == RCCC*C + RCCCCC 
+
+RCCCC + RCCCCC* == RCCCC* + RCCCCC 
+
+RCCCC + RCCCCCC* == RC*CCC + RCCCCCC  
+
+RCCCC + RCCCCCC* == RCC*CC + RCCCCCC  
+
+RCCCC + RCCCCCC* == RCCC*C + RCCCCCC  
+
+RCCCC + RCCCCCC* == RCCCC* + RCCCCCC  
+
+RCCCC + RCCCC*C__CC == RCC*CC + RCCCCC__CC  
+
+RCCCC + RCCCC*C__CC == RCCCC* + RCCCCC__CC  
+
+RCCCC + ArC(CC*CR)CCCR == RC*CCC + ArC(CCCR)CCCR  
+
+RCCCC + ArC(CC*CR)CCCR == RCC*CC + ArC(CCCR)CCCR  
+
+RCCCC + ArC(CC*CR)CCCR == RCCC*C + ArC(CCCR)CCCR  
+
+RCCCC + ArC(CC*CR)CCCR == RCCCC* + ArC(CCCR)CCCR  
+
+RCCCC + ArC*(CCCR)CCCR == RCCCC* + ArC(CCCR)CCCR  
+
+RCCCC + LCCCC* == RCC*CC + LCCCC 
+
+RCCCC + LCCCC* == RCCC*C + LCCCC 
+
+RCCCC + LCCCCC* == RC*CCC + LCCCCC 
+
+RCCCC + LCCCCC* == RCC*CC + LCCCCC 
+
+RCCCC + LCCCCC* == RCCC*C + LCCCCC 
+
+RCCCC + LCCCCC* == RCCCC* + LCCCCC 
+
+RCCCC + LCCCCCC* == RC*CCC + LCCCCCC 
+
+RCCCC + LCCCCCC* == RCC*CC + LCCCCCC 
+
+RCCCC + LCCCCCC* == RCCC*C + LCCCCCC 
+
+RCCCC + LCCCCCC* == RCCCC* + LCCCCCC 
+
+RCCCC + LCCCC*C__CC == RCCC*C + LCCCCC__CC  
+
+RCCCC + LCCCC*C__CC == RCCCC* + LCCCCC__CC  
+
+RCCCC + ArC(CC*CR)CCCL == RC*CCC + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CR)CCCL == RCC*CC + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CR)CCCL == RCCC*C + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CR)CCCL == RCCCC* + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CL)CCCR == RC*CCC + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CL)CCCR == RCC*CC + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CL)CCCR == RCCC*C + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CL)CCCR == RCCCC* + ArC(CCCL)CCCR  
+
+RCCCC + ArC(CC*CL)CCCL == RC*CCC + ArC(CCCL)CCCL  
+
+RCCCC + ArC(CC*CL)CCCL == RCC*CC + ArC(CCCL)CCCL  
+
+RCCCC + ArC(CC*CL)CCCL == RCCC*C + ArC(CCCL)CCCL  
+
+RCCCC + ArC(CC*CL)CCCL == RCCCC* + ArC(CCCL)CCCL  
+
+RCCCC + ArC*(CCCL)CCCR == RC*CCC + ArC(CCCL)CCCR  
+
+RCCCC + ArC*(CCCL)CCCR == RCCCC* + ArC(CCCL)CCCR  
+
+RCCCC + ArC*(CCCL)CCCL == RCCC*C + ArC(CCCL)CCCL  
+
+RCCCC + ArC*(CCCL)CCCL == RCCCC* + ArC(CCCL)CCCL  
+
+RCCCC + ArC*C == RCC*CC + ArCC  
+
+RCCCC + ArC*C == RCCC*C + ArCC  
+
+RCCCC + ArC*C == RCCCC* + ArCC  
+
+RCCCC + C__CC__CC* == RC*CCC + C__CC__CC  
+
+RCCCC + C__CC__CC* == RCCCC* + C__CC__CC  
+
+RCCCC + RC*C__C == RCCCC* + RCC__C  
+
+RCCCC + LC*C__C == RC*CCC + LCC__C  
+
+RCCCC + LC*C__C == RCC*CC + LCC__C  
+
+RCCCC + LC*C__C == RCCC*C + LCC__C  
+
+RCCCC + LC*C__C == RCCCC* + LCC__C  
+
+RCCCC + RCCCCC__CC* == RCCC*C + RCCCCC__CC 
+
+RCCCC + RCCCCC__CC* == RCCCC* + RCCCCC__CC 
+
+RCCCC + LCCCCC__CC* == RCCC*C + LCCCCC__CC 
+
+RCCCC + LCCCCC__CC* == RCCCC* + LCCCCC__CC 
+
+LCCCC + RCCC* == LC*CCC + RCCC  
+
+LCCCC + RCCC* == LCCC*C + RCCC  
+
+LCCCC + RCCC* == LCCCC* + RCCC  
+
+LCCCC + ArC* == LC*CCC + ArC  
+
+LCCCC + ArC* == LCC*CC + ArC  
+
+LCCCC + ArC* == LCCCC* + ArC  
+
+LCCCC + RCC* == LC*CCC + RCC  
+
+LCCCC + RCC* == LCC*CC + RCC  
+
+LCCCC + RCC* == LCCC*C + RCC  
+
+LCCCC + RCC* == LCCCC* + RCC  
+
+LCCCC + ArCC* == LC*CCC + ArCC  
+
+LCCCC + ArCC* == LCCCC* + ArCC  
+
+LCCCC + RC* == LC*CCC + RC  
+
+LCCCC + RC* == LCC*CC + RC  
+
+LCCCC + RC* == LCCCC* + RC  
+
+LCCCC + ArCCC* == LCCC*C + ArCCC 
+
+LCCCC + ArCCC* == LCCCC* + ArCCC 
+
+LCCCC + ArC*CCCR == LCC*CC + ArCCCCR  
+
+LCCCC + ArC*CCCR == LCCCC* + ArCCCCR  
+
+LCCCC + H* == LC*CCC + H2  
+
+LCCCC + H* == LCCCC* + H2  
+
+LCCCC + ArCC*CCR == LC*CCC + ArCCCCR  
+
+LCCCC + ArCC*CCR == LCCC*C + ArCCCCR  
+
+LCCCC + ArCC*CCR == LCCCC* + ArCCCCR  
+
+LCCCC + ArCCC*CR == LC*CCC + ArCCCCR  
+
+LCCCC + ArCCC*CR == LCC*CC + ArCCCCR  
+
+LCCCC + ArCCC*CR == LCCC*C + ArCCCCR  
+
+LCCCC + ArCCC*CR == LCCCC* + ArCCCCR  
+
+LCCCC + ArCCCC*R == LCCC*C + ArCCCCR  
+
+LCCCC + ArCCCC*R == LCCCC* + ArCCCCR  
+
+LCCCC + RCC*CCR == LC*CCC + RCCCCR  
+
+LCCCC + RCC*CCR == LCCC*C + RCCCCR  
+
+LCCCC + RCC*CCR == LCCCC* + RCCCCR  
+
+LCCCC + LCCC* == LC*CCC + LCCC  
+
+LCCCC + LCCC* == LCC*CC + LCCC  
+
+LCCCC + LCCC* == LCCCC* + LCCC  
+
+LCCCC + LCC* == LCC*CC + LCC  
+
+LCCCC + LCC* == LCCCC* + LCC  
+
+LCCCC + LC* == LC*CCC + LC  
+
+LCCCC + LC* == LCC*CC + LC  
+
+LCCCC + LC* == LCCCC* + LC  
+
+LCCCC + ArC*CCCL == LCC*CC + ArCCCCL  
+
+LCCCC + ArC*CCCL == LCCC*C + ArCCCCL  
+
+LCCCC + ArC*CCCL == LCCCC* + ArCCCCL  
+
+LCCCC + ArCC*CCL == LCC*CC + ArCCCCL  
+
+LCCCC + ArCC*CCL == LCCCC* + ArCCCCL  
+
+LCCCC + ArCCC*CL == LC*CCC + ArCCCCL  
+
+LCCCC + ArCCC*CL == LCCCC* + ArCCCCL  
+
+LCCCC + ArCCCC*L == LCCC*C + ArCCCCL  
+
+LCCCC + ArCCCC*L == LCCCC* + ArCCCCL  
+
+LCCCC + LCC*CCR == LC*CCC + LCCCCR  
+
+LCCCC + LCC*CCR == LCCC*C + LCCCCR  
+
+LCCCC + LCC*CCR == LCCCC* + LCCCCR  
+
+LCCCC + RCC*CCL == LC*CCC + LCCCCR  
+
+LCCCC + RCC*CCL == LCC*CC + LCCCCR  
+
+LCCCC + RCC*CCL == LCCC*C + LCCCCR  
+
+LCCCC + RCC*CCL == LCCCC* + LCCCCR  
+
+LCCCC + LCC*CCL == LC*CCC + LCCCCL  
+
+LCCCC + LCC*CCL == LCC*CC + LCCCCL  
+
+LCCCC + LCC*CCL == LCCCC* + LCCCCL  
+
+LCCCC + RCCCC* == LC*CCC + RCCCC  
+
+LCCCC + RCCCC* == LCC*CC + RCCCC  
+
+LCCCC + RCCCC* == LCCCC* + RCCCC  
+
+LCCCC + RCCCCC* == LC*CCC + RCCCCC  
+
+LCCCC + RCCCCC* == LCC*CC + RCCCCC  
+
+LCCCC + RCCCCC* == LCCC*C + RCCCCC  
+
+LCCCC + RCCCCC* == LCCCC* + RCCCCC  
+
+LCCCC + RCCCCCC* == LC*CCC + RCCCCCC  
+
+LCCCC + RCCCCCC* == LCC*CC + RCCCCCC  
+
+LCCCC + RCCCCCC* == LCCC*C + RCCCCCC  
+
+LCCCC + RCCCCCC* == LCCCC* + RCCCCCC  
+
+LCCCC + RCCCC*C__CC == LC*CCC + RCCCCC__CC  
+
+LCCCC + RCCCC*C__CC == LCCC*C + RCCCCC__CC  
+
+LCCCC + RCCCC*C__CC == LCCCC* + RCCCCC__CC  
+
+LCCCC + ArC(CC*CR)CCCR == LC*CCC + ArC(CCCR)CCCR  
+
+LCCCC + ArC(CC*CR)CCCR == LCC*CC + ArC(CCCR)CCCR  
+
+LCCCC + ArC(CC*CR)CCCR == LCCC*C + ArC(CCCR)CCCR  
+
+LCCCC + ArC(CC*CR)CCCR == LCCCC* + ArC(CCCR)CCCR  
+
+LCCCC + ArC*(CCCR)CCCR == LC*CCC + ArC(CCCR)CCCR  
+
+LCCCC + ArC*(CCCR)CCCR == LCCCC* + ArC(CCCR)CCCR  
+
+LCCCC + LCCCC* == LCC*CC + LCCCC  
+
+LCCCC + LCCCC* == LCCC*C + LCCCC 
+
+LCCCC + LCCCCC* == LC*CCC + LCCCCC  
+
+LCCCC + LCCCCC* == LCC*CC + LCCCCC  
+
+LCCCC + LCCCCC* == LCCC*C + LCCCCC  
+
+LCCCC + LCCCCC* == LCCCC* + LCCCCC  
+
+LCCCC + LCCCCCC* == LC*CCC + LCCCCCC  
+
+LCCCC + LCCCCCC* == LCC*CC + LCCCCCC  
+
+LCCCC + LCCCCCC* == LCCC*C + LCCCCCC  
+
+LCCCC + LCCCCCC* == LCCCC* + LCCCCCC  
+
+LCCCC + LCCCC*C__CC == LC*CCC + LCCCCC__CC  
+
+LCCCC + LCCCC*C__CC == LCC*CC + LCCCCC__CC  
+
+LCCCC + LCCCC*C__CC == LCCCC* + LCCCCC__CC  
+
+LCCCC + ArC(CC*CR)CCCL == LC*CCC + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CR)CCCL == LCC*CC + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CR)CCCL == LCCC*C + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CR)CCCL == LCCCC* + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CL)CCCR == LC*CCC + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CL)CCCR == LCC*CC + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CL)CCCR == LCCC*C + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CL)CCCR == LCCCC* + ArC(CCCL)CCCR  
+
+LCCCC + ArC(CC*CL)CCCL == LC*CCC + ArC(CCCL)CCCL  
+
+LCCCC + ArC(CC*CL)CCCL == LCC*CC + ArC(CCCL)CCCL  
+
+LCCCC + ArC(CC*CL)CCCL == LCCC*C + ArC(CCCL)CCCL  
+
+LCCCC + ArC(CC*CL)CCCL == LCCCC* + ArC(CCCL)CCCL  
+
+LCCCC + ArC*(CCCL)CCCR == LC*CCC + ArC(CCCL)CCCR  
+
+LCCCC + ArC*(CCCL)CCCR == LCCC*C + ArC(CCCL)CCCR  
+
+LCCCC + ArC*(CCCL)CCCR == LCCCC* + ArC(CCCL)CCCR  
+
+LCCCC + ArC*(CCCL)CCCL == LCCCC* + ArC(CCCL)CCCL  
+
+LCCCC + ArC*C == LCC*CC + ArCC  
+
+LCCCC + ArC*C == LCCC*C + ArCC  
+
+LCCCC + ArC*C == LCCCC* + ArCC  
+
+LCCCC + C__CC__CC* == LC*CCC + C__CC__CC  
+
+LCCCC + C__CC__CC* == LCC*CC + C__CC__CC  
+
+LCCCC + C__CC__CC* == LCCC*C + C__CC__CC  
+
+LCCCC + C__CC__CC* == LCCCC* + C__CC__CC  
+
+LCCCC + RC*C__C == LCC*CC + RCC__C  
+
+LCCCC + RC*C__C == LCCC*C + RCC__C  
+
+LCCCC + RC*C__C == LCCCC* + RCC__C  
+
+LCCCC + LC*C__C == LCCC*C + LCC__C  
+
+LCCCC + LC*C__C == LCCCC* + LCC__C  
+
+LCCCC + RCCCCC__CC* == LCC*CC + RCCCCC__CC 
+
+LCCCC + RCCCCC__CC* == LCCCC* + RCCCCC__CC 
+
+LCCCC + LCCCCC__CC* == LC*CCC + LCCCCC__CC 
+
+LCCCC + LCCCCC__CC* == LCC*CC + LCCCCC__CC 
+
+LCCCC + LCCCCC__CC* == LCCC*C + LCCCCC__CC 
+
+LCCCC + LCCCCC__CC* == LCCCC* + LCCCCC__CC 
 
 # Initiations: R_Recombination
 
@@ -1925,12 +2127,17 @@ RCCCCR == RCC*CCR + H*
 RC == RC* + H*
 
 RCCCC == RC* + CCC*
+
 RCCCC == RCC* + CC*
+
 RCCCC == RCCC* + C*
 
 RCCCC == RCCCC* + H*
+
 RCCCC == RCCC*C + H*
+
 RCCCC == RCC*CC + H*
+
 RCCCC == RC*CCC + H*
 
 # Recombinations: R_Recombination
@@ -1970,12 +2177,17 @@ LCCCCL == LCC*CCL + H*
 LC == LC* + H*
 
 LCCCC == LC* + CCC*
+
 LCCCC == LCC* + CC*
+
 LCCCC == LCCC* + C*
 
 LCCCC == LCCCC* + H*
+
 LCCCC == LCCC*C + H*
+
 LCCCC == LCC*CC + H*
+
 LCCCC == LC*CCC + H*
 
 # Recombinations: R_Recombination
