@@ -2,6 +2,16 @@ ArCCCCR: c1ccccc1CCCCR
 RCCCCR: RCCCCR
 RCCCC: RCCCC
 RArArR: c1ccccc1C(CCCR)C(c2ccccc2)CCCR
+RCCC: RCCC
+ArC: c1ccccc1C
+H2: [H][H]
+RC: RC
+C: C
+CC: CC
+ArCC: c1ccccc1CC
+ArCCC: c1ccccc1CCC
+RCC: RCC
+CCC: CCC
 
 # below starts the radicals
 RCCC*: RCC[CH2]
