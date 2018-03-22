@@ -12,6 +12,13 @@ ArCC: c1ccccc1CC
 ArCCC: c1ccccc1CCC
 RCC: RCC
 CCC: CCC
+RCC__C: RCC=C
+RCCC__C: RCCC=C
+C__C: C=C
+ArCC__C: c1ccccc1CC=C
+ArC__C: c1ccccc1C=C
+RC__C: RC=C
+CC__C: CC=C
 
 # below starts the radicals
 RCCC*: RCC[CH2]
