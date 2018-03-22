@@ -1,0 +1,25 @@
+ArCCCCR: c1ccccc1CCCCR
+RCCCCR: RCCCCR
+RCCCC: RCCCC
+RArArR: c1ccccc1C(CCCR)C(c2ccccc2)CCCR
+
+# below starts the radicals
+RCCC*: RCC[CH2]
+ArC*: c1ccccc1[CH2]
+RCC*: RC[CH2]
+ArCC*: c1ccccc1C[CH2]
+RC*: R[CH2]
+ArCCC*: c1ccccc1CC[CH2]
+ArC*CCCR: c1ccccc1[CH]CCCR
+H*: [H]
+ArCC*CCR: c1ccccc1C[CH]CCR
+ArCCC*CR: c1ccccc1CC[CH]CR
+ArCCCC*R: c1ccccc1CCC[CH]R
+RCC*CCR: RC[CH]CCR
+RCCCC*: RCCC[CH2]
+RCCC*C: RCC[CH]C
+RCC*CC: RC[CH]CC
+RC*CCC: R[CH]CCC
+CCC*: CC[CH2]
+CC*: C[CH2]
+C*: [CH3]

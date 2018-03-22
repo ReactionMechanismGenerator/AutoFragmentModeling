@@ -1,0 +1,28 @@
+# Initiations: R_Recombination
+
+ArCCCCR == RCCC* + ArC*
+ArCCCCR == RCC* + ArCC*
+ArCCCCR == RC* + ArCCC*
+
+ArCCCCR == ArC*CCCR + H*
+ArCCCCR == ArCC*CCR + H*
+ArCCCCR == ArCCC*CR + H*
+ArCCCCR == ArCCCC*R + H*
+
+RCCCCR == RCC* + RCC*
+RCCCCR == RCCC* + RC*
+
+RCCCCR == RCC*CCR + H*
+
+RCCCC == RC* + CCC*
+RCCCC == RCC* + CC*
+RCCCC == RCCC* + C*
+
+RCCCC == RCCCC* + H*
+RCCCC == RCCC*C + H*
+RCCCC == RCC*CC + H*
+RCCCC == RC*CCC + H*
+
+# Recombinations: R_Recombination
+
+ArC*CCCR + ArC*CCCR == RArArR
