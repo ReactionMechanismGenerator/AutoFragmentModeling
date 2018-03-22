@@ -62,6 +62,27 @@ ArC*(CCCL)CCCR == ArC(__C)CCCR + LCC*
 
 ArC*(CCCL)CCCL == ArC(__C)CCCL + LCC*
 
+RCCC*C == RC* + CC__C
+RCCC*C == RCCC__C + H*
+
+RCC*CC == RCC__C + C*
+RC*CCC == RC__C + CC*
+
+LCCC*C == LC* + CC__C
+LCCC*C == LCCC__C + H*
+
+LCC*CC == LCC__C + C*
+LC*CCC == LC__C + CC*
+
+ArC*CC == ArC__C + C*
+ArCC*C == ArCC__C + H*
+
+RCC*C == RCC__C + H*
+RC*CC == RC__C + C*
+
+LCC*C == LCC__C + H*
+LC*CC == LC__C + C*
+
 # Disproportionations: Disproportionation
 
 ArC__C + C__CC__CC == ArC*C + C__CC__CC*
