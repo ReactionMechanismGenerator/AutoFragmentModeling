@@ -1924,6 +1924,15 @@ RCCCCR == RCC*CCR + H*
 
 RC == RC* + H*
 
+RCCCC == RC* + CCC*
+RCCCC == RCC* + CC*
+RCCCC == RCCC* + C*
+
+RCCCC == RCCCC* + H*
+RCCCC == RCCC*C + H*
+RCCCC == RCC*CC + H*
+RCCCC == RC*CCC + H*
+
 # Recombinations: R_Recombination
 
 ArC*CCCR + ArC*CCCR == RArArR
@@ -1959,6 +1968,15 @@ LCCCCR == RCC*CCL + H*
 LCCCCL == LCC*CCL + H*
 
 LC == LC* + H*
+
+LCCCC == LC* + CCC*
+LCCCC == LCC* + CC*
+LCCCC == LCCC* + C*
+
+LCCCC == LCCCC* + H*
+LCCCC == LCCC*C + H*
+LCCCC == LCC*CC + H*
+LCCCC == LC*CCC + H*
 
 # Recombinations: R_Recombination
 
