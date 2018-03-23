@@ -32,13 +32,13 @@ def init_plotting():
     plt.gca().xaxis.set_ticks_position('bottom')
     plt.gca().yaxis.set_ticks_position('left')
 
-def plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts):
+def plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts, model):
 
     y1 = get_mw_distri_data(detailed_mech_mwd_path, mw_cuts)
     y2 = get_mw_distri_data(frag_mech_mwd_path, mw_cuts)
 
-    x1 = np.arange(len(y1))*2
-    x2 = np.arange(len(y1))*2+0.8
+    x1 = np.arange(len(y1))*2+0.8
+    x2 = np.arange(len(y1))*2
     
     init_plotting()
 
@@ -48,8 +48,9 @@ def plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts):
     plt.bar(x1, y1, label='Detailed Mechansim', color='#2c7fb8')
     plt.bar(x2, y2, label='Fragment Mechanism', color='#66c2a4')
 
-    ax.set_xticks(x2)
+    ax.set_xticks(x1)
     
+    # xtick_labels = ['<C5', 'C5-C15', 'C15-C25', 'C25-C35', '>C35']
     xtick_labels = []
     for i, mw_cut in enumerate(mw_cuts):
         if i == 0:
@@ -63,12 +64,11 @@ def plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts):
     ax.set_xticklabels(xtick_labels)
     plt.xlabel('Molecular Weight (g/mol)')
     plt.ylabel('Mole Fraction')
-    plt.ylim((0, 0.8))
 
     plt.gca().legend()
 
     plt.tight_layout()
-    plt.savefig('mwd_comparison.pdf')
+    plt.savefig('mwd_comparison_{0}.pdf'.format(model))
 
 
 def get_mw_distri_data(data_filepath, mw_cuts):
@@ -97,12 +97,15 @@ def find_which_mw_cut(mw, mw_cuts):
     
     return i + 1
 
-mw_cuts = [50, 150, 350, 550, 750]
+
+model = 'two-sided_newcut1'
+# mw_cuts = [70, 210, 350, 490]
+mw_cuts = [30, 150, 350, 550]
 detailed_mech_mwd_path = os.path.join('../', 'data', 'pdd_chemistry', 
                                       'detailed', 'pdd_2014_pruning4_s4_a3ene_c11',
                                       'results', 'mwd.csv')
 frag_mech_mwd_path = os.path.join('../', 'data', 'pdd_chemistry', 
-                                  'two-sided',
+                                  model,
                                   'results', 'mwd.csv')
 
-plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts)
+plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts, model)
