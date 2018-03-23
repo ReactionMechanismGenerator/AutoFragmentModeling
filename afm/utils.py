@@ -262,3 +262,23 @@ def flatten(combo):
 		else:
 			return_list.append(i)
 	return return_list
+
+def parse_reaction_string(reaction_string):
+
+	reactant_side, product_side = [token.strip() for token in reaction_string.split('==')]
+	reactant_strings = [token.strip() for token in reactant_side.split('+')]
+	product_strings = [token.strip() for token in product_side.split('+')]
+
+	return reactant_strings, product_strings
+
+def read_frag_mech(frag_mech_path):
+
+	reaction_string_dict = {}
+	with open(frag_mech_path) as f_in:
+		for line in f_in:
+			if line.strip() and not line.startswith('#'):
+				reaction_string = line.strip()
+				reactant_strings, product_strings = parse_reaction_string(reaction_string)
+				reaction_string_dict[reaction_string]= [reactant_strings, product_strings]
+
+	return reaction_string_dict
