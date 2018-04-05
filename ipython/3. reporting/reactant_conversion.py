@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 def init_plotting():
     plt.rcParams['figure.figsize'] = (4, 3)
     plt.rcParams['font.size'] = 8
-    plt.rcParams['font.family'] = 'Helvetica'
+    #plt.rcParams['font.family'] = 'Helvetica'
     plt.rcParams['axes.labelsize'] = plt.rcParams['font.size']
     plt.rcParams['axes.titlesize'] = 1.5*plt.rcParams['font.size']
     plt.rcParams['legend.fontsize'] = plt.rcParams['font.size']
     plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
     plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
-    plt.rcParams['savefig.dpi'] = 2*plt.rcParams['savefig.dpi']
+    #plt.rcParams['savefig.dpi'] = 2*plt.rcParams['savefig.dpi']
     plt.rcParams['xtick.major.size'] = 3
     plt.rcParams['xtick.minor.size'] = 3
     plt.rcParams['xtick.major.width'] = 1
