@@ -1,0 +1,29 @@
+# Beta-scissions: R_Addition_MultipleBond
+
+RCCC* == RC* + C__C 
+
+ArCCC* == ArC* + C__C
+
+ArC*CCCR == ArC__C + RCC*
+
+ArCC*CCR == ArCC__C + RC*
+ArCC*CCR == ArC* + RCC__C
+
+ArCCC*CR == ArC* + RCC__C
+
+ArCCCC*R == ArCC* + RC__C
+
+RCC*CCR == RCC__C + RC
+
+RCCCC* == RCC* + C__C
+
+RCCC*C == RC* + CC__C
+RCCC*C == RCCC__C + H*
+
+RCC*CC == RCC__C + C*
+
+RC*CCC == RC__C + CC*
+
+CCC* == C__C + C*
+
+CC* == C__C + H*

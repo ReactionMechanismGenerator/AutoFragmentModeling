@@ -207,10 +207,20 @@ class Fragment(Graph):
 
 	def get_fragmental_weight(self):
 		"""
-        Return the fragmental weight of the fragment in kg/mol.
-        """
+		Return the fragmental weight of the fragment in kg/mol.
+		"""
 		mass = 0
 		for vertex in self.vertices:
 			if isinstance(vertex, Atom):
 				mass += vertex.element.mass
 		return mass
+
+	def is_radical(self):
+		"""
+		Return ``True`` if the fragment contains at least one radical electron,
+		or ``False`` otherwise.
+		"""
+		for vertex in self.vertices:
+			if isinstance(vertex, Atom) and vertex.radicalElectrons > 0:
+				return True
+		return False
