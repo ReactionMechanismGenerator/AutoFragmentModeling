@@ -2,7 +2,7 @@ import os
 import unittest
 
 from rmgpy.species import Species
-from rmgpy.molecule.molecule import Atom, Bond
+from rmgpy.molecule.molecule import Atom, Bond, Molecule
 from rmgpy.molecule.element import getElement
 from rmgpy.molecule.atomtype import atomTypes
 
@@ -241,6 +241,17 @@ class TestFragment(unittest.TestCase):
         expected_repr_spec = Species().fromSMILES('CCCCC')
 
         self.assertTrue(expected_repr_spec.isIsomorphic(fragment.species_repr))
+
+    def test_assign_representative_molecule(self):
+
+        smiles_like = 'RCR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.assign_representative_molecule()
+
+        expected_repr_mol = Molecule().fromSMILES('CCCCC')
+
+        self.assertTrue(expected_repr_mol.isIsomorphic(fragment.mol_repr))
 
     def test_get_fragmental_weight1(self):
 
