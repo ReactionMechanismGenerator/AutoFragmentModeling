@@ -1,4 +1,14 @@
 
 .DS_Store
 *.pyc
+*.pdf
 
+chemkin_ode/*
+
+*ipynb_checkpoints*
+
+*old*
+
+*misc_rules*
+
+*results*
