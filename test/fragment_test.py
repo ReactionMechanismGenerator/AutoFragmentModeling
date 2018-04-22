@@ -344,3 +344,50 @@ class TestFragment(unittest.TestCase):
         fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
         fragmental_weight = fragment.get_fragmental_weight()
         self.assertAlmostEqual(fragmental_weight*1000, 14.03, 2)
+
+    def test_updateAtomTypes(self):
+
+        atom_C = Atom(element=getElement('C'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        atom_H1 = Atom(element=getElement('H'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        atom_H2 = Atom(element=getElement('H'), 
+                    radicalElectrons=0, 
+                    charge=0, 
+                    lonePairs=0)
+
+        cutting_label_R1 = afm.fragment.CuttingLabel('R')
+        cutting_label_R2 = afm.fragment.CuttingLabel('R')
+        
+        vertices = [
+            atom_C,
+            cutting_label_R1,
+            cutting_label_R2,
+            atom_H1,
+            atom_H2
+        ]
+
+        bonds = [
+            Bond(atom_C, cutting_label_R1, 1),
+            Bond(atom_C, cutting_label_R2, 1),
+            Bond(atom_C, atom_H1, 1),
+            Bond(atom_C, atom_H2, 1)
+        ]
+        
+        fragment = afm.fragment.Fragment()
+        for vertex in vertices: fragment.addVertex(vertex)
+        for bond in bonds: fragment.addEdge(bond)
+
+        fragment.updateAtomTypes()
+
+        for v in fragment.vertices:
+            if isinstance(v, Atom) and v.isCarbon():
+                break
+
+        self.assertTrue(v.atomType == atomTypes['Cs'])
