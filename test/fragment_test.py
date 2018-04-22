@@ -231,6 +231,86 @@ class TestFragment(unittest.TestCase):
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
 
+    def test_isSubgraphIsomorphic1(self):
+
+        from rmgpy.molecule.group import Group
+
+        smiles_like = '[CH2]CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        adj = """
+1 * R u1
+"""
+        other = Group().fromAdjacencyList(adj)
+
+        self.assertTrue(fragment.isSubgraphIsomorphic(other))
+
+    def test_isSubgraphIsomorphic2(self):
+
+        from rmgpy.molecule.group import Group
+
+        smiles_like = '[CH2]CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        adj = """
+1 * Ct  u1 {2,T}
+2   R!H u0 {1,T}
+"""
+        other = Group().fromAdjacencyList(adj)
+
+        self.assertFalse(fragment.isSubgraphIsomorphic(other))
+
+    def test_isSubgraphIsomorphic3(self):
+
+        from rmgpy.molecule.group import Group
+
+        smiles_like = '[CH2]CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        adj = """
+1 * R u1
+"""
+        other = Group().fromAdjacencyList(adj)
+
+        # create initial map
+        frag_atom_star = None
+        for frag_atom in fragment.vertices:
+            if isinstance(frag_atom, Atom) and frag_atom.radicalElectrons == 1:
+                frag_atom_star = frag_atom
+                break
+
+        group_atom_star = other.vertices[0]
+        initialMap = {frag_atom_star: group_atom_star}
+
+        self.assertTrue(fragment.isSubgraphIsomorphic(other, initialMap=initialMap))
+
+    def test_isSubgraphIsomorphic4(self):
+
+        from rmgpy.molecule.group import Group
+
+        smiles_like = '[CH2]CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.assign_representative_molecule()
+
+        adj = """
+1 * Cs u1 {2,S}
+2   N u0 {1,S}
+"""
+        other = Group().fromAdjacencyList(adj)
+
+        # create initial map
+        frag_atom_star = None
+        for frag_atom in fragment.vertices:
+            if isinstance(frag_atom, Atom) and frag_atom.radicalElectrons == 1:
+                frag_atom_star = frag_atom
+                break
+
+        group_atom_star = other.vertices[0]
+        initialMap = {frag_atom_star: group_atom_star}
+
+        self.assertFalse(fragment.isSubgraphIsomorphic(other, initialMap=initialMap))
+
     def test_assign_representative_species(self):
 
         smiles_like = 'RCR'
