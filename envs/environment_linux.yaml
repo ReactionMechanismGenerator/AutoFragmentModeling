@@ -2,16 +2,18 @@ name: afm_env
 channels:
   - defaults
   - rmg
+  - KEHANG
 dependencies:
-  - rmg
   - numpy
-  - quantities
+  - rmg::quantities
   - scipy
-  - rdkit >=2015.09.2
-  - lpsolve55
-  - pydas >=1.0.1
+  - rmg::rdkit
+  - rmg::lpsolve55
+  - rmg::pydas >=1.0.1
   - matplotlib
-  - cantera
+  - rmg::cantera
   - xlwt
   - nose
   - pandas
+  - KEHANG::rmg
+  - KEHANG::rmgdatabase
