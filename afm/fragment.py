@@ -144,6 +144,14 @@ class Fragment(Graph):
 		"""
 		return self.getEdge(atom1, atom2)
 
+	def addBond(self, bond):
+		"""
+		Add a `bond` to the graph as an edge connecting the two atoms `atom1`
+		and `atom2`.
+		"""
+		self._fingerprint = None
+		return self.addEdge(bond)
+
 	def removeBond(self, bond):
 		"""
 		Remove the bond between atoms `atom1` and `atom2` from the graph.
