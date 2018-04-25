@@ -12,6 +12,7 @@ dependencies:
   - rmg::pydas >=1.0.1
   - matplotlib
   - rmg::cantera
+  - jupyter
   - xlwt
   - nose
   - pandas
