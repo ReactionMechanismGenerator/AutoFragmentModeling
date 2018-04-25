@@ -1,7 +1,9 @@
+import os
 
 from rmgpy.species import Species
 import rmgpy.molecule.group as gr
 import rmgpy.molecule.element as elements
+import rmgpy.molecule.converter as converter
 from rmgpy.molecule.element import getElement
 from rmgpy.molecule.graph import Graph, Vertex
 from rmgpy.molecule.molecule import Atom, Bond, Molecule
@@ -26,6 +28,9 @@ class CuttingLabel(Vertex):
 		Return a representation that can be used to reconstruct the object.
 		"""
 		return "<CuttingLabel '{0}'>".format(str(self))
+
+	@property
+	def symbol(self): return self.label
 
 	def isSpecificCaseOf(self, other):
 		"""
@@ -79,13 +84,28 @@ class Fragment(Graph):
 		"""
 		if self.index == -1: return self.label
 		else: return '{0}({1:d})'.format(self.label, self.index)
-	
-	## need to rewrite later
+
 	def _repr_png_(self):
-		if len(self.species_repr.molecule) > 0:
-			return self.species_repr.molecule[0]._repr_png_()
-		else:
-			return None
+		"""
+		Return a png picture of the molecule, useful for ipython-qtconsole.
+		"""
+		from rmgpy.molecule.draw import MoleculeDrawer
+		tempFileName = 'temp_molecule.png'
+		MoleculeDrawer().draw(self, 'png', tempFileName)
+		png = open(tempFileName,'rb').read()
+		os.unlink(tempFileName)
+		return png
+
+	def copy(self, deep=False):
+		"""
+		Create a copy of the current graph. If `deep` is ``True``, a deep copy
+		is made: copies of the vertices and edges are used in the new graph.
+		If `deep` is ``False`` or not specified, a shallow copy is made: the
+		original vertices and edges are used in the new graph.
+		"""
+		g = Graph.copy(self, deep)
+		other = Fragment(vertices=g.vertices)
+		return other
 
 	def clearLabeledAtoms(self):
 		"""
@@ -130,6 +150,15 @@ class Fragment(Graph):
 				else:
 					labeled[v.label] = v
 		return labeled
+
+	def removeAtom(self, atom):
+		"""
+		Remove `atom` and all bonds associated with it from the graph. Does
+		not remove atoms that no longer have any bonds as a result of this
+		removal.
+		"""
+		self._fingerprint = None
+		return self.removeVertex(atom)
 
 	def hasBond(self, atom1, atom2):
 		"""
@@ -469,4 +498,118 @@ class Fragment(Graph):
 					logging.error("Unable to determine the number of lone pairs for element {0} in {1}".format(v,self))
 			else:
 				v.lonePairs = 0
+
+	def getFormula(self):
+		"""
+		Return the molecular formula for the fragment.
+		"""
+		
+		# Count the number of each element in the molecule
+		elements = {}
+		cuttinglabels = {}
+		for atom in self.vertices:
+			if not isinstance(atom, Atom): 
+				symbol = atom.label
+			else:
+				symbol = atom.element.symbol
+			
+			elements[symbol] = elements.get(symbol, 0) + 1
+		
+		# Use the Hill system to generate the formula
+		formula = ''
+		
+		# Carbon and hydrogen always come first if carbon is present
+		if 'C' in elements.keys():
+			count = elements['C']
+			formula += 'C{0:d}'.format(count) if count > 1 else 'C'
+			del elements['C']
+			if 'H' in elements.keys():
+				count = elements['H']
+				formula += 'H{0:d}'.format(count) if count > 1 else 'H'
+				del elements['H']
+
+		# Other atoms are in alphabetical order
+		# (This includes hydrogen if carbon is not present)
+		keys = elements.keys()
+		keys.sort()
+		for key in keys:
+			count = elements[key]
+			formula += '{0}{1:d}'.format(key, count) if count > 1 else key
+		
+		return formula
+
+	def toRDKitMol(self, removeHs=False, returnMapping=True):
+		"""
+		Convert a molecular structure to a RDKit rdmol object.
+		"""
+		if removeHs: 
+			# because we're replacing
+			# cutting labels with hydrogens
+			# so do not allow removeHs to be True
+			raise "Currently fragment toRDKitMol only allows keeping all the hydrogens."
+
+		# create a molecule from fragment.vertices.copy
+		mapping = self.copyAndMap()
+
+		# replace CuttingLabel with CC
+		atoms = []
+		for vertex in self.vertices:
+
+			mapped_vertex = mapping[vertex]
+			if isinstance(mapped_vertex, CuttingLabel):
+
+				# replace cutting label with atom H
+				atom_H = Atom(element=getElement('H'), 
+							radicalElectrons=0, 
+							charge=0, 
+							lonePairs=0)
+
+				for bondedAtom, bond in mapped_vertex.edges.iteritems():
+					new_bond = Bond(bondedAtom, atom_H, order=bond.order)
+					
+					bondedAtom.edges[atom_H] = new_bond
+					del bondedAtom.edges[mapped_vertex]
+
+					atom_H.edges[bondedAtom] = new_bond
+
+				mapping[vertex] = atom_H
+				atoms.append(atom_H)
+
+			else:
+				atoms.append(mapped_vertex)
+
+		# Note: mapping is a dict with 
+		# key: self.vertex and value: mol0.atom
+
+		mol0 = Molecule()
+		mol0.atoms = atoms
+
+		rdmol, rdAtomIdx_mol0 = converter.toRDKitMol(mol0, removeHs=removeHs, 
+													 returnMapping=returnMapping, 
+													 sanitize=True)
+
+		rdAtomIdx_frag = {}
+		for frag_atom, mol0_atom in mapping.iteritems():
+			rd_idx = rdAtomIdx_mol0[mol0_atom]
+			rdAtomIdx_frag[frag_atom] = rd_idx
+
+		# sync the order of fragment vertices with the order
+		# of mol0.atoms since mol0.atoms is changed/sorted in 
+		# converter.toRDKitMol().
+		# Since the rdmol's atoms order is same as the order of mol0's atoms,
+		# the synchronization between fragment.atoms order and mol0.atoms order
+		# is necessary to make sure the order of fragment vertices
+		# reflects the order of rdmol's atoms
+		vertices_order = []
+		for v in self.vertices:
+			a = mapping[v]
+			idx = mol0.atoms.index(a)
+			vertices_order.append((v, idx))
+
+		adapted_vertices = [tup[0] for tup in sorted(vertices_order, key=lambda tup: tup[1])]
+
+		self.vertices = adapted_vertices
+
+		return rdmol, rdAtomIdx_frag
+
 
