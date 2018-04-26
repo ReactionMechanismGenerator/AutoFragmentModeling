@@ -25,6 +25,7 @@ before_install:
 install:
   - conda env create -f envs/environment_linux.yaml
   - source activate afm_env
+  - conda list
 
 script: 
   - make unittests
