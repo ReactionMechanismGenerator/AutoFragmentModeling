@@ -32,6 +32,9 @@ class CuttingLabel(Vertex):
 	@property
 	def symbol(self): return self.label
 
+	@property
+	def bonds(self): return self.edges
+
 	def isSpecificCaseOf(self, other):
 		"""
 		Return ``True`` if `self` is a specific case of `other`, or ``False``
@@ -84,6 +87,10 @@ class Fragment(Graph):
 		"""
 		if self.index == -1: return self.label
 		else: return '{0}({1:d})'.format(self.label, self.index)
+
+	def __getAtoms(self): return self.vertices
+	def __setAtoms(self, atoms): self.vertices = atoms
+	atoms = property(__getAtoms, __setAtoms)
 
 	def _repr_png_(self):
 		"""
