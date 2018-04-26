@@ -20,7 +20,7 @@ import rmgpy.constants
 from rmgpy.chemkin import loadChemkinFile
 
 import afm.loader
-import afm.utils_1_sided
+import afm.utils
 from afm.canteraModel import Cantera, CanteraCondition
 
 class Simulator(object):
@@ -35,6 +35,9 @@ class Simulator(object):
                                         											   dictionary_path,
                                         											   fragment_smiles_path)
 
+		# pseudo_fragrxns = afm.loader.load_pseudo_fragment_reactions(fragment_dict)
+
+		# self.fragment_reaction_list = fragment_rxns + pseudo_fragrxns
 		self.fragment_reaction_list = fragment_rxns 
 		self.fragment_dict = fragment_dict
 
@@ -99,9 +102,11 @@ class OdeSimulator(Simulator):
 		return alldata
 
 	def reattach_fragments(self, 
-						   r_moles,
-						   rr_list,
-						   grind_size=1,
+						   r_moles, 
+						   l_moles, 
+						   r_l_moles, 
+						   rr_ll_list, 
+						   grind_size=10, 
 						   shuffle_seed=0):
 
 		"""
@@ -110,32 +115,25 @@ class OdeSimulator(Simulator):
 		after re-attachment with their concentrations.
 		"""
 		# cut large moles into smaller pieces
-		grinded_r_moles = afm.utils_1_sided.grind(r_moles, grind_size)
+		grinded_r_moles = afm.utils.grind(r_moles, grind_size)
+		grinded_l_moles = afm.utils.grind(l_moles, grind_size)
 
 		# random shuffle
-		r_moles_shuffle = afm.utils_1_sided.shuffle(grinded_r_moles, shuffle_seed)
+		r_moles_shuffle = afm.utils.shuffle(grinded_r_moles, shuffle_seed)
+		l_moles_shuffle = afm.utils.shuffle(grinded_l_moles, shuffle_seed)
 
 		# match concentrations for single-labeled fragments
 		# including RCCCCR
-		if len(r_moles_shuffle)%2 != 0:
-			half_length = (len(r_moles_shuffle)-1)/2
-		else:
-			half_length = len(r_moles_shuffle)/2
+		matches0 = afm.utils.match_concentrations_with_same_sums(l_moles_shuffle, 
+													   			 r_moles_shuffle, 
+													   			 diff_tol=1e-3)
 
-		half_r_moles_shuffle_1 = r_moles_shuffle[0:half_length]
-		half_r_moles_shuffle_2 = r_moles_shuffle[half_length+1:len(r_moles_shuffle)]
+		matches1, new_r_l_moles = afm.utils.matches_resolve(matches0, rr_ll_list)
 
-		matches0 = afm.utils_1_sided.match_concentrations_with_same_sums(half_r_moles_shuffle_1,
-																 		half_r_moles_shuffle_2,
-													   			 		diff_tol=1e-3)
-
-		matches1, new_r_l_moles = afm.utils_1_sided.matches_resolve(matches0, rr_list)
-
-		r_r_moles=[]
-		r_r_moles.extend(new_r_l_moles)
+		r_l_moles.extend(new_r_l_moles)
 		# insert double-labeled fragments into matches
 		# e.g., LCCCCR
-		matches = afm.utils_1_sided.match_concentrations_with_different_sums(matches1, r_r_moles)
+		matches = afm.utils.match_concentrations_with_different_sums(matches1, r_l_moles)
 
 		return matches
 
@@ -157,14 +155,16 @@ class OdeSimulator(Simulator):
 			moles_dict[spe_label] = max(data.data[-1]*total_moles[-1],0)
 
 		# prepare moles data for re-attachment
-		r_moles, remain_moles, rr_list = categorize_fragments(moles_dict)
+		r_moles, l_moles, r_l_moles, remain_moles, rr_ll_list = categorize_fragments(moles_dict)
 
-		matches = self.reattach_fragments(r_moles,
-										  rr_list,
+		matches = self.reattach_fragments(r_moles, 
+										  l_moles, 
+										  r_l_moles, 
+										  rr_ll_list, 
 										  grind_size, 
 										  shuffle_seed)
 
-		flattened_matches = [(tuple(afm.utils_1_sided.flatten(m[0])), m[1]) for m in matches]
+		flattened_matches = [(tuple(afm.utils.flatten(m[0])), m[1]) for m in matches]
 
 		final_frags_moles = []
 		for remain in remain_moles:
@@ -189,7 +189,9 @@ class OdeSimulator(Simulator):
 def categorize_fragments(moles_dict):
 
 	r_moles = []
-	rr_list = []
+	l_moles = []
+	r_l_moles = []
+	rr_ll_list = []
 	remain_moles = []
 	for spe_label in moles_dict:
 		if '*' in spe_label:
@@ -200,8 +202,8 @@ def categorize_fragments(moles_dict):
 			continue
 		
 		r_count = spe_label.count('R')
-
-		label_count = r_count
+		l_count = spe_label.count('L')
+		label_count = r_count + l_count
 		
 		if label_count == 0:
 			remain_moles.append((spe_label, moles_dict[spe_label]))
@@ -210,16 +212,20 @@ def categorize_fragments(moles_dict):
 		if label_count == 1:
 			if r_count == 1:
 				r_moles.append((spe_label, moles_dict[spe_label]))
-
-		elif label_count == 2:
-			rr_list.append(spe_label)
+			elif l_count == 1:
+				l_moles.append((spe_label, moles_dict[spe_label]))
+		elif label_count == 2 and l_count == r_count:
+			r_l_moles.append((spe_label, moles_dict[spe_label]))
+		elif label_count == 2 and l_count != r_count:
+			rr_ll_list.append(spe_label)
 			if r_count == 2:
 				r_moles.append((spe_label, 2*moles_dict[spe_label]))
-
+			elif l_count == 2:
+				l_moles.append((spe_label, 2*moles_dict[spe_label]))
 		else:
 			print "{0} has more than two cutting labels, which is not supported.".format(spe_label)
 
-	return r_moles, remain_moles, rr_list
+	return r_moles, l_moles, r_l_moles, remain_moles, rr_ll_list
 
 class MonteCarloSimulator(Simulator):
 
