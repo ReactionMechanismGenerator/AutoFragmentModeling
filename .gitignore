@@ -1,4 +1,10 @@
 
 .DS_Store
 *.pyc
+*.csv
+*.inp
+*.pdf
+*.txt
+*.iml
+*.xml
 

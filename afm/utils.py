@@ -203,7 +203,7 @@ def match_sequences(seq1, seq2, diff_tol=1e-6):
 		seq1[-1] = seq1[-1] + sum_diff
 	else:
 		seq2[-1] = seq2[-1] - sum_diff
-	
+
 	# make cumulative sequences
 	cum_seq1 = [seq1[0]]
 	for item1 in seq1[1:]:

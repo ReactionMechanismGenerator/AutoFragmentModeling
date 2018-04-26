@@ -51,7 +51,7 @@ def load_comparison_data(detailed_model, frag_model1, frag_model2=None):
 
     assert len(v0_data) == 2
 
-    v1_csv = os.path.join('../', 'data', 'pdd_chemistry', 
+    v1_csv = os.path.join('../', 'data', '2mobenzene', 
                           frag_model1,
                           'results', 'reactant_conv.csv')
     v1_data = []
@@ -113,7 +113,7 @@ def plot_comparison(v0_data, v1_data, v2_data=None,
 
 
 detailed_model = 'pdd_2014_pruning4_s4_a3ene_c11'
-frag_model1 = 'two-sided'
+frag_model1 = 'one-sided'
 frag_model2 = None
 
 if frag_model2:

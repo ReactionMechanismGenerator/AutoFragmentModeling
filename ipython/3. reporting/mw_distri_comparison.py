@@ -9,7 +9,7 @@ import numpy as np
 def init_plotting():
     plt.rcParams['figure.figsize'] = (4, 3)
     plt.rcParams['font.size'] = 8
-    plt.rcParams['font.family'] = 'Helvetica'
+    #plt.rcParams['font.family'] = 'Arial'
     plt.rcParams['axes.labelsize'] = plt.rcParams['font.size']
     plt.rcParams['axes.titlesize'] = plt.rcParams['font.size']
     plt.rcParams['legend.fontsize'] = plt.rcParams['font.size']
@@ -106,6 +106,6 @@ detailed_mech_mwd_path = os.path.join('../', 'data', 'pdd_chemistry',
                                       'results', 'mwd.csv')
 frag_mech_mwd_path = os.path.join('../', 'data', 'pdd_chemistry', 
                                   model,
-                                  'results', 'mwd.csv')
+                                  'results', 'mwd_14hr.csv')
 
 plot(detailed_mech_mwd_path, frag_mech_mwd_path, mw_cuts, model)
