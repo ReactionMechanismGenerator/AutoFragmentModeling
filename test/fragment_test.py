@@ -8,7 +8,33 @@ from rmgpy.molecule.atomtype import atomTypes
 
 import afm.fragment
 
+class TestCuttingLabel(unittest.TestCase):
 
+    def setUp(self):
+        """
+        A function run before each unit test in this class.
+        """
+        self.cutting_label_R = afm.fragment.CuttingLabel('R')
+
+    def test_symbol(self):
+
+        self.assertEqual('R', self.cutting_label_R.symbol)
+
+    def test_copy(self):
+
+        cutting_label_R_copy = self.cutting_label_R.copy()
+
+        self.assertEqual('R', cutting_label_R_copy.name)
+        self.assertEqual(self.cutting_label_R.label, 
+                         cutting_label_R_copy.label)
+        self.assertEqual(self.cutting_label_R.charge, 
+                         cutting_label_R_copy.charge)
+        self.assertEqual(self.cutting_label_R.radicalElectrons, 
+                         cutting_label_R_copy.radicalElectrons)
+        self.assertEqual(self.cutting_label_R.lonePairs, 
+                         cutting_label_R_copy.lonePairs)
+        self.assertEqual(self.cutting_label_R.isotope, 
+                         cutting_label_R_copy.isotope)
 
 class TestFragment(unittest.TestCase):
 

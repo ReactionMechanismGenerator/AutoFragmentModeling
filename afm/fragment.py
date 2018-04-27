@@ -65,9 +65,12 @@ class CuttingLabel(Vertex):
         c = CuttingLabel.__new__(CuttingLabel)
         c.edges = {}
         c.resetConnectivityValues()
+        c.name = self.name
         c.label = self.label
         c.charge = self.charge
         c.radicalElectrons = self.radicalElectrons
+        c.lonePairs = self.lonePairs
+        c.isotope = self.isotope
         return c
 
 class Fragment(Graph):
