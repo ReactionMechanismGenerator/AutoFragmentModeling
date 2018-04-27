@@ -124,7 +124,7 @@ class Fragment(Graph):
 
     def clearLabeledAtoms(self):
         """
-        Remove the labels from all atoms in the molecule.
+        Remove the labels from all atoms in the fragment.
         """
         for v in self.vertices:
             v.label = ''
@@ -140,7 +140,7 @@ class Fragment(Graph):
 
     def getLabeledAtom(self, label):
         """
-        Return the atoms in the molecule that are labeled.
+        Return the atoms in the fragment that are labeled.
         """
         for v in self.vertices:
             if v.label == label: return v
