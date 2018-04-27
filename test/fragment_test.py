@@ -466,3 +466,65 @@ class TestFragment(unittest.TestCase):
         self.assertTrue(v.atomType == atomTypes['Cs'])
         self.assertTrue(fragment.getNetCharge() == 0)
         self.assertTrue(fragment.multiplicity == 1)
+
+    def test_toAdjacencyList1(self):
+
+        # generate fragment from SMILES like string
+        # the atom type is also calculated
+        smiles_like = 'C'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.update()
+        adj = fragment.toAdjacencyList(removeH=True)
+        expected_adj = """1 C u0 p0 c0
+"""
+        self.assertEqual(adj, expected_adj)
+
+    def test_toAdjacencyList2(self):
+
+        # generate fragment from SMILES like string
+        # the atom type is also calculated
+        smiles_like = 'CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.update()
+        adj = fragment.toAdjacencyList(removeH=True)
+        expected_adj = """1 C u0 p0 c0 {2,S}
+2 R u0 p0 c0 {1,S}
+"""
+        self.assertEqual(adj, expected_adj)
+
+    def test_toAdjacencyList3(self):
+
+        # generate fragment from SMILES like string
+        # the atom type is also calculated
+        smiles_like = 'CR'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.update()
+        adj = fragment.toAdjacencyList()
+        expected_adj = """1 C u0 p0 c0 {2,S} {3,S} {4,S} {5,S}
+2 R u0 p0 c0 {1,S}
+3 H u0 p0 c0 {1,S}
+4 H u0 p0 c0 {1,S}
+5 H u0 p0 c0 {1,S}
+"""
+        self.assertEqual(adj, expected_adj)
+
+    def test_toAdjacencyList4(self):
+
+        # generate fragment from SMILES like string
+        # the atom type is also calculated
+        smiles_like = '[CH2]R'
+        fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+
+        fragment.update()
+        adj = fragment.toAdjacencyList()
+        expected_adj = """multiplicity 2
+1 C u1 p0 c0 {2,S} {3,S} {4,S}
+2 H u0 p0 c0 {1,S}
+3 H u0 p0 c0 {1,S}
+4 R u0 p0 c0 {1,S}
+"""
+        self.assertEqual(adj, expected_adj)
+        
