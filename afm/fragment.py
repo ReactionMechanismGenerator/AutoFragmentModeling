@@ -640,3 +640,25 @@ class Fragment(Graph):
                                  oldStyle=oldStyle)
         return result
 
+    def fromAdjacencyList(self, adjlist, saturateH=False):
+        """
+        Convert a string adjacency list `adjlist` to a fragment structure.
+        Skips the first line (assuming it's a label) unless `withLabel` is
+        ``False``.
+        """
+        from rmgpy.molecule.adjlist import fromAdjacencyList
+        
+        self.vertices, self.multiplicity = fromAdjacencyList(adjlist, 
+                                                             group=False, 
+                                                             saturateH=saturateH)
+        self.updateAtomTypes()
+        
+        # Check if multiplicity is possible
+        n_rad = self.getRadicalCount() 
+        multiplicity = self.multiplicity
+        if not (n_rad + 1 == multiplicity or n_rad - 1 == multiplicity or n_rad - 3 == multiplicity or n_rad - 5 == multiplicity):
+            raise ValueError('Impossible multiplicity for molecule\n{0}\n multiplicity = {1} and number of unpaired electrons = {2}'.format(self.toAdjacencyList(),multiplicity,n_rad))
+        if self.getNetCharge() != 0:
+            raise ValueError('Non-neutral molecule encountered. Currently, AFM does not support ion chemistry.\n {0}'.format(adjlist))
+        return self
+

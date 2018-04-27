@@ -527,4 +527,53 @@ class TestFragment(unittest.TestCase):
 4 R u0 p0 c0 {1,S}
 """
         self.assertEqual(adj, expected_adj)
+
+    def test_fromAdjacencyList1(self):
+
+        adj = """multiplicity 2
+1 C u1 p0 c0 {2,S} {3,S} {4,S}
+2 H u0 p0 c0 {1,S}
+3 H u0 p0 c0 {1,S}
+4 R u0 p0 c0 {1,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
+
+        # create expected fragment
+        smiles_like = '[CH2]R'
+        expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+        expected_fragment.update()
+
+        self.assertTrue(fragment.isIsomorphic(expected_fragment))
+
+    def test_fromAdjacencyList2(self):
+
+        adj = """1 C u0 p0 c0 {2,S} {3,S} {4,S} {5,S}
+2 R u0 p0 c0 {1,S}
+3 H u0 p0 c0 {1,S}
+4 H u0 p0 c0 {1,S}
+5 H u0 p0 c0 {1,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
+
+        # create expected fragment
+        smiles_like = 'CR'
+        expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+        expected_fragment.update()
+
+        self.assertTrue(fragment.isIsomorphic(expected_fragment))
+
+    def test_fromAdjacencyList3(self):
+
+        adj = """1 C u0 p0 c0 {2,S}
+2 R u0 p0 c0 {1,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj, saturateH=True)
+
+        # create expected fragment
+        smiles_like = 'CR'
+        expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
+        expected_fragment.update()
+
+        self.assertTrue(fragment.isIsomorphic(expected_fragment))
+
         
