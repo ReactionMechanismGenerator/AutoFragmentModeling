@@ -623,4 +623,21 @@ class Fragment(Graph):
 
         return rdmol, rdAtomIdx_frag
 
+    def toAdjacencyList(self, 
+                        label='', 
+                        removeH=False, 
+                        removeLonePairs=False, 
+                        oldStyle=False):
+        """
+        Convert the molecular structure to a string adjacency list.
+        """
+        from rmgpy.molecule.adjlist import toAdjacencyList
+        result = toAdjacencyList(self.vertices, 
+                                 self.multiplicity,  
+                                 label=label, 
+                                 group=False, 
+                                 removeH=removeH, 
+                                 removeLonePairs=removeLonePairs, 
+                                 oldStyle=oldStyle)
+        return result
 
