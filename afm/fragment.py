@@ -522,11 +522,7 @@ class Fragment(Graph):
         elements = {}
         cuttinglabels = {}
         for atom in self.vertices:
-            if not isinstance(atom, Atom): 
-                symbol = atom.label
-            else:
-                symbol = atom.element.symbol
-            
+            symbol = atom.symbol
             elements[symbol] = elements.get(symbol, 0) + 1
         
         # Use the Hill system to generate the formula
