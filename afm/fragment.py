@@ -16,6 +16,8 @@ class CuttingLabel(Vertex):
         self.label = label
         self.charge = 0
         self.radicalElectrons = 0
+        self.lonePairs = 0
+        self.isotope = -1
 
     def __str__(self):
         """
