@@ -11,9 +11,10 @@ from rmgpy.molecule.atomtype import getAtomType, AtomTypeError
 
 class CuttingLabel(Vertex):
 
-    def __init__(self, label=''):
+    def __init__(self, name='', label=''):
         Vertex.__init__(self)
-        self.label = label
+        self.name = name # equivalent to Atom element symbol
+        self.label = label # equivalent to Atom label attribute
         self.charge = 0
         self.radicalElectrons = 0
         self.lonePairs = 0
@@ -23,7 +24,7 @@ class CuttingLabel(Vertex):
         """
         Return a human-readable string representation of the object.
         """
-        return str(self.label)
+        return str(self.name)
 
     def __repr__(self):
         """
@@ -32,7 +33,7 @@ class CuttingLabel(Vertex):
         return "<CuttingLabel '{0}'>".format(str(self))
 
     @property
-    def symbol(self): return self.label
+    def symbol(self): return self.name
 
     @property
     def bonds(self): return self.edges
@@ -51,7 +52,7 @@ class CuttingLabel(Vertex):
         attributes must match exactly. 
         """
         if isinstance(other, CuttingLabel):
-            return self.label == other.label
+            return self.name == other.name
         else:
             return False
 
@@ -121,8 +122,7 @@ class Fragment(Graph):
         Remove the labels from all atoms in the molecule.
         """
         for v in self.vertices:
-            if isinstance(v, Atom): 
-                v.label = ''
+            v.label = ''
 
     def containsLabeledAtom(self, label):
         """
@@ -130,7 +130,7 @@ class Fragment(Graph):
         `label` and :data:`False` otherwise.
         """
         for v in self.vertices:
-            if isinstance(v, Atom) and v.label == label: return True
+            if v.label == label: return True
         return False
 
     def getLabeledAtom(self, label):
@@ -138,7 +138,7 @@ class Fragment(Graph):
         Return the atoms in the molecule that are labeled.
         """
         for v in self.vertices:
-            if isinstance(v, Atom) and v.label == label: return v
+            if v.label == label: return v
         raise ValueError('No vertex in the fragment has the label "{0}".'.format(label))
 
     def getLabeledAtoms(self):
@@ -149,7 +149,7 @@ class Fragment(Graph):
         """
         labeled = {}
         for v in self.vertices:
-            if isinstance(v, Atom) and v.label != '':
+            if v.label != '':
                 if v.label in labeled:
                     if isinstance(labeled[v.label],list):
                         labeled[v.label].append(v)
@@ -276,17 +276,17 @@ class Fragment(Graph):
             element_symbol = atom.element.symbol
             if element_symbol in atom_replace_dict:
                 
-                label = atom_replace_dict[element_symbol]
+                cuttinglabel_name = atom_replace_dict[element_symbol]
 
-                cutting_label = CuttingLabel(label=label)
+                cuttinglabel = CuttingLabel(name=cuttinglabel_name)
                 for bondedAtom, bond in atom.edges.iteritems():
-                    new_bond = Bond(bondedAtom, cutting_label, order=bond.order)
+                    new_bond = Bond(bondedAtom, cuttinglabel, order=bond.order)
                     
-                    bondedAtom.edges[cutting_label] = new_bond
+                    bondedAtom.edges[cuttinglabel] = new_bond
                     del bondedAtom.edges[atom]
 
-                    cutting_label.edges[bondedAtom] = new_bond
-                final_vertices.append(cutting_label)
+                    cuttinglabel.edges[bondedAtom] = new_bond
+                final_vertices.append(cuttinglabel)
             
             else:
                 final_vertices.append(atom)
