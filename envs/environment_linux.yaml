@@ -16,5 +16,6 @@ dependencies:
   - xlwt
   - nose
   - pandas
+  - tqdm
   - KEHANG::rmg
   - KEHANG::rmgdatabase
