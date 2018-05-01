@@ -73,6 +73,12 @@ class CuttingLabel(Vertex):
         c.isotope = self.isotope
         return c
 
+    def isNitrogen(self):
+        return False
+
+    def isOxygen(self):
+        return False
+
 class Fragment(Graph):
 
     def __init__(self,
@@ -443,7 +449,7 @@ class Fragment(Graph):
                 mass += vertex.element.mass
         return mass
 
-    def is_radical(self):
+    def isRadical(self):
         """
         Return ``True`` if the fragment contains at least one radical electron,
         or ``False`` otherwise.
@@ -661,4 +667,51 @@ class Fragment(Graph):
         if self.getNetCharge() != 0:
             raise ValueError('Non-neutral molecule encountered. Currently, AFM does not support ion chemistry.\n {0}'.format(adjlist))
         return self
+
+    def getAromaticRings(self, rings=None):
+        """
+        Returns all aromatic rings as a list of atoms and a list of bonds.
+
+        Identifies rings using `Graph.getSmallestSetOfSmallestRings()`, then uses RDKit to perceive aromaticity.
+        RDKit uses an atom-based pi-electron counting algorithm to check aromaticity based on Huckel's Rule.
+        Therefore, this method identifies "true" aromaticity, rather than simply the RMG bond type.
+
+        The method currently restricts aromaticity to six-membered carbon-only rings. This is a limitation imposed
+        by RMG, and not by RDKit.
+        """
+
+        from rdkit.Chem.rdchem import BondType
+        AROMATIC = BondType.AROMATIC
+
+        if rings is None:
+            rings = self.getRelevantCycles()
+            rings = [ring for ring in rings if len(ring) == 6]
+        if not rings:
+            return [], []
+
+        try:
+            rdkitmol, rdAtomIndices = self.toRDKitMol(removeHs=False, returnMapping=True)
+        except ValueError:
+            logging.warning('Unable to check aromaticity by converting to RDKit Mol.')
+        else:
+            aromaticRings = []
+            aromaticBonds = []
+            for ring0 in rings:
+                aromaticBondsInRing = []
+                # Figure out which atoms and bonds are aromatic and reassign appropriately:
+                for i, atom1 in enumerate(ring0):
+                    if not atom1.isCarbon():
+                        # all atoms in the ring must be carbon in RMG for our definition of aromatic
+                        break
+                    for atom2 in ring0[i + 1:]:
+                        if self.hasBond(atom1, atom2):
+                            if rdkitmol.GetBondBetweenAtoms(rdAtomIndices[atom1],
+                                                            rdAtomIndices[atom2]).GetBondType() is AROMATIC:
+                                aromaticBondsInRing.append(self.getBond(atom1, atom2))
+                else:  # didn't break so all atoms are carbon
+                    if len(aromaticBondsInRing) == 6:
+                        aromaticRings.append(ring0)
+                        aromaticBonds.append(aromaticBondsInRing)
+
+            return aromaticRings, aromaticBonds
 
