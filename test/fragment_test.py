@@ -576,4 +576,49 @@ class TestFragment(unittest.TestCase):
 
         self.assertTrue(fragment.isIsomorphic(expected_fragment))
 
+    def test_getAromaticRings(self):
+
+        adj = """1  C u0 p0 c0 {2,D} {6,S} {8,S}
+2  C u0 p0 c0 {1,D} {3,S} {9,S}
+3  C u0 p0 c0 {2,S} {4,D} {10,S}
+4  C u0 p0 c0 {3,D} {5,S} {11,S}
+5  C u0 p0 c0 {4,S} {6,D} {12,S}
+6  C u0 p0 c0 {1,S} {5,D} {7,S}
+7  R u0 p0 c0 {6,S}
+8  H u0 p0 c0 {1,S}
+9  H u0 p0 c0 {2,S}
+10 H u0 p0 c0 {3,S}
+11 H u0 p0 c0 {4,S}
+12 H u0 p0 c0 {5,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
+
+        # create expected fragment
+        aromaticRings, aromaticBonds = fragment.getAromaticRings()
+        self.assertEqual(len(aromaticRings), 1)
+        self.assertEqual(len(aromaticRings[0]), 6)
+        self.assertEqual(len(aromaticBonds), 1)
+        self.assertEqual(len(aromaticBonds[0]), 6)
+
+        aromaticRing_atomSet = set(aromaticRings[0])
+        aromaticBonds_set = set(aromaticBonds[0])
+
+        expected_aromaticRing_atomSet = set()
+        for v in fragment.vertices:
+            if v.isCarbon():
+                expected_aromaticRing_atomSet.add(v)
+
+        expected_aromaticBonds_set = set()
+        expected_aromaticRing_atomList = list(expected_aromaticRing_atomSet)
+        for i, atom1 in enumerate(expected_aromaticRing_atomList):
+            for atom2 in expected_aromaticRing_atomList[i+1:]:
+                try:
+                    bond = fragment.getBond(atom1, atom2)
+                    expected_aromaticBonds_set.add(bond)
+                except ValueError:
+                    pass
+
+        self.assertEqual(aromaticRing_atomSet, expected_aromaticRing_atomSet)
+        self.assertEqual(aromaticBonds_set, expected_aromaticBonds_set)
+
         

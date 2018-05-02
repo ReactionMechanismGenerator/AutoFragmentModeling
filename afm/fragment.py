@@ -73,6 +73,9 @@ class CuttingLabel(Vertex):
         c.isotope = self.isotope
         return c
 
+    def isCarbon(self):
+        return False
+
     def isNitrogen(self):
         return False
 
@@ -554,6 +557,49 @@ class Fragment(Graph):
         
         return formula
 
+    def get_representative_molecule(self, mode='minimal', update=True):
+
+        if mode == 'minimal':
+            # create a molecule from fragment.vertices.copy
+            mapping = self.copyAndMap()
+
+            # replace CuttingLabel with H
+            atoms = []
+            for vertex in self.vertices:
+
+                mapped_vertex = mapping[vertex]
+                if isinstance(mapped_vertex, CuttingLabel):
+
+                    # replace cutting label with atom H
+                    atom_H = Atom(element=getElement('H'), 
+                                radicalElectrons=0, 
+                                charge=0, 
+                                lonePairs=0)
+
+                    for bondedAtom, bond in mapped_vertex.edges.iteritems():
+                        new_bond = Bond(bondedAtom, atom_H, order=bond.order)
+                        
+                        bondedAtom.edges[atom_H] = new_bond
+                        del bondedAtom.edges[mapped_vertex]
+
+                        atom_H.edges[bondedAtom] = new_bond
+
+                    mapping[vertex] = atom_H
+                    atoms.append(atom_H)
+
+                else:
+                    atoms.append(mapped_vertex)
+
+            # Note: mapping is a dict with 
+            # key: self.vertex and value: mol_repr.atom
+            mol_repr = Molecule()
+            mol_repr.atoms = atoms
+            if update:
+                mol_repr.update()
+
+            return mol_repr, mapping
+
+
     def toRDKitMol(self, removeHs=False, returnMapping=True):
         """
         Convert a molecular structure to a RDKit rdmol object.
@@ -564,41 +610,7 @@ class Fragment(Graph):
             # so do not allow removeHs to be True
             raise "Currently fragment toRDKitMol only allows keeping all the hydrogens."
 
-        # create a molecule from fragment.vertices.copy
-        mapping = self.copyAndMap()
-
-        # replace CuttingLabel with CC
-        atoms = []
-        for vertex in self.vertices:
-
-            mapped_vertex = mapping[vertex]
-            if isinstance(mapped_vertex, CuttingLabel):
-
-                # replace cutting label with atom H
-                atom_H = Atom(element=getElement('H'), 
-                            radicalElectrons=0, 
-                            charge=0, 
-                            lonePairs=0)
-
-                for bondedAtom, bond in mapped_vertex.edges.iteritems():
-                    new_bond = Bond(bondedAtom, atom_H, order=bond.order)
-                    
-                    bondedAtom.edges[atom_H] = new_bond
-                    del bondedAtom.edges[mapped_vertex]
-
-                    atom_H.edges[bondedAtom] = new_bond
-
-                mapping[vertex] = atom_H
-                atoms.append(atom_H)
-
-            else:
-                atoms.append(mapped_vertex)
-
-        # Note: mapping is a dict with 
-        # key: self.vertex and value: mol0.atom
-
-        mol0 = Molecule()
-        mol0.atoms = atoms
+        mol0, mapping = self.get_representative_molecule('minimal', update=False)
 
         rdmol, rdAtomIdx_mol0 = converter.toRDKitMol(mol0, removeHs=removeHs, 
                                                      returnMapping=returnMapping, 
@@ -714,4 +726,12 @@ class Fragment(Graph):
                         aromaticBonds.append(aromaticBondsInRing)
 
             return aromaticRings, aromaticBonds
+
+    def isAromatic(self):
+        """ 
+        Returns ``True`` if the fragment is aromatic, or ``False`` if not.  
+        """
+        mol0, _ = self.get_representative_molecule('minimal')   
+        return mol0.isAromatic()
+
 
