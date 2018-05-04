@@ -123,7 +123,7 @@ class OdeSimulator(Simulator):
 			half_length = len(r_moles_shuffle)/2
 
 		half_r_moles_shuffle_1 = r_moles_shuffle[0:half_length]
-		half_r_moles_shuffle_2 = r_moles_shuffle[half_length+1:len(r_moles_shuffle)]
+		half_r_moles_shuffle_2 = r_moles_shuffle[half_length:len(r_moles_shuffle)]
 
 		matches0 = afm.utils_1_sided.match_concentrations_with_same_sums(half_r_moles_shuffle_1,
 																 		half_r_moles_shuffle_2,
@@ -141,7 +141,7 @@ class OdeSimulator(Simulator):
 
 	def get_molecular_weight_distribution(self, 
 										  alldata, 
-										  grind_size=10, 
+										  grind_size=1,
 										  shuffle_seed=0):
 
 		# prepare moles data

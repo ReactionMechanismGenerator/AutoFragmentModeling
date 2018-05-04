@@ -359,14 +359,14 @@ LCCCCC__CC              H  13C   7          G   100.000  5000.000 1865.44      1
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsHHH) + group(Cs-CsHHH)
 RCCCC                   H   9C   4          G   100.000  5000.000 1144.97      1
  1.10309057E+01 4.31955108E-02-1.73945794E-05 3.17574033E-09-2.18143789E-13    2
--2.65045126E+04-3.11327351E+01 7.93256425E-01 6.05340450E-02-1.59686490E-05    3
--1.17105281E-08 6.10127163E-12-2.29522853E+04 2.49186069E+01                   4
+-2.65045126E+04-3.18258822E+01 7.93256425E-01 6.05340450E-02-1.59686490E-05    3
+-1.17105281E-08 6.10127163E-12-2.29522853E+04 2.42254597E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsHHH) + group(Cs-CsHHH)
 LCCCC                   H   9C   4          G   100.000  5000.000 1144.97      1
  1.10309057E+01 4.31955108E-02-1.73945794E-05 3.17574033E-09-2.18143789E-13    2
--2.65045126E+04-3.11327351E+01 7.93256425E-01 6.05340450E-02-1.59686490E-05    3
--1.17105281E-08 6.10127163E-12-2.29522853E+04 2.49186069E+01                   4
+-2.65045126E+04-3.18258822E+01 7.93256425E-01 6.05340450E-02-1.59686490E-05    3
+-1.17105281E-08 6.10127163E-12-2.29522853E+04 2.42254597E+01                   4
 
 ! Thermo group additivity estimation: group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsCsHH) + group(Cs-CsHHH) +
 ! group(Cs-CsHHH)
