@@ -543,6 +543,8 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
         expected_fragment.update()
 
+        self.assertTrue(isinstance(fragment.multiplicity, int))
+        self.assertTrue(fragment.multiplicity == 2)
         self.assertTrue(fragment.isIsomorphic(expected_fragment))
 
     def test_fromAdjacencyList2(self):
@@ -560,6 +562,8 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
         expected_fragment.update()
 
+        self.assertTrue(isinstance(fragment.multiplicity, int))
+        self.assertTrue(fragment.multiplicity == 1)
         self.assertTrue(fragment.isIsomorphic(expected_fragment))
 
     def test_fromAdjacencyList3(self):
@@ -574,6 +578,8 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
         expected_fragment.update()
 
+        self.assertTrue(isinstance(fragment.multiplicity, int))
+        self.assertTrue(fragment.multiplicity == 1)
         self.assertTrue(fragment.isIsomorphic(expected_fragment))
 
     def test_getAromaticRings(self):
