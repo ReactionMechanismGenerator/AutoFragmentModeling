@@ -11,7 +11,7 @@ from rmgpy.molecule.atomtype import getAtomType, AtomTypeError
 
 class CuttingLabel(Vertex):
 
-    def __init__(self, name='', label=''):
+    def __init__(self, name='', label='', id=-1):
         Vertex.__init__(self)
         self.name = name # equivalent to Atom element symbol
         self.label = label # equivalent to Atom label attribute
@@ -19,6 +19,7 @@ class CuttingLabel(Vertex):
         self.radicalElectrons = 0
         self.lonePairs = 0
         self.isotope = -1
+        self.id = id
 
     def __str__(self):
         """
@@ -71,6 +72,7 @@ class CuttingLabel(Vertex):
         c.radicalElectrons = self.radicalElectrons
         c.lonePairs = self.lonePairs
         c.isotope = self.isotope
+        c.id = self.id
         return c
 
     def isCarbon(self):
@@ -734,4 +736,60 @@ class Fragment(Graph):
         mol0, _ = self.get_representative_molecule('minimal')   
         return mol0.isAromatic()
 
+    def atomIDValid(self):
+        """
+        Checks to see if the atom IDs are valid in this structure
+        """
+        num_atoms = len(self.atoms)
+        num_IDs = len(set([atom.id for atom in self.atoms]))
 
+        if num_atoms == num_IDs:
+            # all are unique
+            return True
+        return False
+
+    def assignAtomIDs(self):
+        """
+        Assigns an index to every atom in the fragment for tracking purposes.
+        Uses entire range of cython's integer values to reduce chance of duplicates
+        """
+
+        global atom_id_counter
+
+        for atom in self.atoms:
+            atom.id = atom_id_counter
+            atom_id_counter += 1
+            if atom_id_counter == 2**15:
+                atom_id_counter = -2**15
+
+    def isIdentical(self, other):
+        """
+        Performs isomorphism checking, with the added constraint that atom IDs must match.
+
+        Primary use case is tracking atoms in reactions for reaction degeneracy determination.
+
+        Returns :data:`True` if two graphs are identical and :data:`False` otherwise.
+        """
+
+        if not isinstance(other, Fragment):
+            raise TypeError('Got a {0} object for parameter "other", when a Fragment object is required.'.format(other.__class__))
+
+        # Get a set of atom indices for each molecule
+        atomIDs = set([atom.id for atom in self.atoms])
+        otherIDs = set([atom.id for atom in other.atoms])
+
+        if atomIDs == otherIDs:
+            # If the two molecules have the same indices, then they might be identical
+            # Sort the atoms by ID
+            atomList = sorted(self.atoms, key=lambda x: x.id)
+            otherList = sorted(other.atoms, key=lambda x: x.id)
+
+            # If matching atom indices gives a valid mapping, then the molecules are fully identical
+            mapping = {}
+            for atom1, atom2 in itertools.izip(atomList, otherList):
+                mapping[atom1] = atom2
+
+            return self.isMappingValid(other, mapping)
+        else:
+            # The molecules don't have the same set of indices, so they are not identical
+            return False
