@@ -96,7 +96,7 @@ class Fragment(Graph):
         self.label = label
         self.species_repr = species_repr
         Graph.__init__(self, vertices)
-        self._fingerprint = None
+        self.fingerprint = None
         self.props = props or {}
         self.multiplicity = multiplicity
 
@@ -182,7 +182,7 @@ class Fragment(Graph):
         not remove atoms that no longer have any bonds as a result of this
         removal.
         """
-        self._fingerprint = None
+        self.fingerprint = None
         return self.removeVertex(atom)
 
     def hasBond(self, atom1, atom2):
@@ -203,7 +203,7 @@ class Fragment(Graph):
         Add a `bond` to the graph as an edge connecting the two atoms `atom1`
         and `atom2`.
         """
-        self._fingerprint = None
+        self.fingerprint = None
         return self.addEdge(bond)
 
     def removeBond(self, bond):
@@ -212,7 +212,7 @@ class Fragment(Graph):
         Does not remove atoms that no longer have any bonds as a result of
         this removal.
         """
-        self._fingerprint = None
+        self.fingerprint = None
         return self.removeEdge(bond)
 
     def getNetCharge(self):
