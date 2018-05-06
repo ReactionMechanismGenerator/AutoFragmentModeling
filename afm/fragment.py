@@ -1,4 +1,6 @@
 import os
+import urllib
+import itertools
 
 from rmgpy.species import Species
 import rmgpy.molecule.group as gr
@@ -176,6 +178,13 @@ class Fragment(Graph):
                 else:
                     labeled[v.label] = v
         return labeled
+
+    def addAtom(self, atom):
+        """
+        Add an `atom` to the graph. The atom is initialized with no bonds.
+        """
+        self.fingerprint = None
+        return self.addVertex(atom)
 
     def removeAtom(self, atom):
         """
@@ -798,3 +807,109 @@ class Fragment(Graph):
         else:
             # The molecules don't have the same set of indices, so they are not identical
             return False
+
+    def toSMILES(self):
+        mol0 = self.get_representative_molecule()[0]
+        return mol0.toSMILES()
+
+    def get_element_count(self):
+        """
+        Returns the element count for the fragment as a dictionary.
+        """
+        element_count = {}
+        for atom in self.vertices:
+            if not isinstance(atom, Atom): continue
+            symbol = atom.element.symbol
+            isotope = atom.element.isotope
+            key = symbol if isotope == -1 else (symbol, isotope)
+            if key in element_count:
+                element_count[key] += 1
+            else:
+                element_count[key] = 1
+
+        return element_count
+
+    def getURL(self):
+        """
+        Get a URL to the fragment's info page on the RMG website.
+        """
+
+        base_url = "http://rmg.mit.edu/database/molecule/"
+        adjlist = self.toAdjacencyList(removeH=False)
+        url = base_url + urllib.quote(adjlist)
+        return url.strip('_')
+
+    def isLinear(self):
+        """
+        Return :data:`True` if the structure is linear and :data:`False`
+        otherwise.
+        """
+
+        atomCount = len(self.vertices)
+
+        # Monatomic molecules are definitely nonlinear
+        if atomCount == 1:
+            return False
+        # Diatomic molecules are definitely linear
+        elif atomCount == 2:
+            return True
+        # Cyclic molecules are definitely nonlinear
+        elif self.isCyclic():
+            return False
+
+        # True if all bonds are double bonds (e.g. O=C=O)
+        allDoubleBonds = True
+        for atom1 in self.vertices:
+            for bond in atom1.edges.values():
+                if not bond.isDouble(): allDoubleBonds = False
+        if allDoubleBonds: return True
+
+        # True if alternating single-triple bonds (e.g. H-C#C-H)
+        # This test requires explicit hydrogen atoms
+        for atom in self.vertices:
+            bonds = atom.edges.values()
+            if len(bonds)==1:
+                continue # ok, next atom
+            if len(bonds)>2:
+                break # fail!
+            if bonds[0].isSingle() and bonds[1].isTriple():
+                continue # ok, next atom
+            if bonds[1].isSingle() and bonds[0].isTriple():
+                continue # ok, next atom
+            break # fail if we haven't continued
+        else:
+            # didn't fail
+            return True
+        
+        # not returned yet? must be nonlinear
+        return False
+
+    def saturate_radicals(self):
+        """
+        Saturate the fragment by replacing all radicals with bonds to hydrogen atoms.  Changes self molecule object.  
+        """
+        added = {}
+        for atom in self.vertices:
+            for i in range(atom.radicalElectrons):
+                H = Atom('H', radicalElectrons=0, lonePairs=0, charge=0)
+                bond = Bond(atom, H, 1)
+                self.addAtom(H)
+                self.addBond(bond)
+                if atom not in added:
+                    added[atom] = []
+                added[atom].append([H, bond])
+                atom.decrementRadical()
+      
+        # Update the atom types of the saturated structure (not sure why
+        # this is necessary, because saturating with H shouldn't be
+        # changing atom types, but it doesn't hurt anything and is not
+        # very expensive, so will do it anyway)
+        self.sortVertices()
+        self.updateAtomTypes()
+        self.multiplicity = 1
+
+        return added
+
+# this variable is used to name atom IDs so that there are as few conflicts by 
+# using the entire space of integer objects
+atom_id_counter = -2**15
