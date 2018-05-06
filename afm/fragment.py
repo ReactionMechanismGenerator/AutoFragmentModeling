@@ -4,6 +4,7 @@ from rmgpy.species import Species
 import rmgpy.molecule.group as gr
 import rmgpy.molecule.element as elements
 import rmgpy.molecule.converter as converter
+import rmgpy.molecule.resonance as resonance
 from rmgpy.molecule.element import getElement
 from rmgpy.molecule.graph import Graph, Vertex
 from rmgpy.molecule.molecule import Atom, Bond, Molecule
@@ -761,6 +762,10 @@ class Fragment(Graph):
             atom_id_counter += 1
             if atom_id_counter == 2**15:
                 atom_id_counter = -2**15
+
+    def generate_resonance_structures(self, keepIsomorphic=False):
+        """Returns a list of resonance structures of the fragment."""
+        return resonance.generate_resonance_structures(self, keepIsomorphic=keepIsomorphic)
 
     def isIdentical(self, other):
         """
