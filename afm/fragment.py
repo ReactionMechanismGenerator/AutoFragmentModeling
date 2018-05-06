@@ -442,7 +442,7 @@ class Fragment(Graph):
         self.assign_representative_molecule()
         self.species_repr = Species(molecule=[self.mol_repr])
 
-    def get_fragmental_weight(self):
+    def getMolecularWeight(self):
         """
         Return the fragmental weight of the fragment in kg/mol.
         """

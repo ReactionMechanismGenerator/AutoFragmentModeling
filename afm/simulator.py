@@ -179,7 +179,7 @@ class OdeSimulator(Simulator):
 			total_frag_weight = 0
 			for sub_frag_label in sub_frag_labels:
 				sub_frag = self.fragment_dict[sub_frag_label]
-				total_frag_weight += sub_frag.get_fragmental_weight()
+				total_frag_weight += sub_frag.getMolecularWeight()
 			
 			fragmental_weight_distri.append((total_frag_weight, mole))
 

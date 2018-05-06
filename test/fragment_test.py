@@ -359,16 +359,16 @@ class TestFragment(unittest.TestCase):
 
         self.assertTrue(expected_repr_mol.isIsomorphic(fragment.mol_repr))
 
-    def test_get_fragmental_weight1(self):
+    def test_getMolecularWeight1(self):
 
-        fragmental_weight = self.fragment1.get_fragmental_weight()
+        fragmental_weight = self.fragment1.getMolecularWeight()
         self.assertAlmostEqual(fragmental_weight*1000, 12.01, 2)
 
-    def test_get_fragmental_weight2(self):
+    def test_getMolecularWeight2(self):
 
         smiles_like = 'RCR'
         fragment = afm.fragment.Fragment().from_SMILES_like_string(smiles_like)
-        fragmental_weight = fragment.get_fragmental_weight()
+        fragmental_weight = fragment.getMolecularWeight()
         self.assertAlmostEqual(fragmental_weight*1000, 14.03, 2)
 
     def test_updateAtomTypes(self):
