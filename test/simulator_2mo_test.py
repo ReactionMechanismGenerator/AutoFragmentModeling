@@ -117,6 +117,7 @@ class TestOdeSimulator(unittest.TestCase):
         VData = dataList[2]
         total_moles = PData.data*VData.data/8.314/TData.data
         moles_dict = {}
+
         for data in dataList[3:]:
             spe_label = data.label
             if '*' in spe_label:
@@ -131,9 +132,36 @@ class TestOdeSimulator(unittest.TestCase):
                 continue
             moles_dict[spe_label] = max(data.data[-1]*total_moles[-1],0)
 
+
+	# Try simple example of fragment sequence
+	spe_label = ['ArCC(C)R', 'RCC', 'RCCCCR', 'RCC__C', 'ArC__CR', 'RCC__CCR']
+	values = [6, 2, 3, 6, 4, 3]
+	i=0
+
+	for spe_name in spe_label:
+	    moles_dict[spe_name] = values[i]
+	    i += 1 
+
+
         r_moles, _, rr_list = afm.simulator_2mo.categorize_fragments(moles_dict)
         matches = self.odes.reattach_fragments(r_moles,
                                                rr_list)
+
+# estimated matches:
+
+#[((('ArCC(C)R', 'RCC__CCR', 'ArCC(C)R'), ('RCCCCR', 'RCCCCR')), 0.5),
+# ((('RCC__C', 'RCC__CCR', 'RCC__C'), ('RCCCCR', 'RCCCCR')), 0.5),
+# ((('ArC__CR', 'RCC__C'), ('RCC__CCR', 'RCC__CCR')), 0.5),
+# (('ArC__CR', 'RCC__C'), 0.5),
+# (('RCC__C', 'RCC__CCR', 'RCC__C'), 0.5),
+# (('RCC__C', 'ArCC(C)R'), 1),
+# (('RCC__C', 'ArCC(C)R'), 1),
+# (('ArCC(C)R', 'RCCCCR', 'ArCC(C)R'), 0.5),
+# (('RCC', 'RCC__C'), 1),
+# (('ArCC(C)R', 'RCC__CCR', 'ArCC(C)R'), 0.5),
+# (('ArCC(C)R', 'RCCCCR', 'ArCC(C)R'), 0.5),
+# (('ArC__CR', 'ArC__CR'), 1),
+# (('RCC', 'ArC__CR'), 1)]
 
         moles_dict_after_match = {}
         for match in matches:
