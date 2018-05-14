@@ -910,6 +910,20 @@ class Fragment(Graph):
 
         return added
 
+    def isArylRadical(self, aromaticRings=None):
+        """
+        Return ``True`` if the fragment only contains aryl radicals,
+        ie. radical on an aromatic ring, or ``False`` otherwise.
+        """
+        if aromaticRings is None:
+            aromaticRings = self.getAromaticRings()[0]
+
+        total = self.getRadicalCount()
+        aromaticAtoms = set([atom for atom in itertools.chain.from_iterable(aromaticRings)])
+        aryl = sum([atom.radicalElectrons for atom in aromaticAtoms])
+
+        return total == aryl
+
 # this variable is used to name atom IDs so that there are as few conflicts by 
 # using the entire space of integer objects
 atom_id_counter = -2**15

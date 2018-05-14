@@ -2,9 +2,10 @@ import os
 import unittest
 
 from rmgpy.species import Species
-from rmgpy.molecule.molecule import Atom, Bond, Molecule
-from rmgpy.molecule.element import getElement
+from rmgpy.molecule import resonance
 from rmgpy.molecule.atomtype import atomTypes
+from rmgpy.molecule.element import getElement
+from rmgpy.molecule.molecule import Atom, Bond, Molecule
 
 import afm.fragment
 
@@ -627,4 +628,35 @@ class TestFragment(unittest.TestCase):
         self.assertEqual(aromaticRing_atomSet, expected_aromaticRing_atomSet)
         self.assertEqual(aromaticBonds_set, expected_aromaticBonds_set)
 
-        
+    def test_generate_resonance_structures(self):
+
+        adj = """1  C u0 p0 c0 {2,S} {3,S} {11,S} {12,S}
+2  C u0 p0 c0 {1,S} {4,S} {13,S} {14,S}
+3  C u0 p0 c0 {1,S} {5,S} {15,S} {16,S}
+4  C u0 p0 c0 {2,S} {17,S} {18,S} {19,S}
+5  C u0 p0 c0 {3,S} {6,S} {7,D}
+6  C u0 p0 c0 {5,S} {8,D} {20,S}
+7  C u1 p0 c0 {5,D} {10,S}
+8  C u0 p0 c0 {6,D} {9,S} {21,S}
+9  C u0 p0 c0 {8,S} {10,D} {22,S}
+10 C u0 p0 c0 {7,S} {9,D} {23,S}
+11 H u0 p0 c0 {1,S}
+12 H u0 p0 c0 {1,S}
+13 H u0 p0 c0 {2,S}
+14 H u0 p0 c0 {2,S}
+15 H u0 p0 c0 {3,S}
+16 H u0 p0 c0 {3,S}
+17 R u0 p0 c0 {4,S}
+18 H u0 p0 c0 {4,S}
+19 H u0 p0 c0 {4,S}
+20 H u0 p0 c0 {6,S}
+21 H u0 p0 c0 {8,S}
+22 H u0 p0 c0 {9,S}
+23 H u0 p0 c0 {10,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
+
+        frag_res = resonance.generate_resonance_structures(fragment, 
+                                                           clarStructures=False)
+
+        self.assertEqual(len(frag_res), 3)
