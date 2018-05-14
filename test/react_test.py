@@ -2,6 +2,7 @@ import os
 import unittest
 
 from rmgpy import settings
+from rmgpy.species import Species
 from rmgpy.data.rmg import RMGDatabase
 
 import afm.react
@@ -22,7 +23,9 @@ class TestReact(unittest.TestCase):
         self.database.loadForbiddenStructures(os.path.join(db_path, 'forbiddenStructures.py'))
         # kinetics family loading
         self.database.loadKinetics(os.path.join(db_path, 'kinetics'),
-                                   kineticsFamilies='default',
+                                   kineticsFamilies=['R_Recombination', 
+                                                     'H_Abstraction',
+                                                     '1,2_Insertion_carbene'],
                                    reactionLibraries=[]
                                    )
 
@@ -47,4 +50,25 @@ class TestReact(unittest.TestCase):
                                               only_families=['H_Abstraction'],
                                               prod_resonance=False)
 
-        self.assertTrue(len(reactions)==11) 
+        self.assertTrue(len(reactions)==11)
+
+    def test_generate_reactions_from_families1(self):
+
+        frag1 = afm.fragment.Fragment(label='frag1').from_SMILES_like_string('CC')
+        spec1 = Species(molecule=[frag1])
+        spec_tuple = (spec1,)
+
+        reactions = self.database.kinetics.generate_reactions_from_families(spec_tuple)
+
+        self.assertTrue(len(reactions)==3)
+
+    def test_generate_reactions_from_families2(self):
+
+        frag1 = afm.fragment.Fragment(label='frag1').from_SMILES_like_string('CCR')
+        spec1 = Species(molecule=[frag1])
+        spec_tuple = (spec1,)
+
+        reactions = self.database.kinetics.generate_reactions_from_families(spec_tuple)
+
+        self.assertTrue(len(reactions)==4)
+

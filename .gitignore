@@ -8,3 +8,12 @@
 *.iml
 *.xml
 
+chemkin_ode/*
+
+*ipynb_checkpoints*
+
+*old*
+
+*misc_rules*
+
+*results*

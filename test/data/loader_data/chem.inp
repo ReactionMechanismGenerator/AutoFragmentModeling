@@ -393,14 +393,12 @@ ArC*+RCCC*=ArCCCCR                                  1.338e+14 -0.349    -0.067
 ! Reaction index: Chemkin #2; RMG #-1
 ! Template reaction: R_Recombination
 ! Flux pairs: ArCC*, ArCCCCR; RCC*, ArCCCCR; 
-! C_rad/H2/Cs;C_rad/H2/Cs from training reaction 22
 ! Exact match found for rate rule [C_rad/H2/Cs;C_rad/H2/Cs]
 ArCC*+RCC*=ArCCCCR                                  8.730e+14 -0.699    -0.003   
 
 ! Reaction index: Chemkin #3; RMG #-1
 ! Template reaction: R_Recombination
 ! Flux pairs: ArCCC*, ArCCCCR; RC*, ArCCCCR; 
-! C_rad/H2/Cs;C_rad/H2/Cs from training reaction 22
 ! Exact match found for rate rule [C_rad/H2/Cs;C_rad/H2/Cs]
 ArCCC*+RC*=ArCCCCR                                  8.730e+14 -0.699    -0.003   
 
@@ -431,14 +429,12 @@ ArCCCC*R+H*=ArCCCCR                                 2.000e+13 0.000     0.000
 ! Reaction index: Chemkin #8; RMG #-1
 ! Template reaction: R_Recombination
 ! Flux pairs: RCCC*, RCCCCR; RC*, RCCCCR; 
-! C_rad/H2/Cs;C_rad/H2/Cs from training reaction 22
 ! Exact match found for rate rule [C_rad/H2/Cs;C_rad/H2/Cs]
 RCCC*+RC*=RCCCCR                                    8.730e+14 -0.699    -0.003   
 
 ! Reaction index: Chemkin #9; RMG #-1
 ! Template reaction: R_Recombination
 ! Flux pairs: RCC*, RCCCCR; RCC*, RCCCCR; 
-! C_rad/H2/Cs;C_rad/H2/Cs from training reaction 22
 ! Exact match found for rate rule [C_rad/H2/Cs;C_rad/H2/Cs]
 RCC*+RCC*=RCCCCR                                    8.730e+14 -0.699    -0.003   
 
