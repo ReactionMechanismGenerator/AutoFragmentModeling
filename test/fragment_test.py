@@ -628,7 +628,7 @@ class TestFragment(unittest.TestCase):
         self.assertEqual(aromaticRing_atomSet, expected_aromaticRing_atomSet)
         self.assertEqual(aromaticBonds_set, expected_aromaticBonds_set)
 
-    def test_generate_resonance_structures(self):
+    def test_generate_resonance_structures1(self):
 
         adj = """1  C u0 p0 c0 {2,S} {3,S} {11,S} {12,S}
 2  C u0 p0 c0 {1,S} {4,S} {13,S} {14,S}
@@ -658,5 +658,33 @@ class TestFragment(unittest.TestCase):
 
         frag_res = resonance.generate_resonance_structures(fragment, 
                                                            clarStructures=False)
+
+        self.assertEqual(len(frag_res), 3)
+
+    def test_generate_resonance_structures2(self):
+
+        adj = """1  C u0 p0 c0 {2,D} {10,S} {11,S}
+2  C u0 p0 c0 {1,D} {3,S} {12,S}
+3  C u0 p0 c0 {2,S} {4,D} {13,S}
+4  C u0 p0 c0 {3,D} {5,S} {9,S}
+5  C u0 p0 c0 {4,S} {6,D} {14,S}
+6  C u0 p0 c0 {5,D} {7,S} {15,S}
+7  C u0 p0 c0 {6,S} {8,D} {16,S}
+8  C u0 p0 c0 {7,D} {9,S} {17,S}
+9  C u0 p0 c0 {4,S} {8,S} {10,D}
+10 C u0 p0 c0 {1,S} {9,D} {18,S}
+11 H u0 p0 c0 {1,S}
+12 H u0 p0 c0 {2,S}
+13 H u0 p0 c0 {3,S}
+14 H u0 p0 c0 {5,S}
+15 H u0 p0 c0 {6,S}
+16 H u0 p0 c0 {7,S}
+17 H u0 p0 c0 {8,S}
+18 H u0 p0 c0 {10,S}
+"""
+        fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
+
+        frag_res = resonance.generate_resonance_structures(fragment, 
+                                                           clarStructures=True)
 
         self.assertEqual(len(frag_res), 3)
