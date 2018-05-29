@@ -35,10 +35,10 @@ class Simulator(object):
                                         											   dictionary_path,
                                         											   fragment_smiles_path)
 
-		# pseudo_fragrxns = afm.loader.load_pseudo_fragment_reactions(fragment_dict)
+	#	pseudo_fragrxns = afm.loader.load_pseudo_fragment_reactions(fragment_dict)
 
-		# self.fragment_reaction_list = fragment_rxns + pseudo_fragrxns
-		self.fragment_reaction_list = fragment_rxns 
+	#	self.fragment_reaction_list = fragment_rxns + pseudo_fragrxns
+		self.fragment_reaction_list = fragment_rxns
 		self.fragment_dict = fragment_dict
 
 class OdeSimulator(Simulator):

@@ -35,7 +35,9 @@ class TestSimulator(unittest.TestCase):
         fragment_dict = self.simulator.fragment_dict
         fragment_reaction_list = self.simulator.fragment_reaction_list
         self.assertEqual(40, len(fragment_dict))
-        self.assertEqual(5, len(fragment_reaction_list))
+
+        # change from 5 to 4 due to no pseudo fragment rxn
+        self.assertEqual(4, len(fragment_reaction_list))
 
 class TestOdeSimulator(unittest.TestCase):
 
@@ -249,6 +251,7 @@ class TestOdeSimulator_1_label(unittest.TestCase):
             moles_dict[spe_label] = max(data.data[-1] * total_moles[-1], 0)
 
         # Try simple example of fragment sequence
+        moles_dict = {}
         spe_label = ['ArCC(C)R', 'RCC', 'RCCCCR', 'RCC__C', 'ArC__CR', 'RCC__CCR']
         values = [6, 2, 3, 6, 4, 3]
         i = 0

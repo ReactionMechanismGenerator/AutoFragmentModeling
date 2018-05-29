@@ -233,7 +233,7 @@ class TestUtils(unittest.TestCase):
 				   (('RY', 'TR'), 3)]
 		rr_list = ['RCCCCR', 'RCC_CCR']
 
-		new_matches_1_label, new_r_l_moles_1_label = afm.utils_1_sided.matches_resolve(matches, rr_list)
+		new_matches_1_label, new_r_l_moles_1_label = afm.utils.matches_resolve(matches, rr_list)
 
 		expected_new_matches_1_label = [(('RY', 'CCR'), 10),
 							    (('ArCR', 'RCCCCR', 'ArCR'), 2),
