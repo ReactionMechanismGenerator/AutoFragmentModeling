@@ -290,7 +290,7 @@ class Fragment(Graph):
                         'Cl': 'R', 
                         'Si': 'L'
         }
-        
+
         smiles =  SMILES_like_string
         for label_str, element in smiles_replace_dict.iteritems():
             smiles = smiles.replace(label_str, element)

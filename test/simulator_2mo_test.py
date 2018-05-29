@@ -2,6 +2,7 @@ import os
 import shutil
 import unittest
 
+import afm.simulator
 import afm.utils_1_sided
 import afm.simulator_2mo
 import afm.molecule
