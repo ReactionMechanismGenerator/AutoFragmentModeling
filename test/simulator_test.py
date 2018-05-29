@@ -152,6 +152,146 @@ class TestOdeSimulator(unittest.TestCase):
             diff_pct = abs(val - val_after_match)/moles_dict[frag]
             self.assertAlmostEqual(diff_pct, 0.0, 6)
 
+# 1 label (R label only)
+class TestOdeSimulator_1_label(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(self):
+        """A function that is run ONCE before all unit tests in this class."""
+        chemkin_path = os.path.join(os.path.dirname(__file__),
+                                    'data',
+                                    '2mo_simulator_data',
+                                    'chem.inp')
+
+        dictionary_path = os.path.join(os.path.dirname(__file__),
+                                       'data',
+                                       '2mo_simulator_data',
+                                       'species_dictionary.txt')
+
+        fragment_smiles_path = os.path.join(os.path.dirname(__file__),
+                                            'data',
+                                            '2mo_simulator_data',
+                                            'fragment_smiles.txt')
+
+        temperature = 673.15  # unit: K
+        pressure = 350 * 3.75  # unit: bar
+        self.outputDirectory = 'temp'
+        self.odes = afm.simulator.OdeSimulator(chemkin_path,
+                                                   dictionary_path,
+                                                   fragment_smiles_path,
+                                                   temperature,
+                                                   pressure,
+                                                   self.outputDirectory)
+
+    @classmethod
+    def tearDownClass(self):
+
+        shutil.rmtree(self.outputDirectory)
+
+    def test_simulate(self):
+
+        initial_mol_fraction = {
+            "ArCC(C)R": 1.0,
+            "RCCCCR": 1.0,
+            "RCC": 1.0
+        }
+
+        termination_time = 3600 * 14  # unit: sec
+        all_data = self.odes.simulate(initial_mol_fraction, termination_time)
+
+        # only one condition
+        self.assertEqual(len(all_data), 1)
+
+        # there's three parts of data
+        self.assertEqual(len(all_data[0]), 3)
+
+        time, dataList, reactionSensitivityData = all_data[0]
+        TData = dataList[0]
+        PData = dataList[1]
+        VData = dataList[2]
+        total_moles = PData.data * VData.data / 8.314 / TData.data
+
+        arcc_c_r_mf = dataList[3].data
+        arcc_c_r_moles = arcc_c_r_mf * total_moles
+        arcc_c_r_conv = (arcc_c_r_moles[0] - arcc_c_r_moles[-1]) / arcc_c_r_moles[0]
+        self.assertAlmostEqual(arcc_c_r_conv, 0.18, 2)
+
+    def test_reattach_fragments_1_label(self):
+
+        initial_mol_fraction = {
+            "ArCC(C)R": 1.0,
+            "RCCCCR": 1.0,
+            "RCC": 1.0
+        }
+
+        termination_time = 3600 * 14  # unit: sec
+        all_data = self.odes.simulate(initial_mol_fraction, termination_time)
+
+        _, dataList, _ = all_data[0]
+        TData = dataList[0]
+        PData = dataList[1]
+        VData = dataList[2]
+        total_moles = PData.data * VData.data / 8.314 / TData.data
+        moles_dict = {}
+
+        for data in dataList[3:]:
+            spe_label = data.label
+            if '*' in spe_label:
+                continue
+            r_count = spe_label.count('R')
+
+            label_count = r_count
+
+            if label_count == 0:
+                continue
+            if abs(data.data[-1] * total_moles[-1]) <= 1e-6:
+                continue
+            moles_dict[spe_label] = max(data.data[-1] * total_moles[-1], 0)
+
+        # Try simple example of fragment sequence
+        spe_label = ['ArCC(C)R', 'RCC', 'RCCCCR', 'RCC__C', 'ArC__CR', 'RCC__CCR']
+        values = [6, 2, 3, 6, 4, 3]
+        i = 0
+
+        for spe_name in spe_label:
+            moles_dict[spe_name] = values[i]
+            i += 1
+
+        r_moles, _, rr_list = afm.simulator.categorize_fragments_1_label(moles_dict)
+        matches = self.odes.reattach_fragments_1_label(r_moles,
+                                                       rr_list)
+
+        # estimated matches:
+
+        # [((('ArCC(C)R', 'RCC__CCR', 'ArCC(C)R'), ('RCCCCR', 'RCCCCR')), 0.5),
+        # ((('RCC__C', 'RCC__CCR', 'RCC__C'), ('RCCCCR', 'RCCCCR')), 0.5),
+        # ((('ArC__CR', 'RCC__C'), ('RCC__CCR', 'RCC__CCR')), 0.5),
+        # (('ArC__CR', 'RCC__C'), 0.5),
+        # (('RCC__C', 'RCC__CCR', 'RCC__C'), 0.5),
+        # (('RCC__C', 'ArCC(C)R'), 1),
+        # (('RCC__C', 'ArCC(C)R'), 1),
+        # (('ArCC(C)R', 'RCCCCR', 'ArCC(C)R'), 0.5),
+        # (('RCC', 'RCC__C'), 1),
+        # (('ArCC(C)R', 'RCC__CCR', 'ArCC(C)R'), 0.5),
+        # (('ArCC(C)R', 'RCCCCR', 'ArCC(C)R'), 0.5),
+        # (('ArC__CR', 'ArC__CR'), 1),
+        # (('RCC', 'ArC__CR'), 1)]
+
+        moles_dict_after_match = {}
+        for match in matches:
+            combo, val = match
+            frags = afm.utils.flatten(combo)
+            for frag in frags:
+                if frag not in moles_dict_after_match:
+                    moles_dict_after_match[frag] = val
+                else:
+                    moles_dict_after_match[frag] += val
+
+        for frag, val in moles_dict.iteritems():
+            val_after_match = moles_dict_after_match[frag]
+            diff_pct = abs(val - val_after_match) / moles_dict[frag]
+            self.assertAlmostEqual(diff_pct, 0.0, 6)
+
 class TestMonteCarloSimulator(unittest.TestCase):
 
     @classmethod

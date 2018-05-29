@@ -149,10 +149,10 @@ class OdeSimulator(Simulator):
 		after re-attachment with their concentrations.
 		"""
 		# cut large moles into smaller pieces
-		grinded_r_moles = afm.utils_1_sided.grind(r_moles, grind_size)
+		grinded_r_moles = afm.utils.grind(r_moles, grind_size)
 
 		# random shuffle
-		r_moles_shuffle = afm.utils_1_sided.shuffle(grinded_r_moles, shuffle_seed)
+		r_moles_shuffle = afm.utils.shuffle(grinded_r_moles, shuffle_seed)
 
 		# match concentrations for single-labeled fragments
 		# including RCCCCR
@@ -164,18 +164,18 @@ class OdeSimulator(Simulator):
 		half_r_moles_shuffle_1 = r_moles_shuffle[0:half_length]
 		half_r_moles_shuffle_2 = r_moles_shuffle[half_length:len(r_moles_shuffle)]
 
-		matches0 = afm.utils_1_sided.match_concentrations_with_same_sums(half_r_moles_shuffle_1,
+		matches0 = afm.utils.match_concentrations_with_same_sums(half_r_moles_shuffle_1,
 																		 half_r_moles_shuffle_2,
 																		 diff_tol=1e-3)
 
-		matches1, new_r_l_moles = afm.utils_1_sided.matches_resolve(matches0, rr_list)
+		matches1, new_r_l_moles = afm.utils.matches_resolve_1_label(matches0, rr_list)
 
 		r_r_moles = []
 		r_r_moles.extend(new_r_l_moles)
 		# insert double-labeled fragments into matches
 		# e.g., LCCCCR
 
-		matches_1_label = afm.utils_1_sided.match_concentrations_with_different_sums(matches1, r_r_moles)
+		matches_1_label = afm.utils.match_concentrations_with_different_sums(matches1, r_r_moles)
 
 		return matches_1_label
 
@@ -247,14 +247,14 @@ class OdeSimulator(Simulator):
 			moles_dict[spe_label] = max(data.data[-1] * total_moles[-1], 0)
 
 		# prepare moles data for re-attachment
-		r_moles, remain_moles, rr_list = categorize_fragments(moles_dict)
+		r_moles, remain_moles, rr_list = categorize_fragments_1_label(moles_dict)
 
-		matches = self.reattach_fragments(r_moles,
+		matches = self.reattach_fragments_1_label(r_moles,
 										  rr_list,
 										  grind_size,
 										  shuffle_seed)
 
-		flattened_matches = [(tuple(afm.utils_1_sided.flatten(m[0])), m[1]) for m in matches]
+		flattened_matches = [(tuple(afm.utils.flatten(m[0])), m[1]) for m in matches]
 
 		final_frags_moles = []
 		for remain in remain_moles:

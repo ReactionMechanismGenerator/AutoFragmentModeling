@@ -220,3 +220,26 @@ class TestUtils(unittest.TestCase):
 		self.assertEqual(new_matches, expected_new_matches)
 		self.assertEqual(new_r_l_moles, expected_new_r_l_moles)
 
+# 1 label (R label only)
+# test matches resolve for 1 label
+
+
+	def test_matches_resolve_1_label(self):
+
+		matches = [(('RY', 'CCR'), 10),
+				   (('ArCR', 'RCCCCR'), 4),
+				   (('C_CCR', 'RCC_CCR'), 6),
+				   (('RCCCCR', 'RCC_CCR'), 6),
+				   (('RY', 'TR'), 3)]
+		rr_list = ['RCCCCR', 'RCC_CCR']
+
+		new_matches_1_label, new_r_l_moles_1_label = afm.utils_1_sided.matches_resolve(matches, rr_list)
+
+		expected_new_matches_1_label = [(('RY', 'CCR'), 10),
+							    (('ArCR', 'RCCCCR', 'ArCR'), 2),
+				   			    (('C_CCR', 'RCC_CCR', 'C_CCR'), 3),
+							    (('RY', 'TR'), 3)]
+		expected_new_r_l_moles_1_label = [(('RCCCCR', 'RCC_CCR'), 3)]
+
+		self.assertEqual(new_matches_1_label, expected_new_matches_1_label)
+		self.assertEqual(new_r_l_moles_1_label, expected_new_r_l_moles_1_label)
