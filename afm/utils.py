@@ -26,6 +26,33 @@ def matches_resolve(matches, rr_ll_list):
 
 	return new_matches, new_r_l_moles
 
+# 1 label (R label only)
+def matches_resolve_1_label(matches, rr_list):
+    new_matches_1_label = []
+    new_r_moles_1_label = []
+
+    for match in matches:
+        pair = match[0]
+        value = match[1]
+        r_frag_1, r_frag_2 = pair
+
+        if r_frag_1 not in rr_list:
+            if r_frag_2 not in rr_list:
+                # cases like (L-Y, X-R)
+                new_matches_1_label.append((pair, value))
+            else:
+                # cases like (L-Y, R-U1-R)
+                new_matches_1_label.append(((r_frag_1, r_frag_2, r_frag_1), value / 2.0))
+        else:
+            if r_frag_2 not in rr_list:
+                # cases like (L-W1-L, X-R)
+                new_matches_1_label.append(((r_frag_2, r_frag_1, r_frag_2), value / 2.0))
+            else:
+                # cases like (L-W1-L, R-U1-R)
+                new_r_moles_1_label.append((pair, value / 2.0))
+
+    return new_matches_1_label, new_r_moles_1_label
+
 def shuffle(conc, seed=None):
 
 	idx_arr = np.arange(len(conc))

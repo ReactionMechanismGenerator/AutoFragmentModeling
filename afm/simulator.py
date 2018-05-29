@@ -137,6 +137,48 @@ class OdeSimulator(Simulator):
 
 		return matches
 
+	def reattach_fragments_1_label(self,
+						   r_moles,
+						   rr_list,
+						   grind_size=1,
+						   shuffle_seed=0):
+
+		"""
+		Given simulation data, alldata, which contains concentrations
+		of all the fragments, return a list of merged molecules
+		after re-attachment with their concentrations.
+		"""
+		# cut large moles into smaller pieces
+		grinded_r_moles = afm.utils_1_sided.grind(r_moles, grind_size)
+
+		# random shuffle
+		r_moles_shuffle = afm.utils_1_sided.shuffle(grinded_r_moles, shuffle_seed)
+
+		# match concentrations for single-labeled fragments
+		# including RCCCCR
+		if len(r_moles_shuffle) % 2 != 0:
+			half_length = (len(r_moles_shuffle) - 1) / 2
+		else:
+			half_length = len(r_moles_shuffle) / 2
+
+		half_r_moles_shuffle_1 = r_moles_shuffle[0:half_length]
+		half_r_moles_shuffle_2 = r_moles_shuffle[half_length:len(r_moles_shuffle)]
+
+		matches0 = afm.utils_1_sided.match_concentrations_with_same_sums(half_r_moles_shuffle_1,
+																		 half_r_moles_shuffle_2,
+																		 diff_tol=1e-3)
+
+		matches1, new_r_l_moles = afm.utils_1_sided.matches_resolve(matches0, rr_list)
+
+		r_r_moles = []
+		r_r_moles.extend(new_r_l_moles)
+		# insert double-labeled fragments into matches
+		# e.g., LCCCCR
+
+		matches_1_label = afm.utils_1_sided.match_concentrations_with_different_sums(matches1, r_r_moles)
+
+		return matches_1_label
+
 	def get_molecular_weight_distribution(self, 
 										  alldata, 
 										  grind_size=10, 
@@ -186,6 +228,55 @@ class OdeSimulator(Simulator):
 
 		return fragmental_weight_distri
 
+# 1 label (R label only)
+	def get_molecular_weight_distribution_1_label(self,
+										         alldata,
+										         grind_size=1,
+								        	     shuffle_seed=0):
+
+		# prepare moles data
+		_, dataList, _ = alldata[0]
+		TData = dataList[0]
+		PData = dataList[1]
+		VData = dataList[2]
+		total_moles = PData.data * VData.data / 8.314 / TData.data
+
+		moles_dict = {}
+		for data in dataList[3:]:
+			spe_label = data.label
+			moles_dict[spe_label] = max(data.data[-1] * total_moles[-1], 0)
+
+		# prepare moles data for re-attachment
+		r_moles, remain_moles, rr_list = categorize_fragments(moles_dict)
+
+		matches = self.reattach_fragments(r_moles,
+										  rr_list,
+										  grind_size,
+										  shuffle_seed)
+
+		flattened_matches = [(tuple(afm.utils_1_sided.flatten(m[0])), m[1]) for m in matches]
+
+		final_frags_moles = []
+		for remain in remain_moles:
+			label, val = remain
+			final_frags_moles.append(((label,), val))
+
+		final_frags_moles.extend(flattened_matches)
+
+		# calculate fragmental weight distribution
+		fragmental_weight_distri_1_label = []
+		for final_frag_mole in final_frags_moles:
+			sub_frag_labels, mole = final_frag_mole
+			total_frag_weight = 0
+			for sub_frag_label in sub_frag_labels:
+				sub_frag = self.fragment_dict[sub_frag_label]
+				total_frag_weight += sub_frag.getMolecularWeight()
+
+			fragmental_weight_distri_1_label.append((total_frag_weight, mole))
+
+		return fragmental_weight_distri_1_label
+
+
 def categorize_fragments(moles_dict):
 
 	r_moles = []
@@ -226,6 +317,42 @@ def categorize_fragments(moles_dict):
 			print "{0} has more than two cutting labels, which is not supported.".format(spe_label)
 
 	return r_moles, l_moles, r_l_moles, remain_moles, rr_ll_list
+
+# 1 label (R label only)
+def categorize_fragments_1_label(moles_dict):
+	r_moles_1_label = []
+	rr_list_1_label = []
+	remain_moles_1_label = []
+	for spe_label in moles_dict:
+		if '*' in spe_label:
+			remain_moles_1_label.append((spe_label, moles_dict[spe_label]))
+			continue
+		if abs(moles_dict[spe_label]) <= 1e-6:
+			remain_moles_1_label.append((spe_label, moles_dict[spe_label]))
+			continue
+
+		r_count = spe_label.count('R')
+
+		label_count = r_count
+
+		if label_count == 0:
+			remain_moles_1_label.append((spe_label, moles_dict[spe_label]))
+			continue
+
+		if label_count == 1:
+			if r_count == 1:
+				r_moles_1_label.append((spe_label, moles_dict[spe_label]))
+
+		elif label_count == 2:
+			rr_list_1_label.append(spe_label)
+			if r_count == 2:
+				r_moles_1_label.append((spe_label, 2 * moles_dict[spe_label]))
+
+		else:
+			print "{0} has more than two cutting labels, which is not supported.".format(spe_label)
+
+	return r_moles_1_label, remain_moles_1_label, rr_list_1_label
+
 
 class MonteCarloSimulator(Simulator):
 
