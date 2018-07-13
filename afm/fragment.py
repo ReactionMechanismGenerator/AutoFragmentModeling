@@ -23,6 +23,7 @@ class CuttingLabel(Vertex):
         self.lonePairs = 0
         self.isotope = -1
         self.id = id
+        self.mass = 0
 
     def __str__(self):
         """
@@ -923,6 +924,24 @@ class Fragment(Graph):
         aryl = sum([atom.radicalElectrons for atom in aromaticAtoms])
 
         return total == aryl
+
+    def getNumAtoms(self, element = None):
+        """
+        Return the number of atoms in molecule.  If element is given, ie. "H" or "C",
+        the number of atoms of that element is returned.
+        """
+        numAtoms = 0
+        if element == None:
+            for vertex in self.vertices:
+                if isinstance(vertex, Atom):
+                    numAtoms += 1
+        else:
+            for vertex in self.vertices:
+                if isinstance(vertex, Atom):
+                    if vertex.element.symbol == element:
+                        numAtoms += 1
+        return numAtoms
+
 # this variable is used to name atom IDs so that there are as few conflicts by 
 # using the entire space of integer objects
 atom_id_counter = -2**15
