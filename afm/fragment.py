@@ -314,7 +314,7 @@ class Fragment(Graph):
 
                     cuttinglabel.edges[bondedAtom] = new_bond
                 final_vertices.append(cuttinglabel)
-            
+
             else:
                 final_vertices.append(atom)
 
@@ -810,6 +810,45 @@ class Fragment(Graph):
             return False
 
     def toSMILES(self):
+
+        smiles_replace_dict = {
+                        'R': 'Cl',
+                        'L': 'I',
+        }
+
+        atom_replace_dict = {
+                        'Cl': 'R',
+                        'I': 'L',
+        }
+
+        SMILES_before = self
+        final_vertices = []
+        for index, atom in enumerate(SMILES_before.atoms):
+            element_symbol = atom.symbol
+            if element_symbol in smiles_replace_dict:
+                substi_name = smiles_replace_dict[element_symbol]
+                substi = Atom(element=substi_name)
+
+                for bondedAtom, bond in atom.edges.iteritems():
+                    new_bond = Bond(bondedAtom, substi, order=bond.order)
+
+                    bondedAtom.edges[substi] = new_bond
+                    del bondedAtom.edges[atom]
+
+                    substi.edges[bondedAtom] = new_bond
+                substi.charge = 0
+                substi.lonePairs = 3
+                final_vertices.append(substi)
+            else:
+                final_vertices.append(atom)
+
+        SMILES_before.vertices = final_vertices
+        SMILES_after = SMILES_before.toSMILES_old()
+        for element, label_str in atom_replace_dict.iteritems():
+            SMILES_after = SMILES_after.replace(element, label_str)
+        return SMILES_after
+
+    def toSMILES_old(self):
         mol0 = self.get_representative_molecule()[0]
         return mol0.toSMILES()
 
