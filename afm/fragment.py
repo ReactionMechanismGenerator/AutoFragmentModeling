@@ -821,7 +821,8 @@ class Fragment(Graph):
                         'I': 'L',
         }
 
-        SMILES_before = self
+        SMILES_before = self.copy(deep=True)
+        # store = self.vertices
         final_vertices = []
         for index, atom in enumerate(SMILES_before.atoms):
             element_symbol = atom.symbol
@@ -846,6 +847,7 @@ class Fragment(Graph):
         SMILES_after = SMILES_before.toSMILES_old()
         for element, label_str in atom_replace_dict.iteritems():
             SMILES_after = SMILES_after.replace(element, label_str)
+        # self.vertices = store
         return SMILES_after
 
     def toSMILES_old(self):
