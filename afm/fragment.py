@@ -238,6 +238,16 @@ class Fragment(Graph):
             charge += v.charge
         return charge
 
+    def getChargeSpan(self):
+        """
+        Iterate through the atoms in the structure and calculate the charge span
+        on the overall molecule.
+        The charge span is a measure of the number of charge separations in a molecule.
+        """
+        abs_net_charge = abs(self.getNetCharge())
+        sum_of_abs_charges = sum([abs(atom.charge) for atom in self.vertices])
+        return (sum_of_abs_charges - abs_net_charge) / 2
+
     def merge(self, other):
         """
         Merge two fragments so as to store them in a single :class:`Fragment`
