@@ -785,9 +785,10 @@ class Fragment(Graph):
             if atom_id_counter == 2**15:
                 atom_id_counter = -2**15
 
-    def generate_resonance_structures(self, keepIsomorphic=False):
+    def generate_resonance_structures(self, keep_isomorphic=False, filter_structures=True):
         """Returns a list of resonance structures of the fragment."""
-        return resonance.generate_resonance_structures(self, keepIsomorphic=keepIsomorphic)
+        return resonance.generate_resonance_structures(self, keep_isomorphic=keep_isomorphic,
+                                                        filter_structures = filter_structures)
 
     def isIdentical(self, other):
         """
