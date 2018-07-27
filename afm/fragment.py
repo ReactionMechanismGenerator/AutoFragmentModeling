@@ -95,6 +95,7 @@ class Fragment(Graph):
                 species_repr=None,
                 vertices=None,
                 multiplicity=-187,
+                reactive=True,
                 props=None):
         self.index = -1
         self.label = label
@@ -103,6 +104,7 @@ class Fragment(Graph):
         self.fingerprint = None
         self.props = props or {}
         self.multiplicity = multiplicity
+        self.reactive = reactive
 
     def __str__(self):
         """
