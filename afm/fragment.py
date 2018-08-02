@@ -824,24 +824,19 @@ class Fragment(Graph):
 
     def toSMILES(self):
 
-        smiles_replace_dict = {
-                        'R': 'Cl',
-                        'L': 'I',
-        }
-
-        atom_replace_dict = {
-                        'Cl': 'R',
-                        'I': 'L',
-        }
+        cutting_label_list = []
+        for vertex in self.vertices:
+            if isinstance(vertex, CuttingLabel):
+                cutting_label_list.append(vertex.symbol)
 
         SMILES_before = self.copy(deep=True)
-        # store = self.vertices
         final_vertices = []
-        for index, atom in enumerate(SMILES_before.atoms):
+        for ind, atom in enumerate(SMILES_before.atoms):
             element_symbol = atom.symbol
-            if element_symbol in smiles_replace_dict:
-                substi_name = smiles_replace_dict[element_symbol]
+            if isinstance(atom, CuttingLabel):
+                substi_name = 'Si'
                 substi = Atom(element=substi_name)
+                substi.label = element_symbol
 
                 for bondedAtom, bond in atom.edges.iteritems():
                     new_bond = Bond(bondedAtom, substi, order=bond.order)
@@ -850,22 +845,21 @@ class Fragment(Graph):
                     del bondedAtom.edges[atom]
 
                     substi.edges[bondedAtom] = new_bond
-                substi.charge = 0
-                substi.lonePairs = 3
+
+                substi.radicalElectrons = 3
+
                 final_vertices.append(substi)
             else:
                 final_vertices.append(atom)
 
         SMILES_before.vertices = final_vertices
-        SMILES_after = SMILES_before.toSMILES_old()
-        for element, label_str in atom_replace_dict.iteritems():
-            SMILES_after = SMILES_after.replace(element, label_str)
-        # self.vertices = store
-        return SMILES_after
+        mol_repr = Molecule()
+        mol_repr.atoms = SMILES_before.vertices
+        SMILES_after = mol_repr.toSMILES()
+        import re
+        smiles = re.sub('\[Si\]', '', SMILES_after)
 
-    def toSMILES_old(self):
-        mol0 = self.get_representative_molecule()[0]
-        return mol0.toSMILES()
+        return smiles
 
     def get_element_count(self):
         """
