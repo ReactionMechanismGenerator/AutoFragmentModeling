@@ -294,43 +294,28 @@ class Fragment(Graph):
         
     def from_SMILES_like_string(self, SMILES_like_string):
 
-        smiles_replace_dict = {
-                        'R': 'Cl', 
-                        'L': '[Si]'
-        }
+        import re
+        smiles = SMILES_like_string
 
-        atom_replace_dict = {
-                        'Cl': 'R', 
-                        'Si': 'L'
-        }
+        cutting_label_list = re.findall(r'([LR]\d?)', smiles)
 
-        smiles =  SMILES_like_string
+        smiles_replace_dict = {}
+        metal_list = ['[Li]', '[Na]', '[K]', '[Rb]', '[Cs]', '[Fr]', '[Be]', '[Mg]', '[Ca]', '[Sr]', '[Ba]', '[Ra]']
+        for index, label_str in enumerate(cutting_label_list):
+            smiles_replace_dict[label_str] = metal_list[index]
+
+        atom_replace_dict = {}
+        for key, value in smiles_replace_dict.iteritems():
+            atom_replace_dict[value] = key
+
         for label_str, element in smiles_replace_dict.iteritems():
             smiles = smiles.replace(label_str, element)
 
-        mol = Molecule().fromSMILES(smiles)
-        # convert mol to fragment object
-        final_vertices = []
-        for atom in mol.atoms:
-            element_symbol = atom.element.symbol
-            if element_symbol in atom_replace_dict:
-                
-                cuttinglabel_name = atom_replace_dict[element_symbol]
+        from rdkit import Chem
+        rdkitmol = Chem.MolFromSmiles(smiles)
 
-                cuttinglabel = CuttingLabel(name=cuttinglabel_name)
-                for bondedAtom, bond in atom.edges.iteritems():
-                    new_bond = Bond(bondedAtom, cuttinglabel, order=bond.order)
-                    
-                    bondedAtom.edges[cuttinglabel] = new_bond
-                    del bondedAtom.edges[atom]
+        self.fromRDKitMol(rdkitmol, atom_replace_dict)
 
-                    cuttinglabel.edges[bondedAtom] = new_bond
-                final_vertices.append(cuttinglabel)
-
-            else:
-                final_vertices.append(atom)
-
-        self.vertices = final_vertices
         return self
 
     def isSubgraphIsomorphic(self, other, initialMap=None):
