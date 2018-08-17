@@ -784,7 +784,7 @@ class Fragment(Graph):
         Returns :data:`True` if two graphs are identical and :data:`False` otherwise.
         """
 
-        if not isinstance(other, Fragment):
+        if not isinstance(other, (Fragment, Molecule)):
             raise TypeError('Got a {0} object for parameter "other", when a Fragment object is required.'.format(other.__class__))
 
         # Get a set of atom indices for each molecule
