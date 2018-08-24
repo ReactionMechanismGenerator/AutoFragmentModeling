@@ -88,6 +88,15 @@ class CuttingLabel(Vertex):
     def isOxygen(self):
         return False
 
+    def isSilicon(self):
+        return False
+
+    def isSulfur(self):
+        return False
+
+    def isChlorine(self):
+        return False
+
 class Fragment(Graph):
 
     def __init__(self,
