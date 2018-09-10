@@ -309,7 +309,7 @@ class Fragment(Graph):
         cutting_label_list = re.findall(r'([LR]\d?)', smiles)
 
         smiles_replace_dict = {}
-        metal_list = ['[Li]', '[Na]', '[K]', '[Rb]', '[Cs]', '[Fr]', '[Be]', '[Mg]', '[Ca]', '[Sr]', '[Ba]', '[Ra]']
+        metal_list = ['[Na]', '[K]', '[Cs]', '[Fr]', '[Be]', '[Mg]', '[Ca]', '[Sr]', '[Ba]']
         for index, label_str in enumerate(cutting_label_list):
             smiles_replace_dict[label_str] = metal_list[index]
 
