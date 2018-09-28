@@ -11,6 +11,7 @@ from rmgpy.molecule.element import getElement
 from rmgpy.molecule.graph import Graph, Vertex
 from rmgpy.molecule.molecule import Atom, Bond, Molecule
 from rmgpy.molecule.atomtype import getAtomType, AtomTypeError
+from rmgpy.molecule.kekulize import kekulize
 
 class CuttingLabel(Vertex):
 
@@ -764,6 +765,12 @@ class Fragment(Graph):
             # all are unique
             return True
         return False
+
+    def kekulize(self):
+        """
+        Kekulizes an aromatic molecule.
+        """
+        kekulize(self)
 
     def assignAtomIDs(self):
         """
