@@ -2,7 +2,7 @@
 
 ## Project Status
 
-[![Build status](https://img.shields.io/travis/reactionmechanismgenerator/AutoFragmentModeling/master.svg)](https://travis-ci.org/reactionmechanismgenerator/AutoFragmentModeling)
+[![Build status](https://img.shields.io/travis/ReactionMechanismGenerator/AutoFragmentModeling/master.svg)](https://travis-ci.org/ReactionMechanismGenerator/AutoFragmentModeling)
 
 ## Description
 
