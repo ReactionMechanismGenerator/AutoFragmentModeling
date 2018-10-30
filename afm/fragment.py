@@ -98,6 +98,13 @@ class CuttingLabel(Vertex):
     def isChlorine(self):
         return False
 
+    def isNOS(self):
+        """
+        Return ``True`` if the atom represent either nitrogen, sulfur, or oxygen
+        ``False`` if it does not.
+        """
+        return False
+
 class Fragment(Graph):
 
     def __init__(self,
