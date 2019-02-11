@@ -89,6 +89,9 @@ class CuttingLabel(Vertex):
     def isOxygen(self):
         return False
 
+    def isFluorine(self):
+        return False
+
     def isSilicon(self):
         return False
 
@@ -96,6 +99,9 @@ class CuttingLabel(Vertex):
         return False
 
     def isChlorine(self):
+        return False
+
+    def isIodine(self):
         return False
 
     def isNOS(self):
