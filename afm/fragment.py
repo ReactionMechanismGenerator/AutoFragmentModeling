@@ -120,6 +120,7 @@ class Fragment(Graph):
                 label='',
                 species_repr=None,
                 vertices=None,
+                symmetry=-1,
                 multiplicity=-187,
                 reactive=True,
                 props=None,
@@ -129,6 +130,7 @@ class Fragment(Graph):
         self.label = label
         self.species_repr = species_repr
         Graph.__init__(self, vertices)
+        self.symmetryNumber = symmetry
         self.fingerprint = None
         self.inchi = None
         self.smiles = None
