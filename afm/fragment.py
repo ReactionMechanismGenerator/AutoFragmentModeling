@@ -51,7 +51,7 @@ class CuttingLabel(Vertex):
         """
         return self.equivalent(other)
 
-    def equivalent(self, other):
+    def equivalent(self, other, strict=True):
         """
         Return ``True`` if `other` is indistinguishable from this CuttingLabel, or
         ``False`` otherwise. If `other` is an :class:`CuttingLabel` object, then all
@@ -883,7 +883,7 @@ class Fragment(Graph):
         return resonance.generate_resonance_structures(self, keep_isomorphic=keep_isomorphic,
                                                         filter_structures = filter_structures)
 
-    def isIdentical(self, other):
+    def isIdentical(self, other, strict=True):
         """
         Performs isomorphism checking, with the added constraint that atom IDs must match.
 
@@ -910,7 +910,7 @@ class Fragment(Graph):
             for atom1, atom2 in itertools.izip(atomList, otherList):
                 mapping[atom1] = atom2
 
-            return self.isMappingValid(other, mapping)
+            return self.isMappingValid(other, mapping, equivalent=True, strict=strict)
         else:
             # The molecules don't have the same set of indices, so they are not identical
             return False
