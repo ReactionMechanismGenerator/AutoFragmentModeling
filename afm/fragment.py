@@ -92,6 +92,9 @@ class CuttingLabel(Vertex):
     def isFluorine(self):
         return False
 
+    def isSurfaceSite(self):
+        return False
+
     def isSilicon(self):
         return False
 
@@ -247,6 +250,19 @@ class Fragment(Graph):
         """
         self.fingerprint = None
         return self.removeVertex(atom)
+
+    def containsSurfaceSite(self):
+        """
+        Returns ``True`` iff the molecule contains an 'X' surface site.
+        """
+        for atom in self.vertices:
+            if atom.symbol == 'X':
+                return True
+        return False
+
+    def isSurfaceSite(self):
+        "Returns ``True`` iff the molecule is nothing but a surface site 'X'."
+        return len(self.vertices) == 1 and self.vertices[0].isSurfaceSite()
 
     def hasBond(self, atom1, atom2):
         """
