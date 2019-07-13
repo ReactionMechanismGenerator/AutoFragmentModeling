@@ -341,7 +341,7 @@ class Fragment(Graph):
         for v in self.vertices:
             radicals += v.radicalElectrons
         return radicals
-        
+
     def fromInChI(self, inchistr, backend='try-all'):
         """
         Convert an InChI string `inchistr` to a molecular structure.
@@ -374,6 +374,51 @@ class Fragment(Graph):
         self.fromRDKitMol(rdkitmol, atom_replace_dict)
 
         return self
+
+    def isIsomorphic(self, other, initialMap=None, generateInitialMap=False, saveOrder=False, strict=True):
+        """
+        Returns :data:`True` if two graphs are isomorphic and :data:`False`
+        otherwise. The `initialMap` attribute can be used to specify a required
+        mapping from `self` to `other` (i.e. the atoms of `self` are the keys,
+        while the atoms of `other` are the values). The `other` parameter must
+        be a :class:`Graph` object, or a :class:`TypeError` is raised.
+        Also ensures multiplicities are also equal.
+
+        Args:
+            initialMap (dict, optional):         initial atom mapping to use
+            generateInitialMap (bool, optional): if ``True``, initialize map by pairing atoms with same labels
+            saveOrder (bool, optional):          if ``True``, reset atom order after performing atom isomorphism
+            strict (bool, optional):             if ``False``, perform isomorphism ignoring electrons
+        """
+        # It only makes sense to compare a Molecule to a Molecule for full
+        # isomorphism, so raise an exception if this is not what was requested
+        if not isinstance(other, Graph):
+            raise TypeError('Got a {0} object for parameter "other", when a Molecule object is required.'.format(other.__class__))
+        # Do the quick isomorphism comparison using the fingerprint
+        # Two fingerprint strings matching is a necessary (but not
+        # sufficient!) condition for the associated molecules to be isomorphic
+        if self.fingerprint != other.fingerprint:
+            return False
+        # check multiplicity
+        if self.multiplicity != other.multiplicity:
+            return False
+
+        if generateInitialMap:
+            initialMap = dict()
+            for atom in self.vertices:
+                if atom.label and atom.label != '':
+                    for a in other.vertices:
+                        if a.label == atom.label:
+                            initialMap[atom] = a
+                            break
+                    else:
+                        return False
+            if not self.isMappingValid(other, initialMap, equivalent=True):
+                return False
+
+        # Do the full isomorphism comparison
+        result = Graph.isIsomorphic(self, other, initialMap, saveOrder=saveOrder, strict=strict)
+        return result
 
     def isSubgraphIsomorphic(self, other, initialMap=None):
         """
