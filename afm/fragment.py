@@ -119,15 +119,28 @@ class Fragment(Graph):
                 vertices=None,
                 multiplicity=-187,
                 reactive=True,
-                props=None):
+                props=None,
+                InChI='',
+                SMILES=''):
         self.index = -1
         self.label = label
         self.species_repr = species_repr
         Graph.__init__(self, vertices)
         self.fingerprint = None
+        self.inchi = None
+        self.smiles = None
         self.props = props or {}
         self.multiplicity = multiplicity
         self.reactive = reactive
+
+        if InChI and SMILES:
+            logging.warning('Both InChI and SMILES provided for Fragment instantiation, using InChI and ignoring SMILES.')
+        if InChI:
+            self.fromInChI(InChI)
+            self.inchi = InChI
+        elif SMILES:
+            self.from_SMILES_like_string(SMILES)
+            self.smiles = SMILES
 
     def __str__(self):
         """
@@ -204,6 +217,20 @@ class Fragment(Graph):
                 else:
                     labeled[v.label] = v
         return labeled
+
+    @property
+    def InChI(self):
+        """InChI string for this molecule. Read-only."""
+        if self.inchi is None:
+            self.inchi = self.toInChI()
+        return self.inchi
+
+    @property
+    def SMILES(self):
+        """SMILES string for this molecule. Read-only."""
+        if self.smiles is None:
+            self.smiles = self.toSMILES()
+        return self.smiles
 
     def addAtom(self, atom):
         """
@@ -315,6 +342,13 @@ class Fragment(Graph):
             radicals += v.radicalElectrons
         return radicals
         
+    def fromInChI(self, inchistr, backend='try-all'):
+        """
+        Convert an InChI string `inchistr` to a molecular structure.
+        """
+        translator.fromInChI(self, inchistr, backend)
+        return self
+
     def from_SMILES_like_string(self, SMILES_like_string):
 
         import re
