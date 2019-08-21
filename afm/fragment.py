@@ -158,6 +158,19 @@ class Fragment(Graph):
     def __setAtoms(self, atoms): self.vertices = atoms
     atoms = property(__getAtoms, __setAtoms)
 
+    def draw(self, path):
+        """
+        Generate a pictorial representation of the chemical graph using the
+        :mod:`draw` module. Use `path` to specify the file to save
+        the generated image to; the image type is automatically determined by
+        extension. Valid extensions are ``.png``, ``.svg``, ``.pdf``, and
+        ``.ps``; of these, the first is a raster format and the remainder are
+        vector formats.
+        """
+        from rmgpy.molecule.draw import MoleculeDrawer
+        format = os.path.splitext(path)[-1][1:].lower()
+        MoleculeDrawer().draw(self, format, target=path)
+
     def _repr_png_(self):
         """
         Return a png picture of the molecule, useful for ipython-qtconsole.
