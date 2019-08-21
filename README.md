@@ -2,7 +2,7 @@
 
 ## Project Status
 
-[![Build status](https://img.shields.io/travis/KEHANG/AutoFragmentModeling/master.svg)](https://travis-ci.org/KEHANG/AutoFragmentModeling)
+[![Build status](https://img.shields.io/travis/ReactionMechanismGenerator/AutoFragmentModeling/master.svg)](https://travis-ci.org/ReactionMechanismGenerator/AutoFragmentModeling)
 
 ## Description
 
