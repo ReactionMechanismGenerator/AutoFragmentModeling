@@ -5,21 +5,21 @@ channels:
   - KEHANG
   - rdkit
 dependencies:
-  - numpy
-  - rmg::quantities
-  - scipy
-  - rdkit::rdkit
-  - rmg::lpsolve55
-  - rmg::pydas >=1.0.1
-  - matplotlib
   - rmg::cantera
+  - dde
   - jupyter
-  - xlwt
+  - rmg::lpsolve55
+  - matplotlib
+  - mpmath
   - nose
+  - numpy
   - pandas
-  - tqdm
+  - rmg::pydas >=1.0.1
+  - rmg::quantities
+  - rdkit::rdkit
   - KEHANG::rmg
   - KEHANG::rmgdatabase
-  - dde
   - scikit-learn
-  - mpmath
+  - scipy
+  - tqdm
+  - xlwt
