@@ -451,7 +451,7 @@ class Fragment(Graph):
         result = Graph.isIsomorphic(self, other, initialMap, saveOrder=saveOrder, strict=strict)
         return result
 
-    def isSubgraphIsomorphic(self, other, initialMap=None):
+    def isSubgraphIsomorphic(self, other, initialMap=None, generateInitialMap=False, saveOrder=False):
         """
         Fragment's subgraph isomorphism check is done by first creating 
         a representative molecule of fragment, and then following same procedure
@@ -478,6 +478,36 @@ class Fragment(Graph):
                 return False
             elif element_count[element] < count:
                 return False
+
+        if generateInitialMap:
+            keys = []
+            atms = []
+            initialMap = dict()
+            for atom in self.atoms:
+                if atom.label and atom.label != '':
+                    atom_label_map = [a for a in other.atoms if a.label == atom.label]
+                    if not atom_label_map:
+                        return False
+                    elif len(atom_label_map) == 1:
+                        initialMap[atom] = atom_label_map[0]
+                    else:
+                        keys.append(atom)
+                        atms.append(atom_label_map)
+            if atms:
+                for atmlist in itertools.product(*atms):
+                    # skip entries that map multiple graph atoms to the same subgraph atom
+                    if len(set(atmlist)) != len(atmlist):
+                        continue
+                    for i,key in enumerate(keys):
+                        initialMap[key] = atmlist[i]
+                    if self.isMappingValid(other, initialMap, equivalent=False) and \
+                            Graph.isSubgraphIsomorphic(self, other, initialMap, saveOrder=saveOrder):
+                        return True
+                else:
+                    return False
+            else:
+                if not self.isMappingValid(other, initialMap, equivalent=False):
+                    return False
 
         # Do the isomorphism comparison
         new_initial_map = None
