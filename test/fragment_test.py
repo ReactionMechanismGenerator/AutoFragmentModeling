@@ -657,7 +657,7 @@ class TestFragment(unittest.TestCase):
         fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
 
         frag_res = resonance.generate_resonance_structures(fragment, 
-                                                           clarStructures=False)
+                                                           clar_structures=False)
 
         self.assertEqual(len(frag_res), 3)
 
@@ -685,6 +685,6 @@ class TestFragment(unittest.TestCase):
         fragment = afm.fragment.Fragment().fromAdjacencyList(adj)
 
         frag_res = resonance.generate_resonance_structures(fragment, 
-                                                           clarStructures=True)
+                                                           clar_structures=True)
 
         self.assertEqual(len(frag_res), 3)
