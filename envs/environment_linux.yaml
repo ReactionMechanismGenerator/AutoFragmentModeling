@@ -1,6 +1,7 @@
 name: afm_env
 channels:
   - defaults
+  - afm
   - rmg
   - KEHANG
   - rdkit
@@ -17,8 +18,8 @@ dependencies:
   - rmg::pydas >=1.0.1
   - rmg::quantities
   - rdkit::rdkit
-  - KEHANG::rmg
-  - KEHANG::rmgdatabase
+  - afm::rmg==2.4.1.1
+  - afm::rmgdatabase
   - scikit-learn
   - scipy
   - tqdm
