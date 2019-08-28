@@ -153,6 +153,7 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment()
         for vertex in vertices: expected_fragment.addVertex(vertex)
         for bond in bonds: expected_fragment.addEdge(bond)
+	expected_fragment.update()
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
 
@@ -204,6 +205,7 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment()
         for vertex in vertices: expected_fragment.addVertex(vertex)
         for bond in bonds: expected_fragment.addEdge(bond)
+	expected_fragment.update()
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
 
@@ -255,6 +257,7 @@ class TestFragment(unittest.TestCase):
         expected_fragment = afm.fragment.Fragment()
         for vertex in vertices: expected_fragment.addVertex(vertex)
         for bond in bonds: expected_fragment.addEdge(bond)
+	expected_fragment.update()
 
         self.assertTrue(expected_fragment.isIsomorphic(fragment))
 
@@ -523,9 +526,9 @@ class TestFragment(unittest.TestCase):
         adj = fragment.toAdjacencyList()
         expected_adj = """multiplicity 2
 1 C u1 p0 c0 {2,S} {3,S} {4,S}
-2 H u0 p0 c0 {1,S}
+2 R u0 p0 c0 {1,S}
 3 H u0 p0 c0 {1,S}
-4 R u0 p0 c0 {1,S}
+4 H u0 p0 c0 {1,S}
 """
         self.assertEqual(adj, expected_adj)
 
