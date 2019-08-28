@@ -213,9 +213,11 @@ class Fragment(Graph):
         """
         Return the atoms in the fragment that are labeled.
         """
-        for v in self.vertices:
-            if v.label == label: return v
-        raise ValueError('No vertex in the fragment has the label "{0}".'.format(label))
+        alist = [v for v in self.vertices if v.label == label]
+        if alist == []:
+            raise ValueError(
+                'No vertex in the fragment \n{1}\n has the label "{0}".'.format(label, self.toAdjacencyList()))
+        return alist
 
     def getLabeledAtoms(self):
         """
