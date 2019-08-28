@@ -662,7 +662,7 @@ class TestFragment(unittest.TestCase):
         frag_res = resonance.generate_resonance_structures(fragment, 
                                                            clar_structures=False)
 
-        self.assertEqual(len(frag_res), 3)
+        self.assertEqual(len(frag_res), 2)
 
     def test_generate_resonance_structures2(self):
 
