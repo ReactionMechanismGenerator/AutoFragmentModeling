@@ -147,6 +147,9 @@ class Fragment(Graph):
             self.from_SMILES_like_string(SMILES)
             self.smiles = SMILES
 
+    def __deepcopy__(self, memo):
+        return self.copy(deep=True)
+
     def __str__(self):
         """
         Return a string representation, in the form 'label(id)'.
