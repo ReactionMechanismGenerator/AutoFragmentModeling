@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 
 import rmgpy.constants
-from rmgpy.chemkin import loadChemkinFile
+from rmgpy.chemkin import load_chemkin_file
 
 import afm.loader
 import afm.utils
@@ -52,49 +52,49 @@ class OdeSimulator(Simulator):
 				fragment_smiles_path,
 				temperature,
 				pressure,
-				outputDirectory='temp'):
+				output_directory='temp'):
 		super(OdeSimulator, self).__init__(chemkin_path, 
 										   dictionary_path,
 										   fragment_smiles_path)
 
-		speciesList, reactionList = loadChemkinFile(chemkin_path, dictionary_path)
-		self.speciesList = speciesList
-		self.reactionList = reactionList
+		species_list, reaction_list = load_chemkin_file(chemkin_path, dictionary_path)
+		self.species_list = species_list
+		self.reaction_list = reaction_list
 		self.temperature = temperature # unit: K
 		self.pressure = pressure # unit: bar
-		self.outputDirectory = outputDirectory
+		self.output_directory = output_directory
 
 	def simulate(self, initial_mol_fraction, termination_time):
 
-		cantera_job = Cantera(speciesList=self.speciesList, 
-							  reactionList=self.reactionList, 
-							  outputDirectory=self.outputDirectory)
+		cantera_job = Cantera(species_list=self.species_list, 
+							  reaction_list=self.reaction_list, 
+							  output_directory=self.output_directory)
 
-		cantera_job.loadModel()
+		cantera_job.load_model()
 
 		# Generate the conditions
-		reactorTypeList = ['IdealGasConstPressureTemperatureReactor']
+		reactor_type_list = ['IdealGasConstPressureTemperatureReactor']
 
-		speciesDict = {}
-		for spe in self.speciesList:
-			speciesDict[spe.label] = spe
+		species_dict = {}
+		for spe in self.species_list:
+			species_dict[spe.label] = spe
 
 		# prepare mole fraction for simulation condition
-		molFracDict = {}
+		mol_frac_dict = {}
 		total_mol_frac = 0
 		for spe_label, init_mol_frac in initial_mol_fraction.iteritems():
-			spe = speciesDict[spe_label]
-			molFracDict[spe] = init_mol_frac
+			spe = species_dict[spe_label]
+			mol_frac_dict[spe] = init_mol_frac
 			total_mol_frac += init_mol_frac
 
 		# normalize initial mole fractions
-		for spe in molFracDict:
-			molFracDict[spe] = molFracDict[spe]/total_mol_frac
+		for spe in mol_frac_dict:
+			mol_frac_dict[spe] = mol_frac_dict[spe]/total_mol_frac
 
-		Tlist = ([self.temperature],'K')
-		Plist = ([self.pressure],'bar')
-		reactionTimeList = ([termination_time], 's')
-		cantera_job.generateConditions(reactorTypeList, reactionTimeList, [molFracDict], Tlist, Plist)
+		T_list = ([self.temperature],'K')
+		P_list = ([self.pressure],'bar')
+		reaction_time_list = ([termination_time], 's')
+		cantera_job.generate_conditions(reactor_type_list, reaction_time_list, [mol_frac_dict], T_list, P_list)
 		
 		# Simulate
 		alldata = cantera_job.simulate()
@@ -185,14 +185,14 @@ class OdeSimulator(Simulator):
 										  shuffle_seed=0):
 
 		# prepare moles data
-		_, dataList, _ = alldata[0]
-		TData = dataList[0]
-		PData = dataList[1]
-		VData = dataList[2]
-		total_moles = PData.data*VData.data/8.314/TData.data
+		_, data_list, _ = alldata[0]
+		T_data = data_list[0]
+		P_data = data_list[1]
+		V_data = data_list[2]
+		total_moles = P_data.data*V_data.data/8.314/T_data.data
 
 		moles_dict = {}
-		for data in dataList[3:]:
+		for data in data_list[3:]:
 			spe_label = data.label
 			moles_dict[spe_label] = max(data.data[-1]*total_moles[-1],0)
 
@@ -222,7 +222,7 @@ class OdeSimulator(Simulator):
 			total_frag_weight = 0
 			for sub_frag_label in sub_frag_labels:
 				sub_frag = self.fragment_dict[sub_frag_label]
-				total_frag_weight += sub_frag.getMolecularWeight()
+				total_frag_weight += sub_frag.get_molecular_weight()
 			
 			fragmental_weight_distri.append((total_frag_weight, mole))
 
@@ -235,14 +235,14 @@ class OdeSimulator(Simulator):
 								        	     shuffle_seed=0):
 
 		# prepare moles data
-		_, dataList, _ = alldata[0]
-		TData = dataList[0]
-		PData = dataList[1]
-		VData = dataList[2]
-		total_moles = PData.data * VData.data / 8.314 / TData.data
+		_, data_list, _ = alldata[0]
+		T_data = data_list[0]
+		P_data = data_list[1]
+		V_data = data_list[2]
+		total_moles = P_data.data * V_data.data / 8.314 / T_data.data
 
 		moles_dict = {}
-		for data in dataList[3:]:
+		for data in data_list[3:]:
 			spe_label = data.label
 			moles_dict[spe_label] = max(data.data[-1] * total_moles[-1], 0)
 
@@ -270,7 +270,7 @@ class OdeSimulator(Simulator):
 			total_frag_weight = 0
 			for sub_frag_label in sub_frag_labels:
 				sub_frag = self.fragment_dict[sub_frag_label]
-				total_frag_weight += sub_frag.getMolecularWeight()
+				total_frag_weight += sub_frag.get_molecular_weight()
 
 			fragmental_weight_distri_1_label.append((total_frag_weight, mole))
 
@@ -411,7 +411,7 @@ class MonteCarloSimulator(Simulator):
 	######################
 	def calculate_unimolucular_rate(self, reaction):
 
-		k_u = reaction.kinetics.getRateCoefficient(self.temperature)
+		k_u = reaction.kinetics.get_rate_coefficient(self.temperature)
 		frag_label = reaction.reactants[0].label
 		frag_count = self.fragment_count_dict[frag_label]
 		rate_u = k_u * frag_count # unit: 1/s
@@ -421,7 +421,7 @@ class MonteCarloSimulator(Simulator):
 	def calculate_bimolucular_rate(self, reaction):
 
 		Na = rmgpy.constants.Na
-		k_b = reaction.kinetics.getRateCoefficient(self.temperature)/Na # unit: m^3/s
+		k_b = reaction.kinetics.get_rate_coefficient(self.temperature)/Na # unit: m^3/s
 		frag_label1 = reaction.reactants[0].label
 		frag_label2 = reaction.reactants[1].label
 
