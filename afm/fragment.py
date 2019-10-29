@@ -579,10 +579,170 @@ class Fragment(Graph):
                             charge=0, 
                             lonePairs=0)
 
-                atom_H5 = Atom(element=getElement('H'), 
+                atom_C3 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H5 = Atom(element=getElement('H'),
                             radicalElectrons=0, 
                             charge=0, 
                             lonePairs=0)
+
+                atom_H6 = Atom(element=getElement('H'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_C4 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_C5 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H7 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H8 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H9 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C6 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H10 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C7 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H11 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H12 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C8 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H13 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C9 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H14 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H15 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H16 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C10 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H17 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C11 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H18 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H19 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H20 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C12 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H21 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C13 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H22 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C14 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H23 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H24 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H25 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
 
                 atoms.append(atom_C1)
 
@@ -591,14 +751,80 @@ class Fragment(Graph):
                                     atom_H3,
                                     atom_H4,
                                     atom_H5,
-                                    atom_C2])
+                                    atom_H6,
+                                    atom_H7,
+                                    atom_H8,
+                                    atom_H9,
+                                    atom_H10,
+                                    atom_H11,
+                                    atom_H12,
+                                    atom_H13,
+                                    atom_H14,
+                                    atom_H15,
+                                    atom_H16,
+                                    atom_H17,
+                                    atom_H18,
+                                    atom_H19,
+                                    atom_H20,
+                                    atom_H21,
+                                    atom_H22,
+                                    atom_H23,
+                                    atom_H24,
+                                    atom_H25,
+                                    atom_C2,
+                                    atom_C3,
+                                    atom_C4,
+                                    atom_C5,
+                                    atom_C6,
+                                    atom_C7,
+                                    atom_C8,
+                                    atom_C9,
+                                    atom_C10,
+                                    atom_C11,
+                                    atom_C12,
+                                    atom_C13,
+                                    atom_C14,
+                                    ])
 
                 additional_bonds.extend([Bond(atom_C1, atom_H1, 1),
                                     Bond(atom_C1, atom_H2, 1),
                                     Bond(atom_C2, atom_H3, 1),
                                     Bond(atom_C2, atom_H4, 1),
-                                    Bond(atom_C2, atom_H5, 1),
-                                    Bond(atom_C1, atom_C2, 1)])
+                                    Bond(atom_C1, atom_C2, 1),
+                                    Bond(atom_C2, atom_C3, 1),
+                                    Bond(atom_C3, atom_H5, 1),
+                                    Bond(atom_C3, atom_H6, 1),
+                                    Bond(atom_C3, atom_C4, 1),
+                                    Bond(atom_C4, atom_C5, 1),
+                                    Bond(atom_C5, atom_H7, 1),
+                                    Bond(atom_C5, atom_H8, 1),
+                                    Bond(atom_C5, atom_H9, 1),
+                                    Bond(atom_C4, atom_C6, 1),
+                                    Bond(atom_C6, atom_C7, 2),
+                                    Bond(atom_C6, atom_H10, 1),
+                                    Bond(atom_C7, atom_H11, 1),
+                                    Bond(atom_C7, atom_H12, 1),
+                                    Bond(atom_C4, atom_C8, 1),
+                                    Bond(atom_C8, atom_H13, 1),
+                                    Bond(atom_C8, atom_C9, 1),
+                                    Bond(atom_C9, atom_H14, 1),
+                                    Bond(atom_C9, atom_H15, 1),
+                                    Bond(atom_C9, atom_H16, 1),
+                                    Bond(atom_C8, atom_C10, 1),
+                                    Bond(atom_C10, atom_H17, 1),
+                                    Bond(atom_C10, atom_C11, 1),
+                                    Bond(atom_C11, atom_H18, 1),
+                                    Bond(atom_C11, atom_H19, 1),
+                                    Bond(atom_C11, atom_H20, 1),
+                                    Bond(atom_C10, atom_C12, 1),
+                                    Bond(atom_C12, atom_H21, 1),
+                                    Bond(atom_C12, atom_C13, 2),
+                                    Bond(atom_C13, atom_H22, 1),
+                                    Bond(atom_C13, atom_C14, 1),
+                                    Bond(atom_C14, atom_H23, 1),
+                                    Bond(atom_C14, atom_H24, 1),
+                                    Bond(atom_C14, atom_H25, 1),
+                                    ])
 
             else:
                 atoms.append(mapped_vertex)
