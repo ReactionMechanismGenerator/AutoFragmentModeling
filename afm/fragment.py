@@ -845,6 +845,8 @@ class Fragment(Graph):
 
         self.assign_representative_molecule()
         self.species_repr = Species(molecule=[self.mol_repr])
+        self.symmetryNumber = self.getSymmetryNumber()
+        self.species_repr.symmetryNumber = self.symmetryNumber
 
     def getMolecularWeight(self):
         """
@@ -855,6 +857,40 @@ class Fragment(Graph):
             if isinstance(vertex, Atom):
                 mass += vertex.element.mass
         return mass
+
+    def getSymmetryNumber(self):
+        """
+        Returns the symmetry number of Fragment.
+        First checks whether the value is stored as an attribute of Fragment.
+        If not, it calls the calculateSymmetryNumber method.
+        """
+        if self.symmetryNumber == -1:
+            self.calculateSymmetryNumber()
+        return self.symmetryNumber
+
+    def calculateSymmetryNumber(self):
+        """
+        Return the symmetry number for the structure. The symmetry number
+        includes both external and internal modes. First replace Cuttinglabel
+        with different elements and then calculate symmetry number
+        """
+        import re
+        from rmgpy.molecule.symmetry import calculateSymmetryNumber
+
+        smiles = self.toSMILES()
+
+        cutting_label_list = re.findall(r'([LR]\d?)', smiles)
+
+        metal_list = ['[Cl]', '[I]', '[Si]', '[F]']
+
+        for index, element in enumerate(cutting_label_list):
+            smiles = smiles.replace(element, metal_list[index], 1)
+
+        frag_sym = Molecule().fromSMILES(smiles)
+
+        frag_sym.updateConnectivityValues() # for consistent results
+        self.symmetryNumber = calculateSymmetryNumber(frag_sym)
+        return self.symmetryNumber
 
     def isRadical(self):
         """
