@@ -1,0 +1,79 @@
+# original fragment
+
+ArCC(C)R: c1ccccc1CC(C)R
+RCCCCR: RCCCCR
+RCC: RCC
+
+ArC*C(C)R: c1ccccc1[CH]C(C)R
+ArCC*(C)R: c1ccccc1C[C](C)R
+ArCC(C*)R: c1ccccc1CC([CH2])R
+
+ArCC__C: c1ccccc1CC=C
+ArC__C: c1ccccc1C=C
+ArC__CR: c1ccccc1C=CR
+C*: [CH3]
+Ar: C1=CC=CC=C1
+Ar*: [C]1=CC=CC=C1
+#C__C(C)R: C=C(C)R
+RC__C: RC=C
+RC(C)C: RC(C)C
+#RC(C)C*: RC(C)[CH2]
+ArCC*R: c1ccccc1C[CH]R
+
+RCCCCCC*: RCCCCC[CH2]
+RCCCCC*: RCCCC[CH2]
+RCCCC*: RCCC[CH2]
+RCCC*: RCC[CH2]
+RCC*: RC[CH2]
+RC*C: R[CH]C
+RC*: R[CH2]
+
+RC: RC
+RCCC: RCCC
+
+RCC__CCR: RCC=CCR
+RCC*CCR: RC[CH]CCR
+RC*CCCR: R[CH]CCCR
+
+RC(C)__C: RC(C)=C
+RCC__C: RCC=C
+RC*C__C: R[CH]C=C
+RC(C*)C: RC([CH2])C
+
+C__C: C=C
+
+ArC: c1ccccc1C
+ArC*: c1ccccc1[CH2]
+ArCC: c1ccccc1CC
+ArCC*: c1ccccc1C[CH2]
+ArC*C: c1ccccc1[CH]C
+ArCCC: c1ccccc1CCC
+ArCCC*: c1ccccc1CC[CH2]
+
+ArC(CC*CR)C(C)R: c1ccccc1C(C[CH]CR)C(C)R
+ArC(C*CCR)C(C)R: c1ccccc1C([CH]CCR)C(C)R
+ArC(C__C)C(C)R: c1ccccc1C(C=C)C(C)R
+ArC__CCCR: c1ccccc1C=CCCR
+
+ArC(CCCR)C(C)R: c1ccccc1C(CCCR)C(C)R
+ArC*(CCCR)C(C)R: c1ccccc1[C](CCCR)C(C)R
+ArC(CCCCR)C(C)R: c1ccccc1C(CCCCR)C(C)R
+ArC*(CCCCR)C(C)R: c1ccccc1[C](CCCCR)C(C)R
+ArC(__C)C(C)R: c1ccccc1C(=C)C(C)R
+ArC(CCCR)__CR: c1ccccc1C(CCCR)=CR
+ArC(CCC*R)C(C)R: c1ccccc1C(CC[CH]R)C(C)R
+ArC(C*)C(C)R: c1ccccc1C([CH2])C(C)R
+ArC(CCCR)C*(C)R: c1ccccc1C(CCCR)[C](C)R
+ArC__C(C)R: c1ccccc1C=C(C)R
+
+ArC(CCCR)C(C*)R: c1ccccc1C(CCCR)C([CH2])R
+ArAr: RC(C)C(C1C=CC=CC=1)C(C1C=CC=CC=1)C(C)R
+
+
+
+
+H*: [H]
+H2: [H][H]
+
+
+

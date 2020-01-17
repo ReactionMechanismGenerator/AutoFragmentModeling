@@ -8,6 +8,9 @@
 *.iml
 *.xml
 
+# Ignore PyCharm files
+.idea/*
+
 chemkin_ode/*
 
 *ipynb_checkpoints*

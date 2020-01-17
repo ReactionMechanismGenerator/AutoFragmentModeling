@@ -147,6 +147,9 @@ class Fragment(Graph):
             self.from_SMILES_like_string(SMILES)
             self.smiles = SMILES
 
+    def __deepcopy__(self, memo):
+        return self.copy(deep=True)
+
     def __str__(self):
         """
         Return a string representation, in the form 'label(id)'.
@@ -213,9 +216,11 @@ class Fragment(Graph):
         """
         Return the atoms in the fragment that are labeled.
         """
-        for v in self.vertices:
-            if v.label == label: return v
-        raise ValueError('No vertex in the fragment has the label "{0}".'.format(label))
+        alist = [v for v in self.vertices if v.label == label]
+        if alist == []:
+            raise ValueError(
+                'No vertex in the fragment \n{1}\n has the label "{0}".'.format(label, self.toAdjacencyList()))
+        return alist
 
     def getLabeledAtoms(self):
         """
@@ -451,7 +456,7 @@ class Fragment(Graph):
         result = Graph.isIsomorphic(self, other, initialMap, saveOrder=saveOrder, strict=strict)
         return result
 
-    def isSubgraphIsomorphic(self, other, initialMap=None):
+    def isSubgraphIsomorphic(self, other, initialMap=None, generateInitialMap=False, saveOrder=False):
         """
         Fragment's subgraph isomorphism check is done by first creating 
         a representative molecule of fragment, and then following same procedure
@@ -478,6 +483,36 @@ class Fragment(Graph):
                 return False
             elif element_count[element] < count:
                 return False
+
+        if generateInitialMap:
+            keys = []
+            atms = []
+            initialMap = dict()
+            for atom in self.atoms:
+                if atom.label and atom.label != '':
+                    atom_label_map = [a for a in other.atoms if a.label == atom.label]
+                    if not atom_label_map:
+                        return False
+                    elif len(atom_label_map) == 1:
+                        initialMap[atom] = atom_label_map[0]
+                    else:
+                        keys.append(atom)
+                        atms.append(atom_label_map)
+            if atms:
+                for atmlist in itertools.product(*atms):
+                    # skip entries that map multiple graph atoms to the same subgraph atom
+                    if len(set(atmlist)) != len(atmlist):
+                        continue
+                    for i,key in enumerate(keys):
+                        initialMap[key] = atmlist[i]
+                    if self.isMappingValid(other, initialMap, equivalent=False) and \
+                            Graph.isSubgraphIsomorphic(self, other, initialMap, saveOrder=saveOrder):
+                        return True
+                else:
+                    return False
+            else:
+                if not self.isMappingValid(other, initialMap, equivalent=False):
+                    return False
 
         # Do the isomorphism comparison
         new_initial_map = None
@@ -544,10 +579,170 @@ class Fragment(Graph):
                             charge=0, 
                             lonePairs=0)
 
-                atom_H5 = Atom(element=getElement('H'), 
+                atom_C3 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H5 = Atom(element=getElement('H'),
                             radicalElectrons=0, 
                             charge=0, 
                             lonePairs=0)
+
+                atom_H6 = Atom(element=getElement('H'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_C4 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_C5 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H7 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H8 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H9 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C6 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H10 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C7 = Atom(element=getElement('C'),
+                            radicalElectrons=0,
+                            charge=0,
+                            lonePairs=0)
+
+                atom_H11 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H12 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C8 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H13 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C9 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H14 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H15 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H16 = Atom(element=getElement('H'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_C10 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H17 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C11 = Atom(element=getElement('C'),
+                               radicalElectrons=0,
+                               charge=0,
+                               lonePairs=0)
+
+                atom_H18 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H19 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H20 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C12 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H21 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C13 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H22 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_C14 = Atom(element=getElement('C'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H23 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H24 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
+
+                atom_H25 = Atom(element=getElement('H'),
+                                radicalElectrons=0,
+                                charge=0,
+                                lonePairs=0)
 
                 atoms.append(atom_C1)
 
@@ -556,14 +751,80 @@ class Fragment(Graph):
                                     atom_H3,
                                     atom_H4,
                                     atom_H5,
-                                    atom_C2])
+                                    atom_H6,
+                                    atom_H7,
+                                    atom_H8,
+                                    atom_H9,
+                                    atom_H10,
+                                    atom_H11,
+                                    atom_H12,
+                                    atom_H13,
+                                    atom_H14,
+                                    atom_H15,
+                                    atom_H16,
+                                    atom_H17,
+                                    atom_H18,
+                                    atom_H19,
+                                    atom_H20,
+                                    atom_H21,
+                                    atom_H22,
+                                    atom_H23,
+                                    atom_H24,
+                                    atom_H25,
+                                    atom_C2,
+                                    atom_C3,
+                                    atom_C4,
+                                    atom_C5,
+                                    atom_C6,
+                                    atom_C7,
+                                    atom_C8,
+                                    atom_C9,
+                                    atom_C10,
+                                    atom_C11,
+                                    atom_C12,
+                                    atom_C13,
+                                    atom_C14,
+                                    ])
 
                 additional_bonds.extend([Bond(atom_C1, atom_H1, 1),
                                     Bond(atom_C1, atom_H2, 1),
                                     Bond(atom_C2, atom_H3, 1),
                                     Bond(atom_C2, atom_H4, 1),
-                                    Bond(atom_C2, atom_H5, 1),
-                                    Bond(atom_C1, atom_C2, 1)])
+                                    Bond(atom_C1, atom_C2, 1),
+                                    Bond(atom_C2, atom_C3, 1),
+                                    Bond(atom_C3, atom_H5, 1),
+                                    Bond(atom_C3, atom_H6, 1),
+                                    Bond(atom_C3, atom_C4, 1),
+                                    Bond(atom_C4, atom_C5, 1),
+                                    Bond(atom_C5, atom_H7, 1),
+                                    Bond(atom_C5, atom_H8, 1),
+                                    Bond(atom_C5, atom_H9, 1),
+                                    Bond(atom_C4, atom_C6, 1),
+                                    Bond(atom_C6, atom_C7, 2),
+                                    Bond(atom_C6, atom_H10, 1),
+                                    Bond(atom_C7, atom_H11, 1),
+                                    Bond(atom_C7, atom_H12, 1),
+                                    Bond(atom_C4, atom_C8, 1),
+                                    Bond(atom_C8, atom_H13, 1),
+                                    Bond(atom_C8, atom_C9, 1),
+                                    Bond(atom_C9, atom_H14, 1),
+                                    Bond(atom_C9, atom_H15, 1),
+                                    Bond(atom_C9, atom_H16, 1),
+                                    Bond(atom_C8, atom_C10, 1),
+                                    Bond(atom_C10, atom_H17, 1),
+                                    Bond(atom_C10, atom_C11, 1),
+                                    Bond(atom_C11, atom_H18, 1),
+                                    Bond(atom_C11, atom_H19, 1),
+                                    Bond(atom_C11, atom_H20, 1),
+                                    Bond(atom_C10, atom_C12, 1),
+                                    Bond(atom_C12, atom_H21, 1),
+                                    Bond(atom_C12, atom_C13, 2),
+                                    Bond(atom_C13, atom_H22, 1),
+                                    Bond(atom_C13, atom_C14, 1),
+                                    Bond(atom_C14, atom_H23, 1),
+                                    Bond(atom_C14, atom_H24, 1),
+                                    Bond(atom_C14, atom_H25, 1),
+                                    ])
 
             else:
                 atoms.append(mapped_vertex)
@@ -584,6 +845,8 @@ class Fragment(Graph):
 
         self.assign_representative_molecule()
         self.species_repr = Species(molecule=[self.mol_repr])
+        self.symmetryNumber = self.getSymmetryNumber()
+        self.species_repr.symmetryNumber = self.symmetryNumber
 
     def getMolecularWeight(self):
         """
@@ -594,6 +857,40 @@ class Fragment(Graph):
             if isinstance(vertex, Atom):
                 mass += vertex.element.mass
         return mass
+
+    def getSymmetryNumber(self):
+        """
+        Returns the symmetry number of Fragment.
+        First checks whether the value is stored as an attribute of Fragment.
+        If not, it calls the calculateSymmetryNumber method.
+        """
+        if self.symmetryNumber == -1:
+            self.calculateSymmetryNumber()
+        return self.symmetryNumber
+
+    def calculateSymmetryNumber(self):
+        """
+        Return the symmetry number for the structure. The symmetry number
+        includes both external and internal modes. First replace Cuttinglabel
+        with different elements and then calculate symmetry number
+        """
+        import re
+        from rmgpy.molecule.symmetry import calculateSymmetryNumber
+
+        smiles = self.toSMILES()
+
+        cutting_label_list = re.findall(r'([LR]\d?)', smiles)
+
+        metal_list = ['[Cl]', '[I]', '[Si]', '[F]']
+
+        for index, element in enumerate(cutting_label_list):
+            smiles = smiles.replace(element, metal_list[index], 1)
+
+        frag_sym = Molecule().fromSMILES(smiles)
+
+        frag_sym.updateConnectivityValues() # for consistent results
+        self.symmetryNumber = calculateSymmetryNumber(frag_sym)
+        return self.symmetryNumber
 
     def isRadical(self):
         """
