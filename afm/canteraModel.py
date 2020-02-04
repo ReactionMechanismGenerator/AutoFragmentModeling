@@ -91,7 +91,7 @@ class CanteraCondition:
         return string
 
 
-def generate_cantera_conditions(reactor_type_list, reaction_time_list, mol_frac_list, T_list=None, P_list=None, v_list=None):
+def generate_cantera_conditions(reactor_type_list, reaction_time_list, mol_frac_list, T_list=None, P_list=None, V_list=None):
         """
         Creates a list of cantera conditions from from the arguments provided. 
         
@@ -372,8 +372,8 @@ class Cantera:
             num_ct_reactions = len(self.model.reactions())
             if self.sensitive_species:
                 if ct.__version__ == '2.2.1':
-                    print 'Warning: Cantera version 2.2.1 may not support sensitivity analysis unless SUNDIALS was used during compilation.'
-                    print 'Warning: Upgrade to newer of Cantera in anaconda using the command "conda update -c rmg cantera"'
+                    print('Warning: Cantera version 2.2.1 may not support sensitivity analysis unless SUNDIALS was used during compilation.')
+                    print('Warning: Upgrade to newer of Cantera in anaconda using the command "conda update -c rmg cantera"')
                 # Add all the reactions as part of the analysis
                 for i in range(num_ct_reactions):
                     cantera_reactor.add_sensitivity_reaction(i)
@@ -436,7 +436,7 @@ class Cantera:
                     sensitivity_data.append(sensitivity_array)
                 
             # Convert species_data and sensitivity_data to a numpy array
-            speciedata=np.array(species_data)
+            species_data=np.array(species_data)
             sensitivity_data = np.array(sensitivity_data)
 
             # Resave data into generic data objects
@@ -607,7 +607,7 @@ def check_equivalent_cantera_species(ct_spec1, ct_spec2, dE=1e-5):
                 assert check_nearly_equal(thermo1.h(T), thermo2.h(T), dE), "Similar enthalpy"
                 assert check_nearly_equal(thermo1.s(T), thermo2.s(T), dE),  "Similar entropy"
     except Exception as e:
-        print "Cantera species {0} failed equivalency check on: {1}".format(ct_spec1,e)
+        print("Cantera species {0} failed equivalency check on: {1}".format(ct_spec1,e))
         return False
 
     return True
@@ -693,7 +693,7 @@ def check_equivalent_cantera_reaction(ct_rxn1, ct_rxn2, check_id=False, dE=1e-5)
                 check_equivalent_arrhenius(ct_rxn1.low_rate, ct_rxn2.low_rate)
                 
     except Exception as e:
-        print "Cantera reaction {0} failed equivalency check on: {1}".format(ct_rxn1, e)
+        print("Cantera reaction {0} failed equivalency check on: {1}".format(ct_rxn1, e))
         return False
         
     return True

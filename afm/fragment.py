@@ -1451,7 +1451,7 @@ class Fragment(Graph):
         Chem.rdmolops.Kekulize(rdkitmol, clearAromaticFlags=True)
 
         # iterate through atoms in rdkitmol
-        for i in xrange(rdkitmol.GetNumAtoms()):
+        for i in range(rdkitmol.GetNumAtoms()):
             rdkitatom = rdkitmol.GetAtomWithIdx(i)
 
             # Use atomic number as key for element
@@ -1463,7 +1463,7 @@ class Fragment(Graph):
             radical_electrons = rdkitatom.GetNumRadicalElectrons()
 
             ELE = element.symbol
-            if atom_replace_dict.has_key('[' + ELE + ']'):
+            if '[' + ELE + ']' in atom_replace_dict:
                 cutting_label_name = atom_replace_dict['[' + ELE + ']']
                 cutting_label = CuttingLabel(name=cutting_label_name)
                 self.vertices.append(cutting_label)
@@ -1472,7 +1472,7 @@ class Fragment(Graph):
                 self.vertices.append(atom)
 
             # Add bonds by iterating again through atoms
-            for j in xrange(0, i):
+            for j in range(0, i):
                 rdkitbond = rdkitmol.GetBondBetweenAtoms(i, j)
                 if rdkitbond is not None:
                     order = 0
