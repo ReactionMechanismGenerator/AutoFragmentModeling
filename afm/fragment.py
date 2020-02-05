@@ -1314,7 +1314,7 @@ class Fragment(Graph):
             if not isinstance(atom, Atom): continue
             symbol = atom.element.symbol
             isotope = atom.element.isotope
-            key = symbol if isotope == -1 else (symbol, isotope)
+            key = symbol # if isotope == -1 else (symbol, isotope)
             if key in element_count:
                 element_count[key] += 1
             else:
