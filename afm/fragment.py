@@ -882,6 +882,22 @@ class Fragment(Graph):
                 mass += vertex.element.mass
         return mass
 
+    def calculate_cp0(self):
+        """
+        Return the value of the heat capacity at zero temperature in J/mol*K.
+        """
+        self.assign_representative_molecule()
+        # currently linear fragment will be treated as non-linear molecule
+        return self.mol_repr.calculate_cp0()
+
+    def calculate_cpinf(self):
+        """
+        Return the value of the heat capacity at infinite temperature in J/mol*K.
+        """
+        self.assign_representative_molecule()
+        # currently linear fragment will be treated as non-linear molecule
+        return self.mol_repr.calculate_cpinf()
+
     def get_symmetry_number(self):
         """
         Returns the symmetry number of Fragment.
