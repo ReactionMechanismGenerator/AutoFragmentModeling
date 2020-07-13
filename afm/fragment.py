@@ -1523,7 +1523,7 @@ class Fragment(Graph):
 
         return self
 
-    def cut_molecule(self, mol_to_cut):
+    def cut_molecule(self, mol_to_cut, cut_through = True):
         """
         For given input, output a list of cut fragments (either string or Fragment)
         """
@@ -1543,11 +1543,18 @@ class Fragment(Graph):
 
         # slice mol
         frag_smiles_list = []
-        arom_cut_frag = self.sliceitup_arom(mol.to_smiles())
-        for frag in arom_cut_frag:
-            aliph_cut_frag = self.sliceitup_aliph(frag)
-            for ele in aliph_cut_frag:
-                frag_smiles_list.append(ele)
+        if cut_through:
+            arom_cut_frag = self.sliceitup_arom(mol.to_smiles())
+            for frag in arom_cut_frag:
+                aliph_cut_frag = self.sliceitup_aliph(frag)
+                for ele in aliph_cut_frag:
+                    frag_smiles_list.append(ele)
+        else:
+            # if aromatic, only perform sliceitup_arom, if aliphatic, only sliceitup_aliph
+            if mol.is_aromatic() == True:
+                frag_smiles_list = self.sliceitup_arom(mol.to_smiles())
+            else:
+                frag_smiles_list = self.sliceitup_aliph(mol.to_smiles())
 
         frag_list_new = []
         for frag_smiles in frag_smiles_list:
