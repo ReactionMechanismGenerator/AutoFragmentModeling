@@ -1531,9 +1531,15 @@ class Fragment(Graph):
         if isinstance(mol_to_cut, str):
             mol = self.from_smiles_like_string(mol_to_cut)
             mol = mol.generate_resonance_structures()[0]
-        # if input is fragment, output frafgment
+        # if input is fragment, output fragment
         elif isinstance(mol_to_cut, Fragment):
             mol = mol_to_cut.generate_resonance_structures()[0]
+        # if input is molecule, output fragment
+        elif isinstance(mol_to_cut, Molecule):
+            # transfer to Fragment
+            frag = Fragment()
+            frag.vertices = mol_to_cut.vertices
+            mol = frag.generate_resonance_structures()[0]
 
         # slice mol
         frag_smiles_list = []
@@ -1555,7 +1561,7 @@ class Fragment(Graph):
 
         if isinstance(mol_to_cut, str):
             return frag_list_new
-        elif isinstance(mol_to_cut, Fragment):
+        elif isinstance(mol_to_cut, (Fragment, Molecule)):
             frag_list = []
             for frag in frag_list_new:
                 frag = Fragment().from_smiles_like_string(frag)
