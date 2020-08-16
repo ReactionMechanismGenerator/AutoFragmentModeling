@@ -117,6 +117,13 @@ class CuttingLabel(Vertex):
         """
         return False
 
+    def is_non_hydrogen(self):
+        """
+        Return ``True`` if the atom does not represent a hydrogen atom or
+        ``False`` if it does.
+        """
+        return True
+
 class Fragment(Graph):
 
     def __init__(self,
@@ -1379,7 +1386,7 @@ class Fragment(Graph):
         # True if alternating single-triple bonds (e.g. H-C#C-H)
         # This test requires explicit hydrogen atoms
         for atom in self.vertices:
-            bonds = atom.edges.values()
+            bonds = list(atom.edges.values())
             if len(bonds)==1:
                 continue # ok, next atom
             if len(bonds)>2:
