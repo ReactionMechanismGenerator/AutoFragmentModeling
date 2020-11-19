@@ -931,7 +931,7 @@ class Fragment(Graph):
 
         cutting_label_list = re.findall(r'([LR]\d?)', smiles)
 
-        metal_list = ['[Cl]', '[I]', '[Si]', '[F]', '[Si+]', '[Si-]']
+        metal_list = ['[Cl]', '[I]', '[Si]', '[F]', '[Si+]', '[Si-]', '[Br]', '[He+]', '[Ne+]', '[Ar+]']
 
         for index, element in enumerate(cutting_label_list):
             smiles = smiles.replace(element, metal_list[index], 1)
