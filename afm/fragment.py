@@ -1530,7 +1530,7 @@ class Fragment(Graph):
 
         return self
 
-    def cut_molecule(self, mol_to_cut, cut_through = True):
+    def cut_molecule(self, mol_to_cut, cut_through = True, size_threshold=None):
         """
         For given input, output a list of cut fragments (either string or Fragment)
         """
@@ -1553,7 +1553,7 @@ class Fragment(Graph):
         if cut_through:
             arom_cut_frag = self.sliceitup_arom(mol.to_smiles())
             for frag in arom_cut_frag:
-                aliph_cut_frag = self.sliceitup_aliph(frag)
+                aliph_cut_frag = self.sliceitup_aliph(frag, size_threshold)
                 for ele in aliph_cut_frag:
                     frag_smiles_list.append(ele)
         else:
@@ -1561,7 +1561,7 @@ class Fragment(Graph):
             if mol.is_aromatic() == True:
                 frag_smiles_list = self.sliceitup_arom(mol.to_smiles())
             else:
-                frag_smiles_list = self.sliceitup_aliph(mol.to_smiles())
+                frag_smiles_list = self.sliceitup_aliph(mol.to_smiles(), size_threshold)
 
         frag_list_new = []
         for frag_smiles in frag_smiles_list:
@@ -1663,10 +1663,15 @@ class Fragment(Graph):
                 frag_list_new.append(res_frag)
             return frag_list_new
 
-    def sliceitup_aliph(self, molecule):
+    def sliceitup_aliph(self, molecule, size_threshold = None):
         """
         Several specified aliphatic patterns
         """
+        # set min size for each aliphatic fragment size
+        if size_threshold != None:
+            size_threshold = size_threshold
+        else:
+            size_threshold = 5
         # if input is smiles string, output smiles
         if isinstance(molecule, str):
             molecule_smiles = molecule
@@ -1704,7 +1709,7 @@ class Fragment(Graph):
             if len(ps) != 0:
                 for loop in range(1000):
                     ind = np.random.randint(0, len(ps))
-                    if ps[ind][0].GetNumAtoms() > 5 and ps[ind][1].GetNumAtoms() > 5:
+                    if ps[ind][0].GetNumAtoms() > size_threshold and ps[ind][1].GetNumAtoms() > size_threshold:
                         for i in range(len(ps[ind])):
                             frag_list.append(Chem.MolToSmiles(ps[ind][i]))
                         break
