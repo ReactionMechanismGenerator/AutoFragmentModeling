@@ -1,3 +1,6 @@
+> [!CAUTION]
+> The functionality of `AutoFragmentModeling` has been incorporated into [RMG-Py](https://github.com/ReactionMechanismGenerator/RMG-Py) - this repository is deprecated!
+
 # AutoFragmentModeling (AFM)
 
 ## Project Status
